@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  simplecliniqapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ConnectionStrings__DefaultConnection=Server=simplecliniq.czwkw6ameocg.ap-southeast-1.rds.amazonaws.com;Database=db_simple_cliniq;User Id=postgres;Password=development()qwerty34
+
+    ports:
+      - "7001:8080"
+      - "7000:8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro

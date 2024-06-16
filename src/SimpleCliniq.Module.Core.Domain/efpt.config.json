@@ -1,0 +1,386 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "SimpleClinicContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "SimpleCliniq.Module.Core.Domain",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "public.M_AntrianCounter",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_AntrianCounterAudio",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_AntrianLayanan",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_AntrianLokasi",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Asal",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_AsalGroup",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_AturanPakai",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Bank",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Barang",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_BarangAturanpakai",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Coa",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_CoaGolongan",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_CoaKlasifikasi",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_CoaSubKlasifikasi",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_CountTraffic",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Department",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Diagnosa",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_DiagnosaMatrix",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Dokter",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_DokterHonor",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_DokterNote",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_DTD",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Farmakoterapi",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_FarmakoterapiSub",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Gizi",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Gudang",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_HargaBarang",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Hargakamar",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_HargaRekanan",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_JadwalDokter",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Kamarinap",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_KamarinapHarga",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_KamarinapRekanan",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_KelompokBarang",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Kodepos",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Laboratorium",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_LaboratoriumGroup",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_LaboratoriumHarga",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_LaboratoriumRekanan",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Map",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_MasterPaketH",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_MasterTnd",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Module",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_ModuleDetail",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Morfologi",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_ObatUnit",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_PaketDetail",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_PaketHarga",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_PaketHargaBaru",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_PaketMatrix",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_PaketRekanan",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Pasien",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_PemeriksaanPenunjang",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_PemeriksaanPenunjangDetail",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Radiologi",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_RadiologiGroup",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_RadiologiHarga",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_RadiologiRekanan",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Rekanan",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Ruang",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_SettingAdm",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_SettingBayar",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_SettingDaftar",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_SettingKomputerAntrian",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_SettingPemeriksaan",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Smf",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Standartfield",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_StandartfieldGroup",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Status",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Supplier",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_TarifDetail",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_TarifGroup",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_TarifHarga",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_TarifMatrix",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_TarifNonMedis",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_TarifnonmedisGroup",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_TarifnonmedisHarga",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_TarifnonmedisMatrix",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_TarifnonmedisRekanan",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_TarifPelayanan",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_TarifRekanan",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_TarifRekananSub",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Tennant",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_Tindakan",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_User",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.M_UserGroup",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": ".SimpleClinic",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false
+}
