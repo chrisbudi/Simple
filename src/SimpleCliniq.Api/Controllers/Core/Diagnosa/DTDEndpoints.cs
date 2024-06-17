@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SimpleCliniq.Common.Presentation.Endpoints;
 using SimpleCliniq.Module.Core.Domain.Models;
 using SimpleCliniq.Module.Core.Infrastructure;
@@ -12,10 +13,10 @@ public class DTDEndpoints : IEndpoint
 
         var group = builder.MapGroup("/api/core/DTD").WithTags(nameof(MDtd));
 
-        group.MapGet("/", async (SimpleClinicContext db) =>
+        group.MapGet("/", async (SimpleClinicContext db, [FromQuery(Name = "page")] int page, [FromQuery(Name = "limit")] int limit) =>
         {
 
-            return await db.MDtd.Skip(0).Take(10).ToListAsync();
+            return await db.MDtd.Skip(page).Take(limit).ToListAsync();
         })
         .WithName("GetAllDTD")
         .WithOpenApi()
