@@ -13,10 +13,15 @@ public class DTDEndpoints : IEndpoint
 
         var group = builder.MapGroup("/api/core/DTD").WithTags(nameof(MDtd));
 
-        group.MapGet("/", async (SimpleClinicContext db, [FromQuery(Name = "page")] int page, [FromQuery(Name = "limit")] int limit) =>
+        group.MapGet("/", async (
+                SimpleClinicContext db, 
+                [FromQuery(Name = "page")] int page, 
+                [FromQuery(Name = "limit")] int limit,
+                [FromQuery(Name = "search")] string? search = null
+            ) =>
         {
-
-            return await db.MDtd.Skip(page).Take(limit).ToListAsync();
+           
+           return await db.MDtd.Skip(page).Take(limit).OrderByDescending(d => d.NmDtd).Where(d => EF.Functions.ILike(d.NmDtd, "%" + search + "%")).ToListAsync();
         })
         .WithName("GetAllDTD")
         .WithOpenApi()
