@@ -1,11 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="8.0.1" />
     <PackageReference Include="AspNetCore.HealthChecks.Redis" Version="8.0.1" />
@@ -27,6 +21,12 @@
     <PackageReference Include="Quartz.Extensions.Hosting" Version="3.8.1" />
     <PackageReference Include="Scrutor" Version="4.2.2" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleCliniq.Common.Application\SimpleCliniq.Common.Application.csproj" />
+    <ProjectReference Include="..\SimpleCliniq.Common.Domain\SimpleCliniq.Common.Domain.csproj" />
+  </ItemGroup>
+
 
 
 </Project>

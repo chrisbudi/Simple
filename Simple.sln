@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCliniqApi", "src\SimpleCliniq.Api\SimpleCliniqApi.csproj", "{8C4164E7-D9D0-410F-B58A-BF54D53184CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCliniq", "src\SimpleCliniq.Api\SimpleCliniq.csproj", "{8C4164E7-D9D0-410F-B58A-BF54D53184CE}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{078BBF48-7623-44A0-80CF-13B5B57241DA}"
 EndProject
