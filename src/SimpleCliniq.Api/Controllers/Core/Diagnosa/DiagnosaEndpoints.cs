@@ -13,9 +13,32 @@ public class DiagnosaEndpoints : IEndpoint
 
         var group = builder.MapGroup("/api/core/Diagnosa").WithTags(nameof(MDiagnosa));
 
-        group.MapGet("/", async (SimpleClinicContext db, [FromQuery(Name = "page")] int page, [FromQuery(Name = "limit")] int limit) =>
+        group.MapGet("/", async (SimpleClinicContext db, 
+                [FromQuery(Name = "page")] int page, 
+                [FromQuery(Name = "limit")] int limit,
+                [FromQuery(Name = "search")] string? search = null,
+                [FromQuery(Name = "sort")] string? sort = "asc"
+            ) =>
         {
-            return await db.MDiagnosa.Skip(page).Take(limit).ToListAsync();
+            if(sort == "asc")
+            {
+
+                return await db.MDiagnosa.
+                Skip(page).
+                Take(limit).
+                OrderBy(d => d.NmDiagnosa).
+                Where(d => EF.Functions.ILike(d.NmDiagnosa, "%" + search + "%")).
+                ToListAsync();
+            }
+            else
+            {
+                return await db.MDiagnosa.
+                Skip(page).
+                Take(limit).
+                OrderByDescending(d => d.NmDiagnosa).
+                Where(d => EF.Functions.ILike(d.NmDiagnosa, "%" + search + "%")).
+                ToListAsync();
+            }
         })
         .WithName("GetAllDiagnosa")
         .WithOpenApi()

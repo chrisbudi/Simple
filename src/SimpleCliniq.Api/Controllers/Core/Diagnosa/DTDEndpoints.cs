@@ -17,11 +17,28 @@ public class DTDEndpoints : IEndpoint
                 SimpleClinicContext db, 
                 [FromQuery(Name = "page")] int page, 
                 [FromQuery(Name = "limit")] int limit,
-                [FromQuery(Name = "search")] string? search = null
+                [FromQuery(Name = "search")] string? search = null,
+                [FromQuery(Name = "sort")] string? sort = "asc"
             ) =>
         {
+           if (sort == "asc")
+            {
+                return await db.
+                MDtd.Skip(page).
+                Take(limit).
+                OrderBy(d => d.NmDtd).
+                Where(d => EF.Functions.ILike(d.NmDtd, "%" + search + "%")).
+                ToListAsync();
+            } else
+            {
+                return await db.
+                MDtd.Skip(page).
+                Take(limit).
+                OrderByDescending(d => d.NmDtd).
+                Where(d => EF.Functions.ILike(d.NmDtd, "%" + search + "%")).
+                ToListAsync();
+            }
            
-           return await db.MDtd.Skip(page).Take(limit).OrderByDescending(d => d.NmDtd).Where(d => EF.Functions.ILike(d.NmDtd, "%" + search + "%")).ToListAsync();
         })
         .WithName("GetAllDTD")
         .WithOpenApi()
