@@ -4,10 +4,25 @@ using SimpleCliniq.Module.Core.Infrastructure;
 using System.Reflection;
 //using SimpleCliniq.Module.Core.Infrastructure;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
+
+
 
 // Add services to the container.
 var services = builder.Services;
+
+services.AddCors(options =>
+{
+    options.AddPolicy(name: "MyPolicy",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:7106",
+                                "https://52.221.253.49:7000")
+                    .WithMethods("PUT", "DELETE", "GET");
+        });
+});
 
 services.AddDbContext<SimpleClinicContext>(options =>
 {
@@ -37,6 +52,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors();
 
 app.UseAuthorization();
 
