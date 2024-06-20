@@ -21,24 +21,26 @@ public class DTDEndpoints : IEndpoint
                 [FromQuery(Name = "sort")] string? sort = "asc"
             ) =>
         {
-           if (sort == "asc")
+            if (sort == "asc")
             {
                 return await db.
                 MDtd.Skip(page).
                 Take(limit).
-                OrderBy(d => d.NmDtd).
-                Where(d => EF.Functions.ILike(d.NmDtd, "%" + search + "%")).
-                ToListAsync();
-            } else
-            {
-                return await db.
-                MDtd.Skip(page).
-                Take(limit).
-                OrderByDescending(d => d.NmDtd).
+                OrderBy(d => d.IdDtd).
                 Where(d => EF.Functions.ILike(d.NmDtd, "%" + search + "%")).
                 ToListAsync();
             }
-           
+            else
+            {
+                return await db.
+                MDtd.Skip(page).
+                Take(limit).
+                OrderByDescending(d => d.IdDtd).
+                Where(d => EF.Functions.ILike(d.NmDtd, "%" + search + "%")).
+                ToListAsync();
+            }
+
+
         })
         .WithName("GetAllDTD")
         .WithOpenApi()
