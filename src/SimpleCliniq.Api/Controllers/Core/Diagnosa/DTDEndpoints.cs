@@ -16,26 +16,20 @@ public class DTDEndpoints : IEndpoint
         group.MapGet("/", async ([AsParameters] ParamList par,
             SimpleClinicContext db) =>
         {
-            var order = par.order;
-            var orderAsc = par.orderAsc;
-            var page = par.page;
-            var limit = par.size;
-            var search = par.search;
 
             var filtered = db.MDtd
-                .Where(d => EF.Functions.ILike(d.NmDtd, "%" + search + "%"))
-                .OrderByDynamic(order ?? "IdDtd", orderAsc);
+            .Where(d => EF.Functions.ILike(d.NmDtd, "%" + par.search + "%"))
+            .OrderByDynamic(par.order ?? "IdDtd", par.orderAsc);
 
-
-            var data = await filtered
-                .Skip(page)
-                .Take(limit)
+            var list = await filtered
+                .Skip((par.page * par.size))
+                .Take(par.size)
                 .ToListAsync();
 
 
-            return Results.Ok(new
+            return Result.Success(new
             {
-                data,
+                list,
                 count = await filtered.CountAsync()
             });
 
