@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using SimpleCliniq.Common.Presentation.Endpoints;
 using SimpleCliniq.Module.Core.Domain.Models;
 using SimpleCliniq.Module.Core.Infrastructure;
+using SimpleCliniqApi.Controllers.Core.Shared;
 
 namespace Controllers.Core.Diagnosa;
 
@@ -13,33 +13,31 @@ public class DTDEndpoints : IEndpoint
 
         var group = builder.MapGroup("/api/core/DTD").WithTags(nameof(MDtd));
 
-        group.MapGet("/", async (
-                SimpleClinicContext db, 
-                [FromQuery(Name = "page")] int page, 
-                [FromQuery(Name = "limit")] int limit,
-                [FromQuery(Name = "search")] string? search = null,
-                [FromQuery(Name = "sort")] string? sort = "asc"
-            ) =>
+        group.MapGet("/", async ([AsParameters] ParamList par,
+            SimpleClinicContext db) =>
         {
-            if (sort == "asc")
-            {
-                return await db.
-                MDtd.Skip(page).
-                Take(limit).
-                OrderBy(d => d.IdDtd).
-                Where(d => EF.Functions.ILike(d.NmDtd, "%" + search + "%")).
-                ToListAsync();
-            }
-            else
-            {
-                return await db.
-                MDtd.Skip(page).
-                Take(limit).
-                OrderByDescending(d => d.IdDtd).
-                Where(d => EF.Functions.ILike(d.NmDtd, "%" + search + "%")).
-                ToListAsync();
-            }
+            var order = par.order;
+            var orderAsc = par.orderAsc;
+            var page = par.page;
+            var limit = par.size;
+            var search = par.search;
 
+            var filtered = db.MDtd
+                .Where(d => EF.Functions.ILike(d.NmDtd, "%" + search + "%"))
+                .OrderByDynamic(order ?? "IdDtd", orderAsc);
+
+
+            var data = await filtered
+                .Skip(page)
+                .Take(limit)
+                .ToListAsync();
+
+
+            return Results.Ok(new
+            {
+                data,
+                count = await filtered.CountAsync()
+            });
 
         })
         .WithName("GetAllDTD")
@@ -93,6 +91,14 @@ public class DTDEndpoints : IEndpoint
         .WithName("DeleteDTD")
         .WithOpenApi()
         .Produces<MDtd>(StatusCodes.Status200OK);
-
     }
+
+    public class ParamList
+    {
+        public int page { get; set; }
+        public int size { get; set; }
+        public string? search { get; set; } = "";
+        public string? order { get; set; } = "";
+        public bool orderAsc { get; set; } = true;
+    };
 }
