@@ -16,23 +16,29 @@ public class DTDEndpoints : IEndpoint
         group.MapGet("/", async ([AsParameters] ParamList par,
             SimpleClinicContext db) =>
         {
-
-            var filtered = db.MDtd
-            .Where(d => EF.Functions.ILike(d.NmDtd, "%" + par.search + "%"))
-            .OrderByDynamic(par.order ?? "IdDtd", par.orderAsc);
-
-            var list = await filtered
-                .Skip((par.page * par.size))
-                .Take(par.size)
-                .ToListAsync();
-
-
-            return Result.Success(new
+            try
             {
-                list,
-                count = await filtered.CountAsync()
-            });
+                var filtered = db.MDtd
+                .Where(d => EF.Functions.ILike(d.NmDtd, "%" + par.search + "%"))
+                .OrderByDynamic(par.order ?? "IdDtd", par.orderAsc);
 
+                var list = await filtered
+                    .Skip((par.page * par.size))
+                    .Take(par.size)
+                    .ToListAsync();
+
+
+                return Result.Success(new
+                {
+                    list,
+                    count = await filtered.CountAsync()
+                });
+
+            }
+            catch (Exception ex)
+            {
+                return Result.Failure(ex.Message, ex);
+            }
         })
         .WithName("GetAllDTD")
         .WithOpenApi()
@@ -63,13 +69,16 @@ public class DTDEndpoints : IEndpoint
 
         group.MapPost("/", async (SimpleClinicContext db, MDtd model) =>
         {
-
-            var dtd = db.MDtd.Add(model);
-            await db.SaveChangesAsync();
-            return Results.Ok(dtd);
-
-
-            //return Results.Created($"/api/MDtds/{model.ID}", model);
+            try
+            {
+                var dtd = db.MDtd.Add(model);
+                await db.SaveChangesAsync();
+                return Result.Success(dtd);
+            }
+            catch (Exception ex)
+            {
+                return Result.Failure(ex.Message);
+            }
         })
         .WithName("CreateMDTD")
         .WithOpenApi()
