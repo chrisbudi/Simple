@@ -7,11 +7,11 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MMasterPaketH
 {
-    public Guid Id { get; set; }
+    public long Id { get; set; }
 
-    public decimal OldId { get; set; }
+    public long OldId { get; set; }
 
-    public decimal? IdMasterPemeriksaan { get; set; }
+    public long? IdMasterPemeriksaan { get; set; }
 
     public string NmPemeriksaan { get; set; }
 

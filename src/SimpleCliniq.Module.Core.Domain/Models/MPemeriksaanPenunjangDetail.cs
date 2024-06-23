@@ -7,9 +7,9 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MPemeriksaanPenunjangDetail
 {
-    public decimal IdPenunjangDetail { get; set; }
+    public long IdPenunjangDetail { get; set; }
 
-    public decimal? IdMasterPemeriksaanPenunjang { get; set; }
+    public long? IdMasterPemeriksaanPenunjang { get; set; }
 
     public string KdPemeriksaan { get; set; }
 

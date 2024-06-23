@@ -7,11 +7,11 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MPaketMatrix
 {
-    public Guid IdPaketMatrix { get; set; }
+    public string IdPaketMatrix { get; set; }
 
-    public decimal OldIdPaketmatrix { get; set; }
+    public long OldIdPaketmatrix { get; set; }
 
-    public decimal IdMasterpemeriksaanpenunjang { get; set; }
+    public long IdMasterpemeriksaanpenunjang { get; set; }
 
     public string Koderuangan { get; set; }
 

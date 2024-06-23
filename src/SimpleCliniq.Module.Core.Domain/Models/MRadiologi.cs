@@ -7,13 +7,13 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MRadiologi
 {
-    public decimal IdPemeriksaanRad { get; set; }
+    public long IdPemeriksaanRad { get; set; }
 
     public string KdPemeriksaanRad { get; set; }
 
     public string NmPemeriksaanRad { get; set; }
 
-    public decimal? IdGroup { get; set; }
+    public long? IdGroup { get; set; }
 
     public bool? IsAktif { get; set; }
 

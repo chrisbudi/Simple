@@ -7,13 +7,13 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MMap
 {
-    public decimal IdMapid { get; set; }
+    public long IdMapid { get; set; }
 
     public string NmMap { get; set; }
 
     public string KodeRuangan { get; set; }
 
-    public decimal? IdRuang { get; set; }
+    public long? IdRuang { get; set; }
 
     public string Note { get; set; }
 

@@ -7,13 +7,13 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MRadiologiGroup
 {
-    public decimal IdGroup { get; set; }
+    public long IdGroup { get; set; }
 
     public string Nmgroup { get; set; }
 
     public bool? IsAktif { get; set; }
 
-    public decimal? IdGrouptarif { get; set; }
+    public long? IdGrouptarif { get; set; }
 
     public virtual ICollection<MRadiologi> MRadiologi { get; set; } = new List<MRadiologi>();
 }

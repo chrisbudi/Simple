@@ -7,7 +7,7 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MSupplier
 {
-    public decimal SupplierId { get; set; }
+    public long SupplierId { get; set; }
 
     public string NamaSupplier { get; set; }
 

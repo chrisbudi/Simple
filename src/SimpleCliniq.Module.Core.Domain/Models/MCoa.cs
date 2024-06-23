@@ -7,7 +7,7 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MCoa
 {
-    public Guid IdCoa { get; set; }
+    public string IdCoa { get; set; }
 
     public decimal OldIdCoa { get; set; }
 
@@ -23,7 +23,7 @@ public partial class MCoa
 
     public decimal? SaldoAwal { get; set; }
 
-    public Guid? Subklasifikasi { get; set; }
+    public string Subklasifikasi { get; set; }
 
     public decimal? OldSubklasifikasi { get; set; }
 

@@ -21,7 +21,7 @@ public partial class MTarifnonmedisHarga
 
     public decimal? OldRekananId { get; set; }
 
-    public Guid? RekananId { get; set; }
+    public string RekananId { get; set; }
 
     public bool? IsAktif { get; set; }
 

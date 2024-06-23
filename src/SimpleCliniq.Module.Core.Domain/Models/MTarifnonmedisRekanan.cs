@@ -15,7 +15,7 @@ public partial class MTarifnonmedisRekanan
 
     public decimal? OldIdRekanan { get; set; }
 
-    public Guid IdRekanan { get; set; }
+    public string IdRekanan { get; set; }
 
     public bool? IsAktif { get; set; }
 

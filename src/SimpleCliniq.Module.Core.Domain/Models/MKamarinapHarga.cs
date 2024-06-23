@@ -7,11 +7,11 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MKamarinapHarga
 {
-    public decimal IdKamarInapHarga { get; set; }
+    public long IdKamarInapHarga { get; set; }
 
     public string KdTmpTidur { get; set; }
 
-    public decimal? IdKamarInap { get; set; }
+    public long? IdKamarInap { get; set; }
 
     public decimal? RekananId { get; set; }
 

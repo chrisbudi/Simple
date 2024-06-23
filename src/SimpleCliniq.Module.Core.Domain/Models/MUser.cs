@@ -7,13 +7,13 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MUser
 {
-    public Guid IdUser { get; set; }
+    public string IdUser { get; set; }
 
     public decimal OldIdUser { get; set; }
 
     public string KodeRuangan { get; set; }
 
-    public decimal? IdRuang { get; set; }
+    public long? IdRuang { get; set; }
 
     public string Namalengkap { get; set; }
 

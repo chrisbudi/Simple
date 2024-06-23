@@ -7,7 +7,7 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MMasterTnd
 {
-    public double IdGroupTarif { get; set; }
+    public long IdGroupTarif { get; set; }
 
     public string NmgroupTarif { get; set; }
 
@@ -17,9 +17,9 @@ public partial class MMasterTnd
 
     public string Kelas { get; set; }
 
-    public double? Harga { get; set; }
+    public decimal? Harga { get; set; }
 
-    public double? IsAktif { get; set; }
+    public decimal? IsAktif { get; set; }
 
-    public double? HargaBpjs { get; set; }
+    public decimal? HargaBpjs { get; set; }
 }

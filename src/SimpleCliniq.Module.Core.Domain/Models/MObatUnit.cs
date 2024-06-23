@@ -7,9 +7,9 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MObatUnit
 {
-    public decimal IdObatUnit { get; set; }
+    public long IdObatUnit { get; set; }
 
-    public Guid? BarangId { get; set; }
+    public long? BarangId { get; set; }
 
     public decimal? OldBarangId { get; set; }
 

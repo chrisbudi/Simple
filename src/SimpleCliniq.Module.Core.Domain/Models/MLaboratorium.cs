@@ -7,13 +7,13 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MLaboratorium
 {
-    public decimal IdPemeriksaanLab { get; set; }
+    public long IdPemeriksaanLab { get; set; }
 
     public string KdPemeriksaanLab { get; set; }
 
     public string NmPemeriksaanLab { get; set; }
 
-    public decimal? IdGroup { get; set; }
+    public long? IdGroup { get; set; }
 
     public bool? IsAktif { get; set; }
 

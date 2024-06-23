@@ -7,15 +7,15 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MHargaBarang
 {
-    public Guid IdHargaBeli { get; set; }
+    public string IdHargaBeli { get; set; }
 
     public decimal OldIdHargaBeli { get; set; }
 
-    public Guid? BarangId { get; set; }
+    public string BarangId { get; set; }
 
     public decimal? OldBarangId { get; set; }
 
-    public decimal? SupplierId { get; set; }
+    public long? SupplierId { get; set; }
 
     public DateTime? LastUpdate { get; set; }
 

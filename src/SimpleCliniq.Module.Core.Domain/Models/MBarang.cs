@@ -7,7 +7,7 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MBarang
 {
-    public Guid BarangId { get; set; }
+    public string BarangId { get; set; }
 
     public decimal OldBarangId { get; set; }
 
@@ -45,9 +45,9 @@ public partial class MBarang
 
     public string SubFarmakoterapi { get; set; }
 
-    public decimal? IdFarmakoterapi { get; set; }
+    public long? IdFarmakoterapi { get; set; }
 
-    public decimal? IdSubFarmakoterapi { get; set; }
+    public long? IdSubFarmakoterapi { get; set; }
 
     public decimal? HargaBeli { get; set; }
 

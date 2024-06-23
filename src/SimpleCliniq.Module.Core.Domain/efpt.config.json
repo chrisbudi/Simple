@@ -2,7 +2,6 @@
    "CodeGenerationMode": 4,
    "ContextClassName": "SimpleClinicContext",
    "ContextNamespace": null,
-   "DefaultDacpacSchema": null,
    "FilterSchemas": false,
    "IncludeConnectionString": true,
    "ModelNamespace": null,
@@ -360,8 +359,9 @@
          "ObjectType": 0
       }
    ],
-   "UiHint": ".SimpleClinic",
+   "UiHint": null,
    "UncountableWords": null,
+   "UseAsyncStoredProcedureCalls": true,
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": false,
    "UseDateOnlyTimeOnly": true,

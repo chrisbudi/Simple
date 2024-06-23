@@ -7,7 +7,7 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MPemeriksaanPenunjang
 {
-    public decimal IdMasterPemeriksaanPenunjang { get; set; }
+    public long IdMasterPemeriksaanPenunjang { get; set; }
 
     public string KdPemeriksaan { get; set; }
 
@@ -21,7 +21,7 @@ public partial class MPemeriksaanPenunjang
 
     public string Penunjang { get; set; }
 
-    public Guid RekananId { get; set; }
+    public string RekananId { get; set; }
 
     public decimal OldRekananId { get; set; }
 
@@ -29,7 +29,7 @@ public partial class MPemeriksaanPenunjang
 
     public bool? IsAktif { get; set; }
 
-    public Guid IdGroupTarif { get; set; }
+    public string IdGroupTarif { get; set; }
 
     public decimal? OldIdGroupTarif { get; set; }
 

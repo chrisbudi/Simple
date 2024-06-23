@@ -31,7 +31,7 @@ public partial class MDokter
 
     public string KdAkun { get; set; }
 
-    public Guid? IdCoa { get; set; }
+    public string IdCoa { get; set; }
 
     public string By { get; set; }
 

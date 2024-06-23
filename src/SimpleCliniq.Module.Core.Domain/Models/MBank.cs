@@ -7,7 +7,7 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MBank
 {
-    public Guid IdBank { get; set; }
+    public string IdBank { get; set; }
 
     public decimal OldIdBank { get; set; }
 

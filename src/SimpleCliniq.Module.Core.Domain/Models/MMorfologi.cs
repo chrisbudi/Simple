@@ -7,7 +7,7 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MMorfologi
 {
-    public decimal IdMorfologi { get; set; }
+    public long IdMorfologi { get; set; }
 
     public string KdMorfologi { get; set; }
 
@@ -15,7 +15,7 @@ public partial class MMorfologi
 
     public string KdDiagnosa { get; set; }
 
-    public decimal? IdDiagnosa { get; set; }
+    public long? IdDiagnosa { get; set; }
 
     public bool? IsAktif { get; set; }
 

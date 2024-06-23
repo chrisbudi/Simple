@@ -7,7 +7,7 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MGudang
 {
-    public decimal IdGudangObat { get; set; }
+    public long IdGudangObat { get; set; }
 
     public string KodeInventory { get; set; }
 

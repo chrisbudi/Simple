@@ -11,7 +11,7 @@ public partial class MKamarinapRekanan
 
     public string KdTmpTidur { get; set; }
 
-    public Guid RekananId { get; set; }
+    public string RekananId { get; set; }
 
     public decimal OldRekananId { get; set; }
 

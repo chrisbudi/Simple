@@ -7,7 +7,7 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MTarifDetail
 {
-    public Guid IdTarifdetail { get; set; }
+    public string IdTarifdetail { get; set; }
 
     public decimal OldIdTarifdetail { get; set; }
 

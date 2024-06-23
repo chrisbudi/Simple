@@ -7,7 +7,7 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MRuang
 {
-    public decimal IdRuang { get; set; }
+    public long IdRuang { get; set; }
 
     public string KodeRuangan { get; set; }
 
@@ -21,11 +21,11 @@ public partial class MRuang
 
     public string KodeInventory { get; set; }
 
-    public decimal? KodeInventoryGudangObat { get; set; }
+    public long? KodeInventoryGudangObat { get; set; }
 
     public string KodeRequestObat { get; set; }
 
-    public decimal? KodeRequestGudangObat { get; set; }
+    public long? KodeRequestGudangObat { get; set; }
 
     public string KodeTarif { get; set; }
 

@@ -7,7 +7,7 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MLaboratoriumGroup
 {
-    public decimal IdGroup { get; set; }
+    public long IdGroup { get; set; }
 
     public string Nmgroup { get; set; }
 

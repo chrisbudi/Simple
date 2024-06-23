@@ -7,7 +7,7 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MFarmakoterapi
 {
-    public decimal IdFarmakoterapi { get; set; }
+    public long IdFarmakoterapi { get; set; }
 
     public string Nmfarmakoterapi { get; set; }
 

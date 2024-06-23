@@ -9,7 +9,7 @@ public partial class MSettingAdm
 {
     public decimal IdSettingAdm { get; set; }
 
-    public Guid RekananId { get; set; }
+    public string RekananId { get; set; }
 
     public decimal? OldRekananId { get; set; }
 

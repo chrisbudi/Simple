@@ -7,13 +7,13 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MKamarinap
 {
-    public decimal IdKamarInap { get; set; }
+    public long IdKamarInap { get; set; }
 
     public string KdTmpTidur { get; set; }
 
     public string Kelas { get; set; }
 
-    public decimal? IdHargakamar { get; set; }
+    public long? IdHargakamar { get; set; }
 
     public string Lantai { get; set; }
 
@@ -29,7 +29,7 @@ public partial class MKamarinap
 
     public int? Iy { get; set; }
 
-    public decimal? IdMapid { get; set; }
+    public long? IdMapid { get; set; }
 
     public bool? IsAktif { get; set; }
 

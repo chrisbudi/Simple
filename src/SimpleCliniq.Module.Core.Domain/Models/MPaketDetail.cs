@@ -7,7 +7,7 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MPaketDetail
 {
-    public decimal IdPaketdetail { get; set; }
+    public long IdPaketdetail { get; set; }
 
     public string KdPaketDetail { get; set; }
 

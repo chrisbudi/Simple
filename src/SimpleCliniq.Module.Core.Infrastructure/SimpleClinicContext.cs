@@ -1,10 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SimpleCliniq.Module.Core.Domain.Models;
+using SimpleCliniq.Module.Core.Infrastructure.Configuration;
 
 namespace SimpleCliniq.Module.Core.Infrastructure;
 
 public partial class SimpleClinicContext : DbContext
 {
+    public SimpleClinicContext()
+    {
+    }
 
     public SimpleClinicContext(DbContextOptions<SimpleClinicContext> options)
         : base(options)
@@ -183,9 +187,12 @@ public partial class SimpleClinicContext : DbContext
 
     public virtual DbSet<MUserGroup> MUserGroup { get; set; }
 
-    //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-    //        => optionsBuilder.UseNpgsql("Host=localhost;Password=1234;Username=postgres;Database=SimpleClinic");
+    protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+    {
+        configurationBuilder
+            .Properties<Ulid>()
+            .HaveConversion<UlidToStringConverter>();
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -394,7 +401,7 @@ public partial class SimpleClinicContext : DbContext
 
             entity.ToTable("M_Bank");
 
-            entity.Property(e => e.IdBank).ValueGeneratedNever();
+            entity.Property(e => e.IdBank).HasMaxLength(26);
             entity.Property(e => e.Alamat)
                 .IsRequired()
                 .HasMaxLength(50);
@@ -467,7 +474,7 @@ public partial class SimpleClinicContext : DbContext
             entity.HasIndex(e => e.KelompokId, "IX_M_Barang_kelompokId");
 
             entity.Property(e => e.BarangId)
-                .ValueGeneratedNever()
+                .HasMaxLength(26)
                 .HasColumnName("barangId");
             entity.Property(e => e.DiskonOff).HasPrecision(18, 2);
             entity.Property(e => e.DiskonOn).HasPrecision(18, 2);
@@ -480,8 +487,6 @@ public partial class SimpleClinicContext : DbContext
                 .HasMaxLength(200);
             entity.Property(e => e.HargaBeli).HasPrecision(18, 2);
             entity.Property(e => e.HargaJual).HasPrecision(18, 2);
-            entity.Property(e => e.IdFarmakoterapi).HasPrecision(18);
-            entity.Property(e => e.IdSubFarmakoterapi).HasPrecision(18);
             entity.Property(e => e.Isi).HasPrecision(18);
             entity.Property(e => e.Jenis)
                 .IsRequired()
@@ -574,7 +579,7 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.NmAkun, "IX_M_Coa_VNMAKUN");
 
-            entity.Property(e => e.IdCoa).ValueGeneratedNever();
+            entity.Property(e => e.IdCoa).HasMaxLength(26);
             entity.Property(e => e.Dc)
                 .IsRequired()
                 .HasMaxLength(50)
@@ -591,6 +596,7 @@ public partial class SimpleClinicContext : DbContext
             entity.Property(e => e.OldIdCoa).HasPrecision(18);
             entity.Property(e => e.OldSubklasifikasi).HasPrecision(18);
             entity.Property(e => e.SaldoAwal).HasPrecision(18);
+            entity.Property(e => e.Subklasifikasi).HasMaxLength(26);
             entity.Property(e => e.TglSaldoAwal).HasColumnType("timestamp without time zone");
 
             entity.HasOne(d => d.SubklasifikasiNavigation).WithMany(p => p.MCoa)
@@ -654,7 +660,7 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.NmSubKlasifikasi, "IX_M_CoaSubKlasifikasi_Nmsub");
 
-            entity.Property(e => e.IdSubKlasifikasi).ValueGeneratedNever();
+            entity.Property(e => e.IdSubKlasifikasi).HasMaxLength(26);
             entity.Property(e => e.Dc)
                 .IsRequired()
                 .HasMaxLength(50)
@@ -680,7 +686,7 @@ public partial class SimpleClinicContext : DbContext
 
             entity.ToTable("M_CountTraffic");
 
-            entity.Property(e => e.IdCountTraffic).ValueGeneratedNever();
+            entity.Property(e => e.IdCountTraffic).HasMaxLength(26);
             entity.Property(e => e.By)
                 .IsRequired()
                 .HasMaxLength(50);
@@ -737,7 +743,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.ToTable("M_DiagnosaMatrix");
 
-            entity.Property(e => e.IdDiagnosa).HasPrecision(18, 2);
             entity.Property(e => e.KdDiagnosa)
                 .IsRequired()
                 .HasMaxLength(8);
@@ -768,6 +773,7 @@ public partial class SimpleClinicContext : DbContext
             entity.Property(e => e.By)
                 .IsRequired()
                 .HasMaxLength(50);
+            entity.Property(e => e.IdCoa).HasMaxLength(26);
             entity.Property(e => e.ImgFotodokter)
                 .IsRequired()
                 .HasMaxLength(100);
@@ -849,9 +855,7 @@ public partial class SimpleClinicContext : DbContext
 
             entity.ToTable("M_DTD");
 
-            entity.Property(e => e.IdDtd)
-                .HasPrecision(18)
-                .HasColumnName("IdDTD");
+            entity.Property(e => e.IdDtd).HasColumnName("IdDTD");
             entity.Property(e => e.KdDtd)
                 .IsRequired()
                 .HasMaxLength(8)
@@ -881,8 +885,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.IdFarmakoterapi, "IX_M_FarmakoterapiSub_IdFarmakoterapi");
 
-            entity.Property(e => e.IdSubFarmakoterapi).HasPrecision(18);
-            entity.Property(e => e.IdFarmakoterapi).HasPrecision(18);
             entity.Property(e => e.NmSubFarmakoterapi)
                 .IsRequired()
                 .HasMaxLength(200);
@@ -898,7 +900,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.ToTable("M_Gizi");
 
-            entity.Property(e => e.IdGizi).ValueGeneratedNever();
             entity.Property(e => e.Air).HasPrecision(18);
             entity.Property(e => e.Bdd).HasPrecision(18);
             entity.Property(e => e.Calsium).HasPrecision(18);
@@ -945,7 +946,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.IsRequest, "IX_M_Gudang_Isrequest");
 
-            entity.Property(e => e.IdGudangObat).HasPrecision(18);
             entity.Property(e => e.IsTipebarang)
                 .IsRequired()
                 .HasMaxLength(1);
@@ -979,7 +979,8 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.SupplierId, "IX_M_HargaBarang_supplierId");
 
-            entity.Property(e => e.IdHargaBeli).ValueGeneratedNever();
+            entity.Property(e => e.IdHargaBeli).HasMaxLength(26);
+            entity.Property(e => e.BarangId).HasMaxLength(26);
             entity.Property(e => e.DiskonOff).HasPrecision(18, 2);
             entity.Property(e => e.DiskonOn).HasPrecision(18, 2);
             entity.Property(e => e.Harga).HasPrecision(18);
@@ -992,7 +993,6 @@ public partial class SimpleClinicContext : DbContext
             entity.Property(e => e.Ppn)
                 .HasPrecision(18)
                 .HasColumnName("PPN");
-            entity.Property(e => e.SupplierId).HasPrecision(18);
 
             entity.HasOne(d => d.Barang).WithMany(p => p.MHargaBarang)
                 .HasForeignKey(d => d.BarangId)
@@ -1023,7 +1023,7 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.RekananId, "IX_M_HargaRekanan_rekananId");
 
-            entity.Property(e => e.IdHargaRekanan).ValueGeneratedNever();
+            entity.Property(e => e.BarangId).HasMaxLength(26);
             entity.Property(e => e.Diskon).HasPrecision(18);
             entity.Property(e => e.Harga).HasPrecision(19, 2);
             entity.Property(e => e.Hargajual).HasPrecision(18);
@@ -1035,7 +1035,6 @@ public partial class SimpleClinicContext : DbContext
             entity.Property(e => e.OldBarangId).HasPrecision(18);
             entity.Property(e => e.OldIdHargaRekanan).HasPrecision(18);
             entity.Property(e => e.Ppn).HasPrecision(18);
-            entity.Property(e => e.RekananId).HasPrecision(18);
 
             entity.HasOne(d => d.Barang).WithMany(p => p.MHargaRekanan)
                 .HasForeignKey(d => d.BarangId)
@@ -1052,7 +1051,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.ToTable("M_Hargakamar");
 
-            entity.Property(e => e.IdHargakamar).HasPrecision(18);
             entity.Property(e => e.By)
                 .IsRequired()
                 .HasMaxLength(50);
@@ -1087,12 +1085,10 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.NamaKlinik, "IX_M_JadwalDokter_NamaKlinik");
 
-            entity.Property(e => e.IdJadwal).HasPrecision(18);
             entity.Property(e => e.Hari)
                 .IsRequired()
                 .HasMaxLength(30);
             entity.Property(e => e.IdDokter).HasPrecision(18);
-            entity.Property(e => e.IdRuangan).HasPrecision(18);
             entity.Property(e => e.JamFinish)
                 .IsRequired()
                 .HasMaxLength(5);
@@ -1111,7 +1107,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasOne(d => d.IdDokterNavigation).WithMany(p => p.MJadwalDokter)
                 .HasForeignKey(d => d.IdDokter)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_M_JADWALDOKTER_M_DOKTER_(kddokter)");
 
             entity.HasOne(d => d.IdRuanganNavigation).WithMany(p => p.MJadwalDokter)
@@ -1133,9 +1128,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.Lantai, "IX_TM_KAMARINAP_lantai");
 
-            entity.Property(e => e.IdKamarInap).HasPrecision(18);
-            entity.Property(e => e.IdHargakamar).HasPrecision(18);
-            entity.Property(e => e.IdMapid).HasPrecision(18);
             entity.Property(e => e.Isi).HasMaxLength(1);
             entity.Property(e => e.Ix).HasColumnName("IX");
             entity.Property(e => e.Iy).HasColumnName("IY");
@@ -1175,7 +1167,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.IdKamarInap, "IX_M_KamarinapHarga_IdKamarInap");
 
-            entity.Property(e => e.IdKamarInapHarga).HasPrecision(18);
             entity.Property(e => e.Adm).HasPrecision(18);
             entity.Property(e => e.Bahanalkes).HasPrecision(18);
             entity.Property(e => e.BeaPasien).HasPrecision(18);
@@ -1191,7 +1182,6 @@ public partial class SimpleClinicContext : DbContext
                 .HasPrecision(18)
                 .HasColumnName("DPenyulit");
             entity.Property(e => e.Harga).HasPrecision(18);
-            entity.Property(e => e.IdKamarInap).HasPrecision(18);
             entity.Property(e => e.JasaMedis).HasPrecision(18);
             entity.Property(e => e.JasaRs)
                 .HasPrecision(18)
@@ -1221,6 +1211,9 @@ public partial class SimpleClinicContext : DbContext
                 .IsRequired()
                 .HasMaxLength(6);
             entity.Property(e => e.OldRekananId).HasPrecision(18);
+            entity.Property(e => e.RekananId)
+                .IsRequired()
+                .HasMaxLength(26);
         });
 
         modelBuilder.Entity<MKelompokBarang>(entity =>
@@ -1285,8 +1278,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.IdGroup, "IX_M_Laboratorium_IdGroup");
 
-            entity.Property(e => e.IdPemeriksaanLab).HasPrecision(18);
-            entity.Property(e => e.IdGroup).HasPrecision(18);
             entity.Property(e => e.KdPemeriksaanLab)
                 .IsRequired()
                 .HasMaxLength(8);
@@ -1305,7 +1296,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.ToTable("M_LaboratoriumGroup");
 
-            entity.Property(e => e.IdGroup).HasPrecision(18);
             entity.Property(e => e.IdGrouptarif).HasPrecision(18);
             entity.Property(e => e.Nmgroup)
                 .IsRequired()
@@ -1335,8 +1325,6 @@ public partial class SimpleClinicContext : DbContext
             entity.Property(e => e.Cito).HasPrecision(18);
             entity.Property(e => e.Diskon).HasPrecision(18);
             entity.Property(e => e.Harga).HasPrecision(18);
-            entity.Property(e => e.IdHargakamar).HasPrecision(18);
-            entity.Property(e => e.IdPemeriksaanLab).HasPrecision(18);
             entity.Property(e => e.Jasamedis).HasPrecision(18);
             entity.Property(e => e.Jasars).HasPrecision(18);
             entity.Property(e => e.KdPemeriksaanLab)
@@ -1347,7 +1335,6 @@ public partial class SimpleClinicContext : DbContext
                 .HasMaxLength(20);
             entity.Property(e => e.LastUpdate).HasColumnType("timestamp without time zone");
             entity.Property(e => e.Penyulit).HasPrecision(18);
-            entity.Property(e => e.RekananId).HasPrecision(18);
             entity.Property(e => e.SecondTnd).HasPrecision(18);
             entity.Property(e => e.Tglakhir).HasColumnType("timestamp without time zone");
             entity.Property(e => e.Tglawal).HasColumnType("timestamp without time zone");
@@ -1362,7 +1349,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasOne(d => d.Rekanan).WithMany(p => p.MLaboratoriumHarga)
                 .HasForeignKey(d => d.RekananId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_M_LABORATORIUM_HARGA_M_REKANAN");
         });
 
@@ -1376,12 +1362,9 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.RekananId, "IX_M_LaboratoriumRekanan_RekananId");
 
-            entity.Property(e => e.IdLabrekanan).HasPrecision(18);
-            entity.Property(e => e.IdPemeriksaanLab).HasPrecision(18);
             entity.Property(e => e.KdPemeriksaanLab)
                 .IsRequired()
                 .HasMaxLength(8);
-            entity.Property(e => e.RekananId).HasPrecision(18);
 
             entity.HasOne(d => d.IdPemeriksaanLabNavigation).WithMany(p => p.MLaboratoriumRekanan)
                 .HasForeignKey(d => d.IdPemeriksaanLab)
@@ -1401,8 +1384,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.IdRuang, "IX_M_Map_IdRuang");
 
-            entity.Property(e => e.IdMapid).HasPrecision(18);
-            entity.Property(e => e.IdRuang).HasPrecision(18);
             entity.Property(e => e.Image).IsRequired();
             entity.Property(e => e.KodeRuangan)
                 .IsRequired()
@@ -1423,17 +1404,14 @@ public partial class SimpleClinicContext : DbContext
         {
             entity.ToTable("M_MasterPaketH");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.Harga).HasPrecision(18);
             entity.Property(e => e.IdGroupTarif).HasPrecision(18);
-            entity.Property(e => e.IdMasterPemeriksaan).HasPrecision(18);
             entity.Property(e => e.KdPemeriksaan)
                 .IsRequired()
                 .HasMaxLength(50);
             entity.Property(e => e.NmPemeriksaan)
                 .IsRequired()
                 .HasMaxLength(100);
-            entity.Property(e => e.OldId).HasPrecision(18);
             entity.Property(e => e.Penunjang)
                 .IsRequired()
                 .HasMaxLength(50);
@@ -1499,8 +1477,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.IdDiagnosa, "IX_M_Morfologi_IdDiagnosa");
 
-            entity.Property(e => e.IdMorfologi).HasPrecision(18);
-            entity.Property(e => e.IdDiagnosa).HasPrecision(18);
             entity.Property(e => e.KdDiagnosa)
                 .IsRequired()
                 .HasMaxLength(8);
@@ -1545,7 +1521,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.NmObat, "IX_M_ObatUnit_vnmobat");
 
-            entity.Property(e => e.IdObatUnit).HasPrecision(18);
             entity.Property(e => e.By)
                 .IsRequired()
                 .HasMaxLength(50);
@@ -1571,7 +1546,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.ToTable("M_PaketDetail");
 
-            entity.Property(e => e.IdPaketdetail).HasPrecision(18);
             entity.Property(e => e.Group)
                 .IsRequired()
                 .HasMaxLength(50);
@@ -1596,7 +1570,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.ToTable("M_PaketHarga");
 
-            entity.Property(e => e.IdPaketkelas).ValueGeneratedNever();
             entity.Property(e => e.Adm).HasPrecision(18);
             entity.Property(e => e.BahanAlkes).HasPrecision(18);
             entity.Property(e => e.Beapasien).HasPrecision(18);
@@ -1607,6 +1580,9 @@ public partial class SimpleClinicContext : DbContext
             entity.Property(e => e.Cito).HasPrecision(18);
             entity.Property(e => e.Diskon).HasPrecision(18);
             entity.Property(e => e.Harga).HasPrecision(18);
+            entity.Property(e => e.IdMasterPemeriksaanPenunjang)
+                .IsRequired()
+                .HasMaxLength(26);
             entity.Property(e => e.JasaRs)
                 .HasPrecision(18)
                 .HasColumnName("JasaRS");
@@ -1637,7 +1613,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.ToTable("M_PaketHargaBaru");
 
-            entity.Property(e => e.IdPaketkelas).HasPrecision(18);
             entity.Property(e => e.Adm).HasPrecision(18);
             entity.Property(e => e.Bahanalkes).HasPrecision(18);
             entity.Property(e => e.Beapasien).HasPrecision(18);
@@ -1677,12 +1652,10 @@ public partial class SimpleClinicContext : DbContext
 
             entity.ToTable("M_PaketMatrix");
 
-            entity.Property(e => e.IdPaketMatrix).ValueGeneratedNever();
-            entity.Property(e => e.IdMasterpemeriksaanpenunjang).HasPrecision(18);
+            entity.Property(e => e.IdPaketMatrix).HasMaxLength(26);
             entity.Property(e => e.Koderuangan)
                 .IsRequired()
                 .HasMaxLength(5);
-            entity.Property(e => e.OldIdPaketmatrix).HasPrecision(18);
         });
 
         modelBuilder.Entity<MPaketRekanan>(entity =>
@@ -1691,10 +1664,13 @@ public partial class SimpleClinicContext : DbContext
 
             entity.ToTable("M_PaketRekanan");
 
-            entity.Property(e => e.IdPaketRekanan).ValueGeneratedNever();
-            entity.Property(e => e.OldIdMasterPemeriksaanPenunjang).HasPrecision(18);
+            entity.Property(e => e.IdMasterPemeriksaanPenunjang)
+                .IsRequired()
+                .HasMaxLength(26);
             entity.Property(e => e.OldIdPaketRekanan).HasPrecision(18);
-            entity.Property(e => e.OldRekananId).HasPrecision(18);
+            entity.Property(e => e.RekananId)
+                .IsRequired()
+                .HasMaxLength(26);
         });
 
         modelBuilder.Entity<MPasien>(entity =>
@@ -1737,7 +1713,7 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.Tgllahirpasien, "IX_M_Pasien_tgllahir");
 
-            entity.Property(e => e.IdPasien).ValueGeneratedNever();
+            entity.Property(e => e.IdPasien).HasMaxLength(26);
             entity.Property(e => e.AgamaPasien)
                 .IsRequired()
                 .HasMaxLength(50);
@@ -1824,7 +1800,6 @@ public partial class SimpleClinicContext : DbContext
             entity.Property(e => e.Provinsi)
                 .IsRequired()
                 .HasMaxLength(100);
-            entity.Property(e => e.RekananId).HasPrecision(18);
             entity.Property(e => e.Rhesus)
                 .IsRequired()
                 .HasMaxLength(10);
@@ -1864,13 +1839,15 @@ public partial class SimpleClinicContext : DbContext
 
             entity.ToTable("M_PemeriksaanPenunjang");
 
-            entity.Property(e => e.IdMasterPemeriksaanPenunjang).HasPrecision(18);
             entity.Property(e => e.BeaPasien).HasPrecision(18);
             entity.Property(e => e.BeaRekanan).HasPrecision(18);
             entity.Property(e => e.By)
                 .IsRequired()
                 .HasMaxLength(50);
             entity.Property(e => e.Harga).HasPrecision(18);
+            entity.Property(e => e.IdGroupTarif)
+                .IsRequired()
+                .HasMaxLength(26);
             entity.Property(e => e.KdPemeriksaan)
                 .IsRequired()
                 .HasMaxLength(8);
@@ -1882,6 +1859,9 @@ public partial class SimpleClinicContext : DbContext
             entity.Property(e => e.Penunjang)
                 .IsRequired()
                 .HasMaxLength(20);
+            entity.Property(e => e.RekananId)
+                .IsRequired()
+                .HasMaxLength(26);
         });
 
         modelBuilder.Entity<MPemeriksaanPenunjangDetail>(entity =>
@@ -1892,14 +1872,12 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.IdMasterPemeriksaanPenunjang, "IX_M_PemeriksaanPenunjangDetail_IdMasterPemeriksaanPenunjang");
 
-            entity.Property(e => e.IdPenunjangDetail).HasPrecision(18);
             entity.Property(e => e.BeaPasien).HasPrecision(18);
             entity.Property(e => e.BeaRekanan).HasPrecision(18);
             entity.Property(e => e.Group)
                 .IsRequired()
                 .HasMaxLength(50);
             entity.Property(e => e.Harga).HasPrecision(18);
-            entity.Property(e => e.IdMasterPemeriksaanPenunjang).HasPrecision(18);
             entity.Property(e => e.Jumlah).HasPrecision(18);
             entity.Property(e => e.KdDetail)
                 .IsRequired()
@@ -1930,8 +1908,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.IdGroup, "IX_M_Radiologi_IdGroup");
 
-            entity.Property(e => e.IdPemeriksaanRad).HasPrecision(18);
-            entity.Property(e => e.IdGroup).HasPrecision(18);
             entity.Property(e => e.KdPemeriksaanRad)
                 .IsRequired()
                 .HasMaxLength(6);
@@ -1950,8 +1926,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.ToTable("M_RadiologiGroup");
 
-            entity.Property(e => e.IdGroup).HasPrecision(18);
-            entity.Property(e => e.IdGrouptarif).HasPrecision(18);
             entity.Property(e => e.Nmgroup)
                 .IsRequired()
                 .HasMaxLength(100);
@@ -1969,7 +1943,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.RekananId, "IX_M_RadiologiHarga_RekananId");
 
-            entity.Property(e => e.IdRadHarga).HasPrecision(18);
             entity.Property(e => e.Adm).HasPrecision(18);
             entity.Property(e => e.BahanAlkes).HasPrecision(18);
             entity.Property(e => e.BeaPasien).HasPrecision(18);
@@ -1980,8 +1953,6 @@ public partial class SimpleClinicContext : DbContext
             entity.Property(e => e.Cito).HasPrecision(18);
             entity.Property(e => e.Diskon).HasPrecision(18);
             entity.Property(e => e.Harga).HasPrecision(18);
-            entity.Property(e => e.IdHargakamar).HasPrecision(18);
-            entity.Property(e => e.IdPemeriksaanRad).HasPrecision(18);
             entity.Property(e => e.JasaMedis).HasPrecision(18);
             entity.Property(e => e.JasaRs)
                 .HasPrecision(18)
@@ -1994,7 +1965,6 @@ public partial class SimpleClinicContext : DbContext
                 .HasMaxLength(20);
             entity.Property(e => e.Lastupdate).HasColumnType("timestamp without time zone");
             entity.Property(e => e.Penyulit).HasPrecision(18);
-            entity.Property(e => e.RekananId).HasPrecision(18);
             entity.Property(e => e.SecondTnd).HasPrecision(18);
             entity.Property(e => e.Tglakhir).HasColumnType("timestamp without time zone");
             entity.Property(e => e.Tglawal).HasColumnType("timestamp without time zone");
@@ -2009,7 +1979,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasOne(d => d.Rekanan).WithMany(p => p.MRadiologiHarga)
                 .HasForeignKey(d => d.RekananId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_M_RADIOLOGI_HARGA_M_REKANAN");
         });
 
@@ -2023,21 +1992,16 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.RekananId, "IX_M_RadiologiRekanan_RekananId");
 
-            entity.Property(e => e.IdRadrekanan).HasPrecision(18);
-            entity.Property(e => e.IdPemeriksaanRad).HasPrecision(18);
             entity.Property(e => e.KdPemeriksaanRad)
                 .IsRequired()
                 .HasMaxLength(6);
-            entity.Property(e => e.RekananId).HasPrecision(18);
 
             entity.HasOne(d => d.IdPemeriksaanRadNavigation).WithMany(p => p.MRadiologiRekanan)
                 .HasForeignKey(d => d.IdPemeriksaanRad)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_M_RADIOLOGI_REKANAN_M_RADIOLOGI");
 
             entity.HasOne(d => d.Rekanan).WithMany(p => p.MRadiologiRekanan)
                 .HasForeignKey(d => d.RekananId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_M_RADIOLOGI_REKANAN_M_REKANAN");
         });
 
@@ -2055,7 +2019,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.NmRekanan, "IX_M_Rekanan_NmRekanan");
 
-            entity.Property(e => e.IdRekanan).HasPrecision(18);
             entity.Property(e => e.Alamat)
                 .IsRequired()
                 .HasMaxLength(200);
@@ -2104,7 +2067,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.LynInhealth, "IX_V_LYNINHEALTH");
 
-            entity.Property(e => e.IdRuang).HasPrecision(18);
             entity.Property(e => e.GdgPaket)
                 .IsRequired()
                 .HasMaxLength(2);
@@ -2124,8 +2086,6 @@ public partial class SimpleClinicContext : DbContext
             entity.Property(e => e.KodeInventory)
                 .IsRequired()
                 .HasMaxLength(2);
-            entity.Property(e => e.KodeInventoryGudangObat).HasPrecision(18);
-            entity.Property(e => e.KodeRequestGudangObat).HasPrecision(18);
             entity.Property(e => e.KodeRequestObat)
                 .IsRequired()
                 .HasMaxLength(2);
@@ -2167,6 +2127,9 @@ public partial class SimpleClinicContext : DbContext
                 .HasMaxLength(50);
             entity.Property(e => e.OldRekananId).HasPrecision(18);
             entity.Property(e => e.Percent).HasPrecision(18, 2);
+            entity.Property(e => e.RekananId)
+                .IsRequired()
+                .HasMaxLength(26);
         });
 
         modelBuilder.Entity<MSettingBayar>(entity =>
@@ -2180,7 +2143,7 @@ public partial class SimpleClinicContext : DbContext
                 .HasMaxLength(50);
             entity.Property(e => e.KdAkun)
                 .IsRequired()
-                .HasColumnType("character varying");
+                .HasMaxLength(50);
         });
 
         modelBuilder.Entity<MSettingDaftar>(entity =>
@@ -2336,7 +2299,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.KdAkun, "IX_M_Supplier_V_KDAKUN");
 
-            entity.Property(e => e.SupplierId).HasPrecision(18);
             entity.Property(e => e.Alamat)
                 .IsRequired()
                 .HasMaxLength(500);
@@ -2373,7 +2335,7 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.Kodetariflayan1, "IX_M_TarifDetail_Kodetariflayan");
 
-            entity.Property(e => e.IdTarifdetail).ValueGeneratedNever();
+            entity.Property(e => e.IdTarifdetail).HasMaxLength(26);
             entity.Property(e => e.KdTarifDetail)
                 .IsRequired()
                 .HasMaxLength(10);
@@ -2418,7 +2380,7 @@ public partial class SimpleClinicContext : DbContext
 
             entity.ToTable("M_TarifHarga");
 
-            entity.Property(e => e.IdTarifkelas).ValueGeneratedNever();
+            entity.Property(e => e.IdTarifkelas).HasMaxLength(26);
             entity.Property(e => e.Adm).HasPrecision(18);
             entity.Property(e => e.Bahanalkes).HasPrecision(18);
             entity.Property(e => e.Beapasien).HasPrecision(18);
@@ -2445,6 +2407,7 @@ public partial class SimpleClinicContext : DbContext
             entity.Property(e => e.OldIdTarifkelas).HasPrecision(18);
             entity.Property(e => e.OldRekananId).HasPrecision(18);
             entity.Property(e => e.Penyulit).HasPrecision(18);
+            entity.Property(e => e.RekananId).HasMaxLength(26);
             entity.Property(e => e.SecondTnd).HasPrecision(18);
             entity.Property(e => e.Tglakhir).HasColumnType("timestamp without time zone");
             entity.Property(e => e.Tglawal).HasColumnType("timestamp without time zone");
@@ -2456,7 +2419,13 @@ public partial class SimpleClinicContext : DbContext
 
             entity.ToTable("M_TarifMatrix");
 
-            entity.Property(e => e.IdTarifmatrix).ValueGeneratedNever();
+            entity.Property(e => e.IdTarifmatrix).HasMaxLength(26);
+            entity.Property(e => e.IdRuang)
+                .IsRequired()
+                .HasMaxLength(26);
+            entity.Property(e => e.IdTarifdetail)
+                .IsRequired()
+                .HasMaxLength(26);
             entity.Property(e => e.Kdtarifdetail)
                 .IsRequired()
                 .HasMaxLength(50);
@@ -2509,12 +2478,15 @@ public partial class SimpleClinicContext : DbContext
 
             entity.ToTable("M_TarifRekanan");
 
-            entity.Property(e => e.IdTarifRekanan).ValueGeneratedNever();
+            entity.Property(e => e.IdTarifRekanan).HasMaxLength(26);
             entity.Property(e => e.KdTarifDetail)
                 .IsRequired()
                 .HasMaxLength(10);
             entity.Property(e => e.OldIdTarifRekanan).HasPrecision(18);
             entity.Property(e => e.OldRekananId).HasPrecision(18);
+            entity.Property(e => e.RekananId)
+                .IsRequired()
+                .HasMaxLength(26);
         });
 
         modelBuilder.Entity<MTarifRekananSub>(entity =>
@@ -2523,7 +2495,7 @@ public partial class SimpleClinicContext : DbContext
 
             entity.ToTable("M_TarifRekananSub");
 
-            entity.Property(e => e.IdTarifrekanansub).ValueGeneratedNever();
+            entity.Property(e => e.IdTarifrekanansub).HasMaxLength(26);
             entity.Property(e => e.IdTarifRekananSub1)
                 .HasPrecision(18)
                 .HasColumnName("IdTarifRekananSub");
@@ -2561,6 +2533,7 @@ public partial class SimpleClinicContext : DbContext
                 .IsRequired()
                 .HasMaxLength(10);
             entity.Property(e => e.OldRekananId).HasPrecision(18);
+            entity.Property(e => e.RekananId).HasMaxLength(26);
 
             entity.HasOne(d => d.IdTarifNonNavigation).WithMany(p => p.MTarifnonmedisHarga)
                 .HasForeignKey(d => d.IdTarifNon)
@@ -2598,6 +2571,9 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.IdTarifNon, "IX_M_TarifnonmedisRekanan_IdTarifNon");
 
+            entity.Property(e => e.IdRekanan)
+                .IsRequired()
+                .HasMaxLength(26);
             entity.Property(e => e.IdTarifNon).HasPrecision(18);
             entity.Property(e => e.KdTarif)
                 .IsRequired()
@@ -2615,7 +2591,7 @@ public partial class SimpleClinicContext : DbContext
 
             entity.ToTable("M_Tennant");
 
-            entity.Property(e => e.IdTenant).ValueGeneratedNever();
+            entity.Property(e => e.IdTenant).HasMaxLength(26);
             entity.Property(e => e.CodeLogo).IsRequired();
             entity.Property(e => e.Email)
                 .IsRequired()
@@ -2675,12 +2651,11 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.IdRuang, "IX_M_User_IdRuang");
 
-            entity.Property(e => e.IdUser).ValueGeneratedNever();
+            entity.Property(e => e.IdUser).HasMaxLength(26);
             entity.Property(e => e.Id).HasMaxLength(128);
             entity.Property(e => e.IdDokter).HasPrecision(18);
             entity.Property(e => e.IdGroupUser).HasPrecision(18);
             entity.Property(e => e.IdKaryawan).HasMaxLength(50);
-            entity.Property(e => e.IdRuang).HasPrecision(18);
             entity.Property(e => e.KdDokter).HasMaxLength(6);
             entity.Property(e => e.KodeRuangan)
                 .IsRequired()
@@ -2695,7 +2670,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasOne(d => d.IdDokterNavigation).WithMany(p => p.MUser)
                 .HasForeignKey(d => d.IdDokter)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_M_USER_M_DOKTER");
 
             entity.HasOne(d => d.IdGroupUserNavigation).WithMany(p => p.MUser)

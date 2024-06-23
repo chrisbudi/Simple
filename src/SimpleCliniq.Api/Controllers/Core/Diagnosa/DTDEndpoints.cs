@@ -77,7 +77,7 @@ public class DTDEndpoints : IEndpoint
             }
             catch (Exception ex)
             {
-                return Result.Failure(ex.Message);
+                return Result.Failure(ex.Message, ex);
             }
         })
         .WithName("CreateMDTD")

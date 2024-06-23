@@ -11,13 +11,13 @@ public partial class MLaboratoriumHarga
 
     public string KdPemeriksaanLab { get; set; }
 
-    public decimal? IdPemeriksaanLab { get; set; }
+    public long? IdPemeriksaanLab { get; set; }
 
-    public decimal RekananId { get; set; }
+    public long? RekananId { get; set; }
 
     public string Kelas { get; set; }
 
-    public decimal? IdHargakamar { get; set; }
+    public long? IdHargakamar { get; set; }
 
     public decimal? Harga { get; set; }
 

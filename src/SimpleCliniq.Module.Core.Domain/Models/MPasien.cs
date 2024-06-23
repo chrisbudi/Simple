@@ -7,7 +7,7 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MPasien
 {
-    public Guid IdPasien { get; set; }
+    public string IdPasien { get; set; }
 
     public decimal OldIdPasien { get; set; }
 
@@ -81,7 +81,7 @@ public partial class MPasien
 
     public string Jenispasien { get; set; }
 
-    public decimal? RekananId { get; set; }
+    public long? RekananId { get; set; }
 
     public string By { get; set; }
 

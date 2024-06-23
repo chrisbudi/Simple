@@ -7,7 +7,7 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MGizi
 {
-    public Guid IdGizi { get; set; }
+    public long IdGizi { get; set; }
 
     public decimal OldIdGizi { get; set; }
 

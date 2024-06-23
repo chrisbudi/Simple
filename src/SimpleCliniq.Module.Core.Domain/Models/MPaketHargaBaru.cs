@@ -7,17 +7,17 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MPaketHargaBaru
 {
-    public decimal IdPaketkelas { get; set; }
+    public long IdPaketkelas { get; set; }
 
-    public Guid IdMasterPemeriksaanPenunjang { get; set; }
+    public long IdMasterPemeriksaanPenunjang { get; set; }
 
     public decimal OldIdMasterPemeriksaanPenunjang { get; set; }
 
-    public Guid? IdPenunjangDetail { get; set; }
+    public long? IdPenunjangDetail { get; set; }
 
     public decimal? OldIdPenunjangDetail { get; set; }
 
-    public Guid RekananId { get; set; }
+    public long RekananId { get; set; }
 
     public decimal OldRekananId { get; set; }
 

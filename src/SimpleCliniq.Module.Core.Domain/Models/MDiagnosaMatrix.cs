@@ -9,11 +9,11 @@ public partial class MDiagnosaMatrix
 {
     public long IdMatrixDiagnosa { get; set; }
 
-    public decimal IdRuangan { get; set; }
+    public long? IdRuangan { get; set; }
 
     public string KodeRuangan { get; set; }
 
-    public decimal IdDiagnosa { get; set; }
+    public long? IdDiagnosa { get; set; }
 
     public string KdDiagnosa { get; set; }
 

@@ -7,7 +7,7 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MCountTraffic
 {
-    public Guid IdCountTraffic { get; set; }
+    public string IdCountTraffic { get; set; }
 
     public decimal OldIdCountTraffic { get; set; }
 

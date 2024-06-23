@@ -7,7 +7,7 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MTennant
 {
-    public Guid IdTenant { get; set; }
+    public string IdTenant { get; set; }
 
     public decimal OldIdTenant { get; set; }
 
