@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SimpleCliniq.Common.Presentation.Endpoints;
 using SimpleCliniq.Module.Core.Domain.Models;
 using SimpleCliniq.Module.Core.Infrastructure;
+using SimpleCliniqApi.Controllers.Core.Shared;
 
 namespace Controllers.Core.Diagnosa;
 
@@ -13,31 +14,29 @@ public class DiagnosaEndpoints : IEndpoint
 
         var group = builder.MapGroup("/api/core/Diagnosa").WithTags(nameof(MDiagnosa));
 
-        group.MapGet("/", async (SimpleClinicContext db, 
-                [FromQuery(Name = "page")] int page, 
-                [FromQuery(Name = "limit")] int limit,
-                [FromQuery(Name = "search")] string? search = null,
-                [FromQuery(Name = "sort")] string? sort = "asc"
+        group.MapGet("/", async ([AsParameters] ParamList par, SimpleClinicContext db
             ) =>
         {
-            if(sort == "asc")
+           try
             {
+                var filtered = db.MDiagnosa
+                .Where(d => EF.Functions.ILike(d.NmDiagnosa, "%" + par.search + "%"))
+                .OrderByDynamic(par.order ?? "IdDiagnosa", par.orderAsc);
 
-                return await db.MDiagnosa.
-                Skip(page).
-                Take(limit).
-                OrderBy(d => d.NmDiagnosa).
-                Where(d => EF.Functions.ILike(d.NmDiagnosa, "%" + search + "%")).
-                ToListAsync();
+                var list = await filtered
+                .Skip((par.page * par.size))
+                .Take(par.size)
+                .ToListAsync();
+
+                return Result.Success(new
+                {
+                    list,
+                    count = await filtered.CountAsync()
+                });
             }
-            else
+            catch (Exception ex)
             {
-                return await db.MDiagnosa.
-                Skip(page).
-                Take(limit).
-                OrderByDescending(d => d.NmDiagnosa).
-                Where(d => EF.Functions.ILike(d.NmDiagnosa, "%" + search + "%")).
-                ToListAsync();
+                return Result.Failure(ex.Message, ex);
             }
         })
         .WithName("GetAllDiagnosa")
@@ -93,4 +92,13 @@ public class DiagnosaEndpoints : IEndpoint
         .Produces<MDiagnosa>(StatusCodes.Status200OK);
 
     }
+
+    public class ParamList
+    {
+        public int page { get; set; }
+        public int size { get; set; }
+        public string? search { get; set; } = "";
+        public string? order { get; set; } = "";
+        public bool orderAsc { get; set; } = true;
+    };
 }
