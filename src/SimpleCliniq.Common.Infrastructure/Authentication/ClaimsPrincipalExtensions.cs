@@ -1,6 +1,5 @@
-﻿using System.Security.Claims;
-using Evently.Common.Application.Exceptions;
-using SimpleCliniq.Common.Infrastructure.Authentication;
+﻿using SimpleCliniq.Common.Application.Exceptions;
+using System.Security.Claims;
 
 namespace SimpleCliniq.Common.Infrastructure.Authentication;
 
