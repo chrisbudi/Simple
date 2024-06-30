@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SimpleCliniq.Common.Presentation.Endpoints;
 using SimpleCliniq.Module.Core.Domain.Models;
 using SimpleCliniq.Module.Core.Infrastructure;
@@ -50,7 +50,6 @@ public class DTDEndpoints : IEndpoint
             var dtd = db.MDtd.Add(model);
             await db.SaveChangesAsync();
             return Results.Ok(dtd);
-
 
             //return Results.Created($"/api/MDtds/{model.ID}", model);
         })
