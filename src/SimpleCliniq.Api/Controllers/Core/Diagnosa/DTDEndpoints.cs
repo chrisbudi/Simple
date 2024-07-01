@@ -58,7 +58,11 @@ public class DTDEndpoints : IEndpoint
 
             var dtd = await db.MDtd.FirstOrDefaultAsync(m => m.IdDtd == id);
 
-            dtd = input;
+            if(dtd != null)
+            {
+                dtd.KdDtd = input.KdDtd;
+                dtd.NmDtd = input.NmDtd;
+            }
 
             await db.SaveChangesAsync();
             return Results.Ok(dtd);

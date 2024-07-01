@@ -20,7 +20,7 @@ public class DiagnosaEndpoints : IEndpoint
            try
             {
                 var filtered = db.MDiagnosa
-                .Where(d => EF.Functions.ILike(d.NmDiagnosa, "%" + par.search + "%"))
+                .Where(d => EF.Functions.ILike(d.NmDiagnosa, "%" + par.search + "%") || d.IsAktif == true)
                 .OrderByDynamic(par.order ?? "IdDiagnosa", par.orderAsc);
 
                 var list = await filtered
@@ -56,8 +56,13 @@ public class DiagnosaEndpoints : IEndpoint
             // update db with input
 
             var diag = await db.MDiagnosa.FirstOrDefaultAsync(m => m.IdDiagnosa == id);
-
-            diag = input;
+            if(diag != null)
+            {
+                diag.KdDiagnosa = input.KdDiagnosa;
+                diag.NmDiagnosa = input.NmDiagnosa;
+                diag.Ispenyakit = input.Ispenyakit;
+                diag.KdDtd = input.KdDtd;
+            }
 
             await db.SaveChangesAsync();
             return Results.Ok(diag);
