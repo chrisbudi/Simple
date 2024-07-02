@@ -19,7 +19,7 @@ public class DTDEndpoints : IEndpoint
             try
             {
                 var filtered = db.MDtd
-                .Where(d => EF.Functions.ILike(d.NmDtd, "%" + par.search + "%") || d.IsAktif == true)
+                .Where(d => EF.Functions.ILike(d.NmDtd, "%" + par.search + "%") && d.IsAktif == true)
                 .OrderByDynamic(par.order ?? "IdDtd", par.orderAsc);
 
                 var list = await filtered
