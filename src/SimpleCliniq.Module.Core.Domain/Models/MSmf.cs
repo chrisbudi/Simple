@@ -7,7 +7,7 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MSmf
 {
-    public int IdSmf { get; set; }
+    public long IdSmf { get; set; }
 
     public string Kdsmf { get; set; }
 
