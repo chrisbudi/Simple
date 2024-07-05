@@ -19,7 +19,7 @@ public class SmfEndpoints : IEndpoint
             try
             {
                 var filtered = db.MSmf
-                .Where(d => EF.Functions.ILike(d.Nmsmf, "%" + par.search + "%") && d.IsAktif == true)
+                .Where(d => EF.Functions.ILike(d.Nmsmf, "%" + par.search + "%"))
                 .OrderByDynamic(par.order ?? "IdSmf", par.orderAsc);
 
                 var list = await filtered
