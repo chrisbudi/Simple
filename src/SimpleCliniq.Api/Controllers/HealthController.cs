@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SimpleCliniq.Module.Core.Infrastructure;
+using SimpleCliniq.Module.Core.Infrastructure.Database;
 
 namespace SimpleCliniqApi.Controllers;
 
@@ -24,13 +24,13 @@ public class HealthController : ControllerBase
     {
         // check database connected
         var connectionString = _config.GetConnectionString("DefaultConnection");
-        var options = new DbContextOptionsBuilder<SimpleClinicContext>()
+        var options = new DbContextOptionsBuilder<SimpleCliniqCoreContext>()
             .UseNpgsql(connectionString)
             .Options;
 
         try
         {
-            using (var context = new SimpleClinicContext(options))
+            using (var context = new SimpleCliniqCoreContext(options))
             {
                 await context.Database.OpenConnectionAsync();
                 await context.Database.CloseConnectionAsync();

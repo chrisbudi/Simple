@@ -1,5 +1,3 @@
-using SimpleCliniq.Middleware;
-
 namespace SimpleCliniq.Middleware;
 
 internal static class MiddlewareExtensions

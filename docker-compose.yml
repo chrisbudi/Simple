@@ -1,13 +1,13 @@
-version: '3.4'
+version: '3.7'
 
 services:
-  simplecliniqapi:
-    image: ${DOCKER_REGISTRY-}simplecliniqapi
+  simple.api:
+    image: ${DOCKER_REGISTRY-}simple.api
     build:
       context: .
       dockerfile: src/SimpleCliniq.Api/Dockerfile
 
-  SimpleIdentityServer:
+  simple.identityServer:
     image: quay.io/keycloak/keycloak:latest
     container_name: SimpleIdentity
     command: start-dev --import-realm
@@ -20,11 +20,30 @@ services:
       - ./.files:/opt/keycloak/data/import
     ports:
       - 18080:8080
-  SimpleRedis:
+
+  simple.redis:
      image: redis:latest
-     container_name: SimpleRedis
+     container_name: Simple.redis
      restart: always
      ports:
        - 6379:6379
+  
+  simple.seq:
+    image: datalust/seq:latest
+    container_name: Simple.Seq
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5341:5341
+      - 8081:80
+  
+  simple.jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: simple.Jaeger
+    ports:
+      - 4317:4317
+      - 4318:4318
+      - 16686:16686
+
 
  

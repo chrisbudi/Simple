@@ -1,10 +1,15 @@
+using Evently.Api.OpenTelemetry;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using SimpleCliniq.Common.Application;
+using SimpleCliniq.Common.Infrastructure;
 using SimpleCliniq.Common.Infrastructure.Configuration;
 using SimpleCliniq.Common.Presentation.Endpoints;
 using SimpleCliniq.Extensions;
 using SimpleCliniq.Middleware;
-using SimpleCliniq.Module.Core.Infrastructure;
+using SimpleCliniq.Module.Core.Infrastructure.Database;
 using System.Reflection;
 
 //using SimpleCliniq.Module.Core.Infrastructure;
@@ -14,7 +19,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 var services = builder.Services;
 
-services.AddDbContext<SimpleClinicContext>(options =>
+services.AddDbContext<SimpleCliniqCoreContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"), cfg =>
     {
@@ -32,23 +37,23 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerDocumentation();
 
 Assembly[] moduleApplicationAssemblies = [
-    //SimpleCliniq.Module.Core.AssemblyReference.Assembly
+    SimpleCliniq.Module.Core.Application.AssemblyReference.Assembly
     ];
 
-//builder.Services.AddApplication(moduleApplicationAssemblies);
+builder.Services.AddApplication(moduleApplicationAssemblies);
 
-string databaseConnectionString = builder.Configuration.GetConnectionStringOrThrow("Database");
+string databaseConnectionString = builder.Configuration.GetConnectionStringOrThrow("DefaultConnection");
 string redisConnectionString = builder.Configuration.GetConnectionStringOrThrow("Cache");
 
-//builder.Services.AddInfrastructure(
-//    DiagnosticsConfig.ServiceName,
-//    [
-//        EventsModule.ConfigureConsumers(redisConnectionString),
-//        TicketingModule.ConfigureConsumers,
-//        AttendanceModule.ConfigureConsumers
-//    ],
-//    databaseConnectionString,
-//    redisConnectionString);
+builder.Services.AddInfrastructure(
+    DiagnosticsConfig.ServiceName,
+    [
+        //EventsModule.ConfigureConsumers(redisConnectionString),
+        //TicketingModule.ConfigureConsumers,
+        //AttendanceModule.ConfigureConsumers
+    ],
+    databaseConnectionString,
+    redisConnectionString);
 
 Uri keyCloakHealthUrl = builder.Configuration.GetKeyCloakHealthUrl();
 
@@ -66,6 +71,24 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+builder.Configuration.AddModuleConfiguration(["users", "cores",]);
+
+//builder.Services.addCoreModule(builder.Configuration);
+
+//builder.Services.AddUsersModule(builder.Configuration);
+
+
+//// module for clinical
+
+//builder.Services.AddPharmacyModule(builder.Configuration);
+
+//// module for patient
+
+//builder.Services.AddAppointmentModule(builder.Configuration);
+//builder.Services.AddAppointmentModule(builder.Configuration);
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -75,12 +98,22 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.MapHealthChecks("health", new HealthCheckOptions
+{
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
+
+app.UseLogContext();
+
+app.UseSerilogRequestLogging();
+
+app.UseExceptionHandler();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
-
-app.MapControllers();
 
 app.MapEndpoints();
 
 app.Run();
+

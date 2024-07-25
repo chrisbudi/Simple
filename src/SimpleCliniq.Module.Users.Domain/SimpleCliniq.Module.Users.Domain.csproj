@@ -1,0 +1,7 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleCliniq.Common.Domain\SimpleCliniq.Common.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
