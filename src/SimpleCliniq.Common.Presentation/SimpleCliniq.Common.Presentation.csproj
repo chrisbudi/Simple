@@ -4,9 +4,7 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SimpleCliniq.Common.Application\SimpleCliniq.Common.Application.csproj" />
     <ProjectReference Include="..\SimpleCliniq.Common.Domain\SimpleCliniq.Common.Domain.csproj" />
-    <ProjectReference Include="..\SimpleCliniq.Common.Infrastructure\SimpleCliniq.Common.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

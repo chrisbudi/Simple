@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
-using SimpleCliniq.Common.Infrastructure.Authorization;
 
 namespace SimpleCliniq.Common.Infrastructure.Authorization;
 

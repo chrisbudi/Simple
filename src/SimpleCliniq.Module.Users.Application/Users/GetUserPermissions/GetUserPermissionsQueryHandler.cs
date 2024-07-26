@@ -3,6 +3,7 @@ using SimpleCliniq.Common.Application.Authorization;
 using SimpleCliniq.Common.Application.Data;
 using SimpleCliniq.Common.Application.Messaging;
 using SimpleCliniq.Common.Domain;
+using SimpleCliniq.Module.Users.Domain.Users;
 using System.Data.Common;
 
 namespace SimpleCliniq.Module.Users.Application.Users.GetUserPermissions;

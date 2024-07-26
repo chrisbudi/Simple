@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using SimpleCliniq.Module.Users.Application;
 
 namespace SimpleCliniq.Module.Users.Application;
 

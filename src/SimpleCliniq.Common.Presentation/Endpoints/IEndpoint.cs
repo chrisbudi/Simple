@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Routing;
 
-namespace SimpleCliniq.Common.Presentation.Endpoints
+namespace SimpleCliniq.Common.Presentation.Endpoints;
+
+public interface IEndpoint
 {
-    public interface IEndpoint
-    {
-        void MapEndPoint(IEndpointRouteBuilder builder);
-    }
+    void MapEndpoint(IEndpointRouteBuilder app);
 }

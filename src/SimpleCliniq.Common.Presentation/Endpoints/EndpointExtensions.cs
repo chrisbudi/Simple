@@ -6,7 +6,6 @@ using System.Reflection;
 
 namespace SimpleCliniq.Common.Presentation.Endpoints;
 
-
 public static class EndpointExtensions
 {
     public static IServiceCollection AddEndpoints(this IServiceCollection services, params Assembly[] assemblies)
@@ -33,7 +32,7 @@ public static class EndpointExtensions
 
         foreach (IEndpoint endpoint in endpoints)
         {
-            endpoint.MapEndPoint(builder);
+            endpoint.MapEndpoint(builder);
         }
 
         return app;

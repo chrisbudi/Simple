@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleCliniq.Common.Infrastructure\SimpleCliniq.Common.Infrastructure.csproj" />
+    <ProjectReference Include="..\SimpleCliniq.Common.Presentation\SimpleCliniq.Common.Presentation.csproj" />
+    <ProjectReference Include="..\SimpleCliniq.Module.Users.Application\SimpleCliniq.Module.Users.Application.csproj" />
+    <ProjectReference Include="..\SimpleCliniq.Module.Users.Presentation\SimpleCliniq.Module.Users.Presentation.csproj" />
+  </ItemGroup>
 
 </Project>

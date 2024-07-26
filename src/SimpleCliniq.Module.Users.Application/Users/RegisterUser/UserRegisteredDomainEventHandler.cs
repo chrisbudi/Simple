@@ -3,8 +3,9 @@ using SimpleCliniq.Common.Application.EventBus;
 using SimpleCliniq.Common.Application.Exceptions;
 using SimpleCliniq.Common.Application.Messaging;
 using SimpleCliniq.Common.Domain;
-using SimpleCliniq.Module.User.IntegrationEvents;
 using SimpleCliniq.Module.Users.Application.Users.GetUser;
+using SimpleCliniq.Module.Users.Domain.Users;
+using SimpleCliniq.Module.Users.IntegrationEvents;
 
 namespace SimpleCliniq.Module.Users.Application.Users.RegisterUser;
 

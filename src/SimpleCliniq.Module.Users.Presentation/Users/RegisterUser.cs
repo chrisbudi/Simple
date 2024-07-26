@@ -2,6 +2,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using SimpleCliniq.Common.Domain;
+using SimpleCliniq.Common.Presentation.Endpoints;
+using SimpleCliniq.Common.Presentation.Results;
+using SimpleCliniq.Module.Users.Application.Users.RegisterUser;
 
 namespace SimpleCliniq.Module.Users.Presentation.Users;
 

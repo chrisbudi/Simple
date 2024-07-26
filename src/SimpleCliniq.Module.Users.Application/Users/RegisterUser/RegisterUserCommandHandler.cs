@@ -2,6 +2,7 @@
 using SimpleCliniq.Common.Domain;
 using SimpleCliniq.Module.Users.Application.Abstractions.Data;
 using SimpleCliniq.Module.Users.Application.Abstractions.Identity;
+using SimpleCliniq.Module.Users.Domain.Users;
 
 namespace SimpleCliniq.Module.Users.Application.Users.RegisterUser;
 
