@@ -22,7 +22,7 @@ internal sealed class UserRegisteredDomainEventHandler(ISender sender, IEventBus
 
         if (result.IsFailure)
         {
-            throw new EventlyException(nameof(GetUserQuery), result.Error);
+            throw new SimpleException(nameof(GetUserQuery), result.Error);
         }
 
         await bus.PublishAsync(

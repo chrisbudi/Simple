@@ -1,4 +1,4 @@
-﻿namespace Evently.Api.OpenTelemetry;
+﻿namespace SimpleCliniq.OpenTelemetry;
 
 public static class DiagnosticsConfig
 {

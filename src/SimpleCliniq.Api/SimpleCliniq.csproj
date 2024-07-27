@@ -29,6 +29,10 @@
     <ProjectReference Include="..\SimpleCliniq.Module.Core.Domain\SimpleCliniq.Module.Core.Domain.csproj" />
     <ProjectReference Include="..\SimpleCliniq.Module.Core.Infrastructure\SimpleCliniq.Module.Core.Infrastructure.csproj" />
     <ProjectReference Include="..\SimpleCliniq.Module.Core.Presentation\SimpleCliniq.Module.Core.Presentation.csproj" />
+    <ProjectReference Include="..\SimpleCliniq.Module.Users.Application\SimpleCliniq.Module.Users.Application.csproj" />
+    <ProjectReference Include="..\SimpleCliniq.Module.Users.Infrastructure\SimpleCliniq.Module.Users.Infrastructure.csproj" />
+    <ProjectReference Include="..\SimpleCliniq.Module.Users.IntegrationEvents\SimpleCliniq.Module.Users.IntegrationEvents.csproj" />
+    <ProjectReference Include="..\SimpleCliniq.Module.Users.Presentation\SimpleCliniq.Module.Users.Presentation.csproj" />
   </ItemGroup>
 
   <ItemGroup>

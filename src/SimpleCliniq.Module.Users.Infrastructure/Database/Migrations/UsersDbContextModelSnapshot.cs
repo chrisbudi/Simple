@@ -23,7 +23,7 @@ namespace SimpleCliniq.Module.Users.Infrastructure.Database.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Evently.Common.Infrastructure.Inbox.InboxMessage", b =>
+            modelBuilder.Entity("Simple.Common.Infrastructure.Inbox.InboxMessage", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -59,7 +59,7 @@ namespace SimpleCliniq.Module.Users.Infrastructure.Database.Migrations
                     b.ToTable("inbox_messages", "users");
                 });
 
-            modelBuilder.Entity("Evently.Common.Infrastructure.Inbox.InboxMessageConsumer", b =>
+            modelBuilder.Entity("Simple.Common.Infrastructure.Inbox.InboxMessageConsumer", b =>
                 {
                     b.Property<Guid>("InboxMessageId")
                         .HasColumnType("uuid")
@@ -76,7 +76,7 @@ namespace SimpleCliniq.Module.Users.Infrastructure.Database.Migrations
                     b.ToTable("inbox_message_consumers", "users");
                 });
 
-            modelBuilder.Entity("Evently.Common.Infrastructure.Outbox.OutboxMessage", b =>
+            modelBuilder.Entity("Simple.Common.Infrastructure.Outbox.OutboxMessage", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -112,7 +112,7 @@ namespace SimpleCliniq.Module.Users.Infrastructure.Database.Migrations
                     b.ToTable("outbox_messages", "users");
                 });
 
-            modelBuilder.Entity("Evently.Common.Infrastructure.Outbox.OutboxMessageConsumer", b =>
+            modelBuilder.Entity("Simple.Common.Infrastructure.Outbox.OutboxMessageConsumer", b =>
                 {
                     b.Property<Guid>("OutboxMessageId")
                         .HasColumnType("uuid")
@@ -129,7 +129,7 @@ namespace SimpleCliniq.Module.Users.Infrastructure.Database.Migrations
                     b.ToTable("outbox_message_consumers", "users");
                 });
 
-            modelBuilder.Entity("Evently.Modules.Users.Domain.Users.Permission", b =>
+            modelBuilder.Entity("Simple.Modules.Users.Domain.Users.Permission", b =>
                 {
                     b.Property<string>("Code")
                         .HasMaxLength(100)
@@ -212,7 +212,7 @@ namespace SimpleCliniq.Module.Users.Infrastructure.Database.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Evently.Modules.Users.Domain.Users.Role", b =>
+            modelBuilder.Entity("Simple.Modules.Users.Domain.Users.Role", b =>
                 {
                     b.Property<string>("Name")
                         .HasMaxLength(50)
@@ -235,7 +235,7 @@ namespace SimpleCliniq.Module.Users.Infrastructure.Database.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Evently.Modules.Users.Domain.Users.User", b =>
+            modelBuilder.Entity("Simple.Modules.Users.Domain.Users.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -461,14 +461,14 @@ namespace SimpleCliniq.Module.Users.Infrastructure.Database.Migrations
 
             modelBuilder.Entity("PermissionRole", b =>
                 {
-                    b.HasOne("Evently.Modules.Users.Domain.Users.Permission", null)
+                    b.HasOne("Simple.Modules.Users.Domain.Users.Permission", null)
                         .WithMany()
                         .HasForeignKey("PermissionCode")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_role_permissions_permissions_permission_code");
 
-                    b.HasOne("Evently.Modules.Users.Domain.Users.Role", null)
+                    b.HasOne("Simple.Modules.Users.Domain.Users.Role", null)
                         .WithMany()
                         .HasForeignKey("RoleName")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -478,14 +478,14 @@ namespace SimpleCliniq.Module.Users.Infrastructure.Database.Migrations
 
             modelBuilder.Entity("RoleUser", b =>
                 {
-                    b.HasOne("Evently.Modules.Users.Domain.Users.Role", null)
+                    b.HasOne("Simple.Modules.Users.Domain.Users.Role", null)
                         .WithMany()
                         .HasForeignKey("RolesName")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_user_roles_roles_roles_name");
 
-                    b.HasOne("Evently.Modules.Users.Domain.Users.User", null)
+                    b.HasOne("Simple.Modules.Users.Domain.Users.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

@@ -2,9 +2,9 @@
 
 namespace SimpleCliniq.Common.Application.Exceptions;
 
-public sealed class EventlyException : Exception
+public sealed class SimpleException : Exception
 {
-    public EventlyException(string requestName, Error? error = default, Exception? innerException = default)
+    public SimpleException(string requestName, Error? error = default, Exception? innerException = default)
         : base("Application exception", innerException)
     {
         RequestName = requestName;

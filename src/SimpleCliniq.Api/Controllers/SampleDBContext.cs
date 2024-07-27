@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using SimpleCliniq.Controllers;
 
-namespace SimpleCliniqApi.Controllers;
+namespace SimpleCliniq.Controllers;
 
 public class MyDbContext : DbContext
 {

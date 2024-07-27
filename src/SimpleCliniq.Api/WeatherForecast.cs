@@ -1,4 +1,4 @@
-namespace SimpleCliniqApi;
+namespace SimpleCliniq;
 
 public class WeatherForecast
 {

@@ -27,7 +27,7 @@ internal sealed class CustomClaimsTransformation(IServiceScopeFactory serviceSco
 
         if (result.IsFailure)
         {
-            throw new EventlyException(nameof(IPermissionService.GetUserPermissionsAsync), result.Error);
+            throw new SimpleException(nameof(IPermissionService.GetUserPermissionsAsync), result.Error);
         }
 
         var claimsIdentity = new ClaimsIdentity();

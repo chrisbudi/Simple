@@ -4,10 +4,10 @@ using SimpleCliniq.Module.Core.Infrastructure.Database.Configuration;
 
 namespace SimpleCliniq.Module.Core.Infrastructure.Database;
 
-public partial class SimpleCliniqCoreContext : DbContext
+public partial class CoreDbContext : DbContext
 {
 
-    public SimpleCliniqCoreContext(DbContextOptions<SimpleCliniqCoreContext> options)
+    public CoreDbContext(DbContextOptions<CoreDbContext> options)
         : base(options)
     {
     }

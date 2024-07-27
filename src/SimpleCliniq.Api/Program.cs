@@ -1,4 +1,3 @@
-using Evently.Api.OpenTelemetry;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.EntityFrameworkCore;
@@ -9,17 +8,19 @@ using SimpleCliniq.Common.Infrastructure.Configuration;
 using SimpleCliniq.Common.Presentation.Endpoints;
 using SimpleCliniq.Extensions;
 using SimpleCliniq.Middleware;
+using SimpleCliniq.Module.Core.Infrastructure;
 using SimpleCliniq.Module.Core.Infrastructure.Database;
+using SimpleCliniq.Module.Users.Infrastructure;
+using SimpleCliniq.OpenTelemetry;
 using System.Reflection;
 
-//using SimpleCliniq.Module.Core.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var services = builder.Services;
 
-services.AddDbContext<SimpleCliniqCoreContext>(options =>
+services.AddDbContext<CoreDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"), cfg =>
     {
@@ -37,7 +38,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerDocumentation();
 
 Assembly[] moduleApplicationAssemblies = [
-    SimpleCliniq.Module.Core.Application.AssemblyReference.Assembly
+    SimpleCliniq.Module.Core.Application.AssemblyReference.Assembly,
+    SimpleCliniq.Module.Users.Application.AssemblyReference.Assembly
     ];
 
 builder.Services.AddApplication(moduleApplicationAssemblies);
@@ -48,8 +50,6 @@ string redisConnectionString = builder.Configuration.GetConnectionStringOrThrow(
 builder.Services.AddInfrastructure(
     DiagnosticsConfig.ServiceName,
     [
-        //EventsModule.ConfigureConsumers(redisConnectionString),
-        //TicketingModule.ConfigureConsumers,
         //AttendanceModule.ConfigureConsumers
     ],
     databaseConnectionString,
@@ -62,7 +62,6 @@ builder.Services.AddHealthChecks()
     .AddRedis(redisConnectionString)
     .AddKeyCloak(keyCloakHealthUrl);
 
-builder.Configuration.AddModuleConfiguration(["users"]);
 
 services.AddEndpoints(Assembly.GetExecutingAssembly());
 
@@ -74,10 +73,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Configuration.AddModuleConfiguration(["users", "cores",]);
 
-//builder.Services.addCoreModule(builder.Configuration);
 
-//builder.Services.AddUsersModule(builder.Configuration);
-
+builder.Services.AddUsersModule(builder.Configuration);
+builder.Services.AddCoresModule(builder.Configuration);
 
 //// module for clinical
 
