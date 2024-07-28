@@ -1,7 +1,8 @@
-﻿using SimpleCliniq.Common.Application.Exceptions;
-using System.Security.Claims;
+﻿using System.Security.Claims;
+using Simple.Common.Application.Exceptions;
+using Simple.Common.Infrastructure.Authentication;
 
-namespace SimpleCliniq.Common.Infrastructure.Authentication;
+namespace Simple.Common.Infrastructure.Authentication;
 
 public static class ClaimsPrincipalExtensions
 {

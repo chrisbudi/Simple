@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using SimpleCliniq.Common.Infrastructure.Authentication;
+using Simple.Common.Infrastructure.Authentication;
 
-namespace SimpleCliniq.Common.Infrastructure.Authentication;
+namespace Simple.Common.Infrastructure.Authentication;
 
 internal static class AuthenticationExtensions
 {

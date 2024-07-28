@@ -1,4 +1,4 @@
-﻿using SimpleCliniq.Common.Application.EventBus;
+﻿using Simple.Common.Application.EventBus;
 
 namespace SimpleCliniq.Module.Users.IntegrationEvents;
 

@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
+using Simple.Common.Infrastructure.Authorization;
 
-namespace SimpleCliniq.Common.Infrastructure.Authorization;
+namespace Simple.Common.Infrastructure.Authorization;
 
 internal sealed class PermissionAuthorizationPolicyProvider : DefaultAuthorizationPolicyProvider
 {

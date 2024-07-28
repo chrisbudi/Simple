@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Newtonsoft.Json;
-using SimpleCliniq.Common.Domain;
-using SimpleCliniq.Common.Infrastructure.Serialization;
+using Simple.Common.Domain;
+using Simple.Common.Infrastructure.Outbox;
+using Simple.Common.Infrastructure.Serialization;
 
-namespace SimpleCliniq.Common.Infrastructure.Outbox;
+namespace Simple.Common.Infrastructure.Outbox;
 
 public sealed class InsertOutboxMessagesInterceptor : SaveChangesInterceptor
 {

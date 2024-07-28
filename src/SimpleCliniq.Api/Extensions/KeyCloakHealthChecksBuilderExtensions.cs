@@ -1,4 +1,4 @@
-using SimpleCliniq.Common.Infrastructure.Configuration;
+using Simple.Common.Infrastructure.Configuration;
 
 namespace SimpleCliniq.Extensions;
 

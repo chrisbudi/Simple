@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using SimpleCliniq.Common.Application.EventBus;
 using System.Collections.Concurrent;
 using System.Reflection;
+using Simple.Common.Application.EventBus;
 
-namespace SimpleCliniq.Common.Infrastructure.Inbox;
+namespace Simple.Common.Infrastructure.Inbox;
 
 public static class IntegrationEventHandlersFactory
 {

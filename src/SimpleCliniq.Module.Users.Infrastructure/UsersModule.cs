@@ -4,11 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
-using SimpleCliniq.Common.Application.Authorization;
-using SimpleCliniq.Common.Application.EventBus;
-using SimpleCliniq.Common.Application.Messaging;
-using SimpleCliniq.Common.Infrastructure.Outbox;
-using SimpleCliniq.Common.Presentation.Endpoints;
 using SimpleCliniq.Module.Users.Application.Abstractions.Data;
 using SimpleCliniq.Module.Users.Application.Abstractions.Identity;
 using SimpleCliniq.Module.Users.Domain.Users;
@@ -18,6 +13,11 @@ using SimpleCliniq.Module.Users.Infrastructure.Identity;
 using SimpleCliniq.Module.Users.Infrastructure.Inbox;
 using SimpleCliniq.Module.Users.Infrastructure.Outbox;
 using SimpleCliniq.Module.Users.Infrastructure.Users;
+using Simple.Common.Application.Authorization;
+using Simple.Common.Application.EventBus;
+using Simple.Common.Application.Messaging;
+using Simple.Common.Infrastructure.Outbox;
+using Simple.Common.Presentation.Endpoints;
 
 namespace SimpleCliniq.Module.Users.Infrastructure;
 

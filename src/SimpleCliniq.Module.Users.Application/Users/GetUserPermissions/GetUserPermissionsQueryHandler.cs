@@ -1,10 +1,10 @@
 ﻿using Dapper;
-using SimpleCliniq.Common.Application.Authorization;
-using SimpleCliniq.Common.Application.Data;
-using SimpleCliniq.Common.Application.Messaging;
-using SimpleCliniq.Common.Domain;
 using SimpleCliniq.Module.Users.Domain.Users;
 using System.Data.Common;
+using Simple.Common.Application.Authorization;
+using Simple.Common.Application.Data;
+using Simple.Common.Application.Messaging;
+using Simple.Common.Domain;
 
 namespace SimpleCliniq.Module.Users.Application.Users.GetUserPermissions;
 

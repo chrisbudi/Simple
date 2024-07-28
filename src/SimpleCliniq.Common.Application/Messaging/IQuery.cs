@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using SimpleCliniq.Common.Domain;
+using Simple.Common.Domain;
 
-namespace SimpleCliniq.Common.Application.Messaging;
+namespace Simple.Common.Application.Messaging;
 
 public interface IQuery<TResponse> : IRequest<Result<TResponse>>;

@@ -4,13 +4,13 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Quartz;
-using SimpleCliniq.Common.Application.Clock;
-using SimpleCliniq.Common.Application.Data;
-using SimpleCliniq.Common.Application.EventBus;
-using SimpleCliniq.Common.Infrastructure.Inbox;
-using SimpleCliniq.Common.Infrastructure.Serialization;
 using System.Data;
 using System.Data.Common;
+using Simple.Common.Application.Clock;
+using Simple.Common.Application.Data;
+using Simple.Common.Application.EventBus;
+using Simple.Common.Infrastructure.Inbox;
+using Simple.Common.Infrastructure.Serialization;
 
 namespace SimpleCliniq.Module.Users.Infrastructure.Inbox;
 

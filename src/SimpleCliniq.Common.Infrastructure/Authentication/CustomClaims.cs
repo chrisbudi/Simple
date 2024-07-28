@@ -1,4 +1,4 @@
-﻿namespace SimpleCliniq.Common.Infrastructure.Authentication;
+﻿namespace Simple.Common.Infrastructure.Authentication;
 
 public static class CustomClaims
 {

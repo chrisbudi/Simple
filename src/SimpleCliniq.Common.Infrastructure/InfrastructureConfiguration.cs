@@ -6,19 +6,19 @@ using Npgsql;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using Quartz;
-using SimpleCliniq.Common.Application.Caching;
-using SimpleCliniq.Common.Application.Clock;
-using SimpleCliniq.Common.Application.Data;
-using SimpleCliniq.Common.Application.EventBus;
-using SimpleCliniq.Common.Infrastructure.Authentication;
-using SimpleCliniq.Common.Infrastructure.Authorization;
-using SimpleCliniq.Common.Infrastructure.Caching;
-using SimpleCliniq.Common.Infrastructure.Clock;
-using SimpleCliniq.Common.Infrastructure.Data;
-using SimpleCliniq.Common.Infrastructure.Outbox;
 using StackExchange.Redis;
+using Simple.Common.Application.Caching;
+using Simple.Common.Application.Clock;
+using Simple.Common.Application.Data;
+using Simple.Common.Application.EventBus;
+using Simple.Common.Infrastructure.Authentication;
+using Simple.Common.Infrastructure.Authorization;
+using Simple.Common.Infrastructure.Caching;
+using Simple.Common.Infrastructure.Clock;
+using Simple.Common.Infrastructure.Data;
+using Simple.Common.Infrastructure.Outbox;
 
-namespace SimpleCliniq.Common.Infrastructure;
+namespace Simple.Common.Infrastructure;
 
 public static class InfrastructureConfiguration
 {

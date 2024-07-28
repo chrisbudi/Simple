@@ -1,8 +1,8 @@
 using Dapper;
-using SimpleCliniq.Common.Application.Data;
-using SimpleCliniq.Common.Application.EventBus;
-using SimpleCliniq.Common.Infrastructure.Inbox;
 using System.Data.Common;
+using Simple.Common.Application.Data;
+using Simple.Common.Application.EventBus;
+using Simple.Common.Infrastructure.Inbox;
 
 namespace SimpleCliniq.Module.Core.Infrastructure.Inbox;
 

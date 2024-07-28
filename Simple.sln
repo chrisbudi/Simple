@@ -26,19 +26,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCliniq.Module.Core.Do
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCliniq.Module.Core.Infrastructure", "src\SimpleCliniq.Module.Core.Infrastructure\SimpleCliniq.Module.Core.Infrastructure.csproj", "{A779CFAF-B4C5-4E13-A876-16A371E868B0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCliniq.Common.Application", "src\SimpleCliniq.Common.Application\SimpleCliniq.Common.Application.csproj", "{EA8554DF-DA37-4FAB-8E3B-39E72BBE0257}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.Common.Application", "src\SimpleCliniq.Common.Application\Simple.Common.Application.csproj", "{EA8554DF-DA37-4FAB-8E3B-39E72BBE0257}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCliniq.Common.Domain", "src\SimpleCliniq.Common.Domain\SimpleCliniq.Common.Domain.csproj", "{3A343443-C3D0-48E7-AC49-52D0A4C32BB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.Common.Domain", "src\SimpleCliniq.Common.Domain\Simple.Common.Domain.csproj", "{3A343443-C3D0-48E7-AC49-52D0A4C32BB0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCliniq.Common.Infrastructure", "src\SimpleCliniq.Common.Infrastructure\SimpleCliniq.Common.Infrastructure.csproj", "{E6DD90F0-54BE-4855-8DFE-EB934EE15428}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.Common.Infrastructure", "src\SimpleCliniq.Common.Infrastructure\Simple.Common.Infrastructure.csproj", "{E6DD90F0-54BE-4855-8DFE-EB934EE15428}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCliniq.Common.Presentation", "src\SimpleCliniq.Common.Presentation\SimpleCliniq.Common.Presentation.csproj", "{8C37A5B7-38CE-40D4-9CF7-54CDCB5EBF20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.Common.Presentation", "src\SimpleCliniq.Common.Presentation\Simple.Common.Presentation.csproj", "{8C37A5B7-38CE-40D4-9CF7-54CDCB5EBF20}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCliniq.Module.Core.Presentation", "src\SimpleCliniq.Module.Core.Presentation\SimpleCliniq.Module.Core.Presentation.csproj", "{F5DDB3B1-BCB2-4303-8A29-CC2FC6F1A93D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{84632794-EA46-4AEC-B93C-18FFF0B9A819}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCliniq.Module.Core.Application", "src\SimpleCliniq.Module.Core.Application\SimpleCliniq.Module.Core.Application.csproj", "{794E5234-4200-4D32-B81A-AF8D580EED9B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCliniq.Module.Users.Application", "src\SimpleCliniq.Module.Users.Application\SimpleCliniq.Module.Users.Application.csproj", "{2DAFE75E-638E-415D-8AEF-7A768E406C17}"
 EndProject
@@ -110,10 +108,6 @@ Global
 		{F5DDB3B1-BCB2-4303-8A29-CC2FC6F1A93D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5DDB3B1-BCB2-4303-8A29-CC2FC6F1A93D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5DDB3B1-BCB2-4303-8A29-CC2FC6F1A93D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{794E5234-4200-4D32-B81A-AF8D580EED9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{794E5234-4200-4D32-B81A-AF8D580EED9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{794E5234-4200-4D32-B81A-AF8D580EED9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{794E5234-4200-4D32-B81A-AF8D580EED9B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2DAFE75E-638E-415D-8AEF-7A768E406C17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2DAFE75E-638E-415D-8AEF-7A768E406C17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DAFE75E-638E-415D-8AEF-7A768E406C17}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -152,7 +146,6 @@ Global
 		{8C37A5B7-38CE-40D4-9CF7-54CDCB5EBF20} = {94072016-93A1-4964-A28E-76F3D5AC290B}
 		{F5DDB3B1-BCB2-4303-8A29-CC2FC6F1A93D} = {38867960-E0F5-45D2-AEA0-E83C169900E5}
 		{84632794-EA46-4AEC-B93C-18FFF0B9A819} = {47742DEF-96C8-4653-91AF-B826430A4C42}
-		{794E5234-4200-4D32-B81A-AF8D580EED9B} = {38867960-E0F5-45D2-AEA0-E83C169900E5}
 		{2DAFE75E-638E-415D-8AEF-7A768E406C17} = {84632794-EA46-4AEC-B93C-18FFF0B9A819}
 		{200684D1-35ED-4D1D-BA52-67CF61E769D0} = {84632794-EA46-4AEC-B93C-18FFF0B9A819}
 		{C6F4A080-60F6-4014-B9CD-07FF96EF315E} = {84632794-EA46-4AEC-B93C-18FFF0B9A819}

@@ -1,4 +1,4 @@
-﻿namespace SimpleCliniq.Common.Domain;
+﻿namespace Simple.Common.Domain;
 
 public interface IDomainEvent
 {

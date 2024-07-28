@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
-using SimpleCliniq.Common.Application.Behaviors;
+using Simple.Common.Application.Behaviors;
 
-namespace SimpleCliniq.Common.Application;
+namespace Simple.Common.Application;
 
 public static class ApplicationConfiguration
 {

@@ -1,6 +1,6 @@
-﻿using SimpleCliniq.Common.Domain;
+﻿using Simple.Common.Domain;
 
-namespace SimpleCliniq.Common.Application.Exceptions;
+namespace Simple.Common.Application.Exceptions;
 
 public sealed class SimpleException : Exception
 {

@@ -1,7 +1,7 @@
 ﻿using MassTransit;
-using SimpleCliniq.Common.Application.EventBus;
+using Simple.Common.Application.EventBus;
 
-namespace SimpleCliniq.Common.Infrastructure.EventBus;
+namespace Simple.Common.Infrastructure.EventBus;
 
 internal sealed class EventBus(IBus bus) : IEventBus
 {

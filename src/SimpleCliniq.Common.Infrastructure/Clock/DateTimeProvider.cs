@@ -1,6 +1,6 @@
-﻿using SimpleCliniq.Common.Application.Clock;
+﻿using Simple.Common.Application.Clock;
 
-namespace SimpleCliniq.Common.Infrastructure.Clock;
+namespace Simple.Common.Infrastructure.Clock;
 
 internal sealed class DateTimeProvider : IDateTimeProvider
 {

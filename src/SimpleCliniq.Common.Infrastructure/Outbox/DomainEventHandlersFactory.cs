@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using SimpleCliniq.Common.Application.Messaging;
 using System.Collections.Concurrent;
 using System.Reflection;
+using Simple.Common.Application.Messaging;
 
-namespace SimpleCliniq.Common.Infrastructure.Outbox;
+namespace Simple.Common.Infrastructure.Outbox;
 
 public static class DomainEventHandlersFactory
 {

@@ -1,6 +1,6 @@
-﻿using SimpleCliniq.Common.Domain;
+﻿using Simple.Common.Domain;
 
-namespace SimpleCliniq.Common.Application.Authorization;
+namespace Simple.Common.Application.Authorization;
 
 public interface IPermissionService
 {

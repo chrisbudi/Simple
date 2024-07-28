@@ -1,6 +1,6 @@
-﻿using SimpleCliniq.Common.Application.EventBus;
+﻿using Simple.Common.Application.EventBus;
 
-namespace SimpleCliniq.Common.Application.EventBus;
+namespace Simple.Common.Application.EventBus;
 
 public abstract class IntegrationEvent : IIntegrationEvent
 {

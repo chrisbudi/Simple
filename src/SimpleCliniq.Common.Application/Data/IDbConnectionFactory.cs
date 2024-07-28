@@ -1,6 +1,6 @@
 ﻿using System.Data.Common;
 
-namespace SimpleCliniq.Common.Application.Data;
+namespace Simple.Common.Application.Data;
 
 public interface IDbConnectionFactory
 {

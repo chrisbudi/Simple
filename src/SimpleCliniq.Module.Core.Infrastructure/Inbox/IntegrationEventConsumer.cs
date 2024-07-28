@@ -1,11 +1,11 @@
 using Dapper;
 using MassTransit;
 using Newtonsoft.Json;
-using SimpleCliniq.Common.Application.Data;
-using SimpleCliniq.Common.Application.EventBus;
-using SimpleCliniq.Common.Infrastructure.Inbox;
-using SimpleCliniq.Common.Infrastructure.Serialization;
 using System.Data.Common;
+using Simple.Common.Application.Data;
+using Simple.Common.Application.EventBus;
+using Simple.Common.Infrastructure.Inbox;
+using Simple.Common.Infrastructure.Serialization;
 
 namespace SimpleCliniq.Module.Core.Infrastructure.Inbox;
 

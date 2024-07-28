@@ -2,11 +2,8 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using SimpleCliniq.Common.Application.EventBus;
-using SimpleCliniq.Common.Application.Messaging;
-using SimpleCliniq.Common.Infrastructure.Outbox;
-using SimpleCliniq.Common.Presentation.Endpoints;
+using Simple.Common.Infrastructure.Outbox;
+using Simple.Common.Presentation.Endpoints;
 using SimpleCliniq.Module.Core.Infrastructure.Database;
 using SimpleCliniq.Module.Core.Infrastructure.Inbox;
 using SimpleCliniq.Module.Core.Infrastructure.Outbox;
@@ -67,48 +64,48 @@ public static class CoresModule
 
     private static void AddDomainEventHandlers(this IServiceCollection services)
     {
-        Type[] domainEventHandlers = Application.AssemblyReference.Assembly
-            .GetTypes()
-            .Where(t => t.IsAssignableTo(typeof(IDomainEventHandler)))
-            .ToArray();
+        //Type[] domainEventHandlers = Application.AssemblyReference.Assembly
+        //    .GetTypes()
+        //    .Where(t => t.IsAssignableTo(typeof(IDomainEventHandler)))
+        //    .ToArray();
 
-        foreach (Type domainEventHandler in domainEventHandlers)
-        {
-            services.TryAddScoped(domainEventHandler);
+        //foreach (Type domainEventHandler in domainEventHandlers)
+        //{
+        //    services.TryAddScoped(domainEventHandler);
 
-            Type domainEvent = domainEventHandler
-                .GetInterfaces()
-                .Single(i => i.IsGenericType)
-                .GetGenericArguments()
-                .Single();
+        //    Type domainEvent = domainEventHandler
+        //        .GetInterfaces()
+        //        .Single(i => i.IsGenericType)
+        //        .GetGenericArguments()
+        //        .Single();
 
-            Type closedIdempotentHandler = typeof(IdempotentDomainEventHandler<>).MakeGenericType(domainEvent);
+        //    Type closedIdempotentHandler = typeof(IdempotentDomainEventHandler<>).MakeGenericType(domainEvent);
 
-            services.Decorate(domainEventHandler, closedIdempotentHandler);
-        }
+        //    services.Decorate(domainEventHandler, closedIdempotentHandler);
+        //}
     }
 
     private static void AddIntegrationEventHandlers(this IServiceCollection services)
     {
-        Type[] integrationEventHandlers = Presentation.AssemblyReference.Assembly
-            .GetTypes()
-            .Where(t => t.IsAssignableTo(typeof(IIntegrationEventHandler)))
-            .ToArray();
+        //Type[] integrationEventHandlers = Presentation.AssemblyReference.Assembly
+        //    .GetTypes()
+        //    .Where(t => t.IsAssignableTo(typeof(IIntegrationEventHandler)))
+        //    .ToArray();
 
-        foreach (Type integrationEventHandler in integrationEventHandlers)
-        {
-            services.TryAddScoped(integrationEventHandler);
+        //foreach (Type integrationEventHandler in integrationEventHandlers)
+        //{
+        //    services.TryAddScoped(integrationEventHandler);
 
-            Type integrationEvent = integrationEventHandler
-                .GetInterfaces()
-                .Single(i => i.IsGenericType)
-                .GetGenericArguments()
-                .Single();
+        //    Type integrationEvent = integrationEventHandler
+        //        .GetInterfaces()
+        //        .Single(i => i.IsGenericType)
+        //        .GetGenericArguments()
+        //        .Single();
 
-            Type closedIdempotentHandler =
-                typeof(IdempotentIntegrationEventHandler<>).MakeGenericType(integrationEvent);
+        //    Type closedIdempotentHandler =
+        //        typeof(IdempotentIntegrationEventHandler<>).MakeGenericType(integrationEvent);
 
-            services.Decorate(integrationEventHandler, closedIdempotentHandler);
-        }
+        //    services.Decorate(integrationEventHandler, closedIdempotentHandler);
+        //}
     }
 }

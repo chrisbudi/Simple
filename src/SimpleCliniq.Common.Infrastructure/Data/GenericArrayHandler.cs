@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using System.Data;
 
-namespace SimpleCliniq.Common.Infrastructure.Data;
+namespace Simple.Common.Infrastructure.Data;
 
 internal sealed class GenericArrayHandler<T> : SqlMapper.TypeHandler<T[]>
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace SimpleCliniq.Common.Infrastructure.Configuration;
+namespace Simple.Common.Infrastructure.Configuration;
 
 public static class ConfigurationExtensions
 {

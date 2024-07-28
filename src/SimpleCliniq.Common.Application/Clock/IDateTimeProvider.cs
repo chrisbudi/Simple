@@ -1,4 +1,4 @@
-﻿namespace SimpleCliniq.Common.Application.Clock;
+﻿namespace Simple.Common.Application.Clock;
 
 public interface IDateTimeProvider
 {

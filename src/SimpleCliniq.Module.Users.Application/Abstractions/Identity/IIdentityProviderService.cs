@@ -1,4 +1,4 @@
-﻿using SimpleCliniq.Common.Domain;
+﻿using Simple.Common.Domain;
 
 namespace SimpleCliniq.Module.Users.Application.Abstractions.Identity;
 

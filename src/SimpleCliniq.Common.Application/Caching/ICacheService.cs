@@ -1,4 +1,4 @@
-﻿namespace SimpleCliniq.Common.Application.Caching;
+﻿namespace Simple.Common.Application.Caching;
 
 public interface ICacheService
 {

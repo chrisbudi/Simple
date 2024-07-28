@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SimpleCliniq.Common.Infrastructure.Outbox;
+using Simple.Common.Infrastructure.Outbox;
 
-namespace SimpleCliniq.Common.Infrastructure.Outbox;
+namespace Simple.Common.Infrastructure.Outbox;
 
 public sealed class OutboxMessageConsumerConfiguration : IEntityTypeConfiguration<OutboxMessageConsumer>
 {

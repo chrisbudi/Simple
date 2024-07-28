@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.DependencyInjection;
-using SimpleCliniq.Common.Application.Authorization;
-using SimpleCliniq.Common.Application.Exceptions;
-using SimpleCliniq.Common.Domain;
-using SimpleCliniq.Common.Infrastructure.Authentication;
 using System.Security.Claims;
+using Simple.Common.Application.Authorization;
+using Simple.Common.Application.Exceptions;
+using Simple.Common.Domain;
+using Simple.Common.Infrastructure.Authentication;
 
-namespace SimpleCliniq.Common.Infrastructure.Authorization;
+namespace Simple.Common.Infrastructure.Authorization;
 
 internal sealed class CustomClaimsTransformation(IServiceScopeFactory serviceScopeFactory) : IClaimsTransformation
 {

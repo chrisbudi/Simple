@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace SimpleCliniq.Common.Infrastructure.Authorization;
+namespace Simple.Common.Infrastructure.Authorization;
 
 internal sealed class PermissionRequirement : IAuthorizationRequirement
 {

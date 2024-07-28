@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
-using SimpleCliniq.Common.Application.Messaging;
-using SimpleCliniq.Common.Domain;
+using Simple.Common.Application.Messaging;
+using Simple.Common.Domain;
 using System.Reflection;
 
-namespace SimpleCliniq.Common.Application.Behaviors;
+namespace Simple.Common.Application.Behaviors;
 
 internal sealed class ValidationPipelineBehavior<TRequest, TResponse>(
     IEnumerable<IValidator<TRequest>> validators)

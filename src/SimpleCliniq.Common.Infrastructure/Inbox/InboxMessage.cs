@@ -1,4 +1,4 @@
-﻿namespace SimpleCliniq.Common.Infrastructure.Inbox;
+﻿namespace Simple.Common.Infrastructure.Inbox;
 
 public sealed class InboxMessage
 {

@@ -1,9 +1,10 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
-using SimpleCliniq.Common.Application.Caching;
 using System.Buffers;
 using System.Text.Json;
+using Simple.Common.Application.Caching;
+using Simple.Common.Infrastructure.Caching;
 
-namespace SimpleCliniq.Common.Infrastructure.Caching;
+namespace Simple.Common.Infrastructure.Caching;
 
 internal sealed class CacheService(IDistributedCache cache) : ICacheService
 {

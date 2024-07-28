@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SimpleCliniq.Common.Infrastructure.Inbox;
-using SimpleCliniq.Common.Infrastructure.Outbox;
 using SimpleCliniq.Module.Users.Application.Abstractions.Data;
 using SimpleCliniq.Module.Users.Domain.Users;
 using SimpleCliniq.Module.Users.Infrastructure.Users;
+using Simple.Common.Infrastructure.Inbox;
+using Simple.Common.Infrastructure.Outbox;
 
 namespace SimpleCliniq.Module.Users.Infrastructure.Database;
 

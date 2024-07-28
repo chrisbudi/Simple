@@ -1,8 +1,9 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using SimpleCliniq.Common.Application.Exceptions;
+using Simple.Common.Application.Behaviors;
+using Simple.Common.Application.Exceptions;
 
-namespace SimpleCliniq.Common.Application.Behaviors;
+namespace Simple.Common.Application.Behaviors;
 
 internal sealed class ExceptionHandlingPipelineBehavior<TRequest, TResponse>(
     ILogger<ExceptionHandlingPipelineBehavior<TRequest, TResponse>> logger)

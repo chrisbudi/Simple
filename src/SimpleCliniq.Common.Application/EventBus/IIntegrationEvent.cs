@@ -1,4 +1,4 @@
-﻿namespace SimpleCliniq.Common.Application.EventBus;
+﻿namespace Simple.Common.Application.EventBus;
 
 public interface IIntegrationEvent
 {

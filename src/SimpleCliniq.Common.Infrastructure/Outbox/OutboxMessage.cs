@@ -1,4 +1,4 @@
-﻿namespace SimpleCliniq.Common.Infrastructure.Outbox;
+﻿namespace Simple.Common.Infrastructure.Outbox;
 
 public sealed class OutboxMessage
 {

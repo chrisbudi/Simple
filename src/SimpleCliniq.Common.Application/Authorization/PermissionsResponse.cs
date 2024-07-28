@@ -1,3 +1,3 @@
-﻿namespace SimpleCliniq.Common.Application.Authorization;
+﻿namespace Simple.Common.Application.Authorization;
 
 public sealed record PermissionsResponse(Guid UserId, HashSet<string> Permissions);

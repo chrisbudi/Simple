@@ -1,10 +1,11 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using Serilog.Context;
-using SimpleCliniq.Common.Domain;
 using System.Diagnostics;
+using Simple.Common.Application.Behaviors;
+using Simple.Common.Domain;
 
-namespace SimpleCliniq.Common.Application.Behaviors;
+namespace Simple.Common.Application.Behaviors;
 
 internal sealed class RequestLoggingPipelineBehavior<TRequest, TResponse>(
     ILogger<RequestLoggingPipelineBehavior<TRequest, TResponse>> logger)

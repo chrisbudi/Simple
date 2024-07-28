@@ -1,11 +1,11 @@
 ﻿using MediatR;
-using SimpleCliniq.Common.Application.EventBus;
-using SimpleCliniq.Common.Application.Exceptions;
-using SimpleCliniq.Common.Application.Messaging;
-using SimpleCliniq.Common.Domain;
 using SimpleCliniq.Module.Users.Application.Users.GetUser;
 using SimpleCliniq.Module.Users.Domain.Users;
 using SimpleCliniq.Module.Users.IntegrationEvents;
+using Simple.Common.Application.EventBus;
+using Simple.Common.Application.Exceptions;
+using Simple.Common.Application.Messaging;
+using Simple.Common.Domain;
 
 namespace SimpleCliniq.Module.Users.Application.Users.RegisterUser;
 

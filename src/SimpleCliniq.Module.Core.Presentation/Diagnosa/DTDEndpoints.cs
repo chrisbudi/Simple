@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using SimpleCliniq.Common.Presentation.Endpoints;
 using SimpleCliniq.Module.Core.Domain.Models;
+using Simple.Common.Presentation.Endpoints;
 //using Microsoft.EntityFrameworkCore;
 //using SimpleCliniq.Common.Presentation.Endpoints;
 //using SimpleCliniq.Module.Core.Domain.Models;

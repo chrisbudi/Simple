@@ -1,4 +1,4 @@
-﻿using SimpleCliniq.Common.Application.Messaging;
+﻿using Simple.Common.Application.Messaging;
 
 namespace SimpleCliniq.Module.Users.Application.Users.UpdateUser;
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
 
-namespace SimpleCliniq.Common.Infrastructure.Caching;
+namespace Simple.Common.Infrastructure.Caching;
 
 public static class CacheOptions
 {

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\SimpleCliniq.Common.Application\SimpleCliniq.Common.Application.csproj" />
+    <ProjectReference Include="..\SimpleCliniq.Common.Application\Simple.Common.Application.csproj" />
     <ProjectReference Include="..\SimpleCliniq.Module.Users.Domain\SimpleCliniq.Module.Users.Domain.csproj" />
     <ProjectReference Include="..\SimpleCliniq.Module.Users.IntegrationEvents\SimpleCliniq.Module.Users.IntegrationEvents.csproj" />
   </ItemGroup>

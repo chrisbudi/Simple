@@ -1,7 +1,7 @@
-﻿using SimpleCliniq.Common.Application.EventBus;
-using SimpleCliniq.Common.Application.Messaging;
-using SimpleCliniq.Module.Users.Domain.Users;
+﻿using SimpleCliniq.Module.Users.Domain.Users;
 using SimpleCliniq.Module.Users.IntegrationEvents;
+using Simple.Common.Application.EventBus;
+using Simple.Common.Application.Messaging;
 
 namespace SimpleCliniq.Module.Users.Application.Users.UpdateUser;
 

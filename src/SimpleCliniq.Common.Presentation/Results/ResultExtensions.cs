@@ -1,6 +1,6 @@
-﻿using SimpleCliniq.Common.Domain;
+﻿using Simple.Common.Domain;
 
-namespace SimpleCliniq.Common.Presentation.Results;
+namespace Simple.Common.Presentation.Results;
 
 public static class ResultExtensions
 {

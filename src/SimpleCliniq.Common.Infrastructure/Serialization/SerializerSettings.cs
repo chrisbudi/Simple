@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace SimpleCliniq.Common.Infrastructure.Serialization;
+namespace Simple.Common.Infrastructure.Serialization;
 
 public static class SerializerSettings
 {

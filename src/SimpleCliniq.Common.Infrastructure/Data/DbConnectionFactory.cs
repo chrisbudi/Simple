@@ -1,8 +1,8 @@
 ﻿using Npgsql;
-using SimpleCliniq.Common.Application.Data;
 using System.Data.Common;
+using Simple.Common.Application.Data;
 
-namespace SimpleCliniq.Common.Infrastructure.Data;
+namespace Simple.Common.Infrastructure.Data;
 
 internal sealed class DbConnectionFactory(NpgsqlDataSource dataSource) : IDbConnectionFactory
 {

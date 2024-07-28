@@ -2,12 +2,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using SimpleCliniq.Common.Domain;
-using SimpleCliniq.Common.Infrastructure.Authentication;
-using SimpleCliniq.Common.Presentation.Endpoints;
-using SimpleCliniq.Common.Presentation.Results;
 using SimpleCliniq.Module.Users.Application.Users.UpdateUser;
 using System.Security.Claims;
+using Simple.Common.Domain;
+using Simple.Common.Infrastructure.Authentication;
+using Simple.Common.Presentation.Endpoints;
+using Simple.Common.Presentation.Results;
 
 namespace SimpleCliniq.Module.Users.Presentation.Users;
 

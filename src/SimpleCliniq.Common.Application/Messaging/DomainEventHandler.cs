@@ -1,6 +1,7 @@
-﻿using SimpleCliniq.Common.Domain;
+﻿using Simple.Common.Application.Messaging;
+using Simple.Common.Domain;
 
-namespace SimpleCliniq.Common.Application.Messaging;
+namespace Simple.Common.Application.Messaging;
 
 public abstract class DomainEventHandler<TDomainEvent> : IDomainEventHandler<TDomainEvent>
     where TDomainEvent : IDomainEvent

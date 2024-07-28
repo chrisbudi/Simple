@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SimpleCliniq.Common.Infrastructure.Inbox;
+using Simple.Common.Infrastructure.Inbox;
 
-namespace SimpleCliniq.Common.Infrastructure.Inbox;
+namespace Simple.Common.Infrastructure.Inbox;
 
 public sealed class InboxMessageConfiguration : IEntityTypeConfiguration<InboxMessage>
 {

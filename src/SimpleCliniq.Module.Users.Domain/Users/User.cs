@@ -1,5 +1,5 @@
-﻿using SimpleCliniq.Common.Domain;
-using SimpleCliniq.Module.Users.Domain.Users;
+﻿using SimpleCliniq.Module.Users.Domain.Users;
+using Simple.Common.Domain;
 
 namespace SimpleCliniq.Module.Users.Domain.Users;
 

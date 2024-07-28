@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
-namespace SimpleCliniq.Common.Infrastructure.Authentication;
+namespace Simple.Common.Infrastructure.Authentication;
 
 internal sealed class JwtBearerConfigureOptions(IConfiguration configuration)
     : IConfigureNamedOptions<JwtBearerOptions>

@@ -1,5 +1,5 @@
-﻿using SimpleCliniq.Common.Application.Authorization;
-using SimpleCliniq.Common.Application.Messaging;
+﻿using Simple.Common.Application.Authorization;
+using Simple.Common.Application.Messaging;
 
 namespace SimpleCliniq.Module.Users.Application.Users.GetUserPermissions;
 

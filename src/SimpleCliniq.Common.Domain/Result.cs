@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Simple.Common.Domain;
 
-namespace SimpleCliniq.Common.Domain;
+namespace Simple.Common.Domain;
 
 public class Result
 {

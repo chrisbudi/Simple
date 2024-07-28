@@ -4,12 +4,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Quartz;
-using SimpleCliniq.Common.Application.Clock;
-using SimpleCliniq.Common.Application.Data;
-using SimpleCliniq.Common.Application.Messaging;
-using SimpleCliniq.Common.Domain;
-using SimpleCliniq.Common.Infrastructure.Outbox;
-using SimpleCliniq.Common.Infrastructure.Serialization;
+using Simple.Common.Application.Clock;
+using Simple.Common.Application.Data;
+using Simple.Common.Domain;
+using Simple.Common.Infrastructure.Serialization;
 using System.Data;
 using System.Data.Common;
 
@@ -46,15 +44,15 @@ internal sealed class ProcessOutboxJob(
 
                 using IServiceScope scope = serviceScopeFactory.CreateScope();
 
-                IEnumerable<IDomainEventHandler> handlers = DomainEventHandlersFactory.GetHandlers(
-                    domainEvent.GetType(),
-                    scope.ServiceProvider,
-                    Application.AssemblyReference.Assembly);
+                //IEnumerable<IDomainEventHandler> handlers = DomainEventHandlersFactory.GetHandlers(
+                //    domainEvent.GetType(),
+                //    scope.ServiceProvider,
+                //    Application.AssemblyReference.Assembly);
 
-                foreach (IDomainEventHandler domainEventHandler in handlers)
-                {
-                    await domainEventHandler.Handle(domainEvent, context.CancellationToken);
-                }
+                //foreach (IDomainEventHandler domainEventHandler in handlers)
+                //{
+                //    await domainEventHandler.Handle(domainEvent, context.CancellationToken);
+                //}
             }
             catch (Exception caughtException)
             {

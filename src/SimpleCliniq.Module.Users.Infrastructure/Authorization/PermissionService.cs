@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using SimpleCliniq.Common.Application.Authorization;
-using SimpleCliniq.Common.Domain;
 using SimpleCliniq.Module.Users.Application.Users.GetUserPermissions;
+using Simple.Common.Application.Authorization;
+using Simple.Common.Domain;
 
 namespace SimpleCliniq.Module.Users.Infrastructure.Authorization;
 

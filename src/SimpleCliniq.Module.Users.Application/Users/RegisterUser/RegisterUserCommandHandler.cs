@@ -1,8 +1,8 @@
-﻿using SimpleCliniq.Common.Application.Messaging;
-using SimpleCliniq.Common.Domain;
-using SimpleCliniq.Module.Users.Application.Abstractions.Data;
+﻿using SimpleCliniq.Module.Users.Application.Abstractions.Data;
 using SimpleCliniq.Module.Users.Application.Abstractions.Identity;
 using SimpleCliniq.Module.Users.Domain.Users;
+using Simple.Common.Application.Messaging;
+using Simple.Common.Domain;
 
 namespace SimpleCliniq.Module.Users.Application.Users.RegisterUser;
 
