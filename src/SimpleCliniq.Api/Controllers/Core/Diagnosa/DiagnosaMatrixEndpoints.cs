@@ -20,6 +20,7 @@ public class DiagnosaMatrixEndpoints : IEndpoint
            try
             {
                 var filtered = db.MDiagnosaMatrix
+                .Where(d => d.IdRuangan == par.searchIdRuangan)
                 .OrderByDynamic(par.order ?? "IdMatrixDiagnosa", par.orderAsc);
 
                 var list = await filtered
@@ -101,7 +102,7 @@ public class DiagnosaMatrixEndpoints : IEndpoint
     {
         public int page { get; set; }
         public int size { get; set; }
-        public string? search { get; set; } = "";
+        public long? searchIdRuangan{ get; set; }
         public string? order { get; set; } = "";
         public bool orderAsc { get; set; } = true;
     };

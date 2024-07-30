@@ -20,6 +20,21 @@ public class MorfologiEndpoints : IEndpoint
            try
             {
                 var filtered = db.MMorfologi
+                .Join(
+                    db.MDiagnosa,
+                    mm => mm.KdDiagnosa,
+                    md => md.KdDiagnosa,
+                    (mm, md) => new
+                    {
+                        IdMorfologi = mm.IdMorfologi,
+                        KdMorfologi = mm.KdMorfologi,
+                        NmMorfologi = mm.NmMorfologi,
+                        KdDiagnosa = mm.KdDiagnosa,
+                        IdDiagnosa = mm.IdDiagnosa,
+                        IsAktif = mm.IsAktif,
+                        IdDiagnosaNavigation = md
+                    }
+                )
                 .Where(d => EF.Functions.ILike(d.NmMorfologi, "%" + par.search + "%"))
                 .OrderByDynamic(par.order ?? "IdMorfologi", par.orderAsc);
 
