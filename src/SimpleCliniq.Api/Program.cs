@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using SimpleCliniq.Common.Presentation.Endpoints;
 using SimpleCliniq.Module.Core.Infrastructure;
 using System.Reflection;
-using System.Text.Json.Serialization;
 //using SimpleCliniq.Module.Core.Infrastructure;
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -43,9 +42,18 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddControllers().AddNewtonsoftJson(options => {
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+{
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 });
+
+
+services.AddEndpoints(Assembly.GetExecutingAssembly()).ConfigureHttpJsonOptions(option =>
+{
+    option.SerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+});
+
+
 
 var app = builder.Build();
 

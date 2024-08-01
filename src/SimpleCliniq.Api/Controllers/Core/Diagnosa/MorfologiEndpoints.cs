@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using SimpleCliniq.Common.Presentation.Endpoints;
 using SimpleCliniq.Module.Core.Domain.Models;
 using SimpleCliniq.Module.Core.Infrastructure;
@@ -17,11 +16,11 @@ public class MorfologiEndpoints : IEndpoint
         group.MapGet("/", async ([AsParameters] ParamList par, SimpleClinicContext db
             ) =>
         {
-           try
+            try
             {
                 var filtered = db.MMorfologi
                 .Include(m => m.IdDiagnosaNavigation)
-                .Where(d => EF.Functions.ILike(d.NmMorfologi, "%" + par.search + "%"))
+                .Where(d => EF.Functions.ILike(d.NmMorfologi, "%" + par.search + "%") && d.IdDiagnosa != null)
                 .OrderByDynamic(par.order ?? "IdMorfologi", par.orderAsc);
 
                 var list = await filtered
@@ -57,7 +56,7 @@ public class MorfologiEndpoints : IEndpoint
             // update db with input
 
             var morf = await db.MMorfologi.FirstOrDefaultAsync(m => m.IdMorfologi == id);
-            if(morf != null)
+            if (morf != null)
             {
                 morf.KdMorfologi = input.KdMorfologi;
                 morf.NmMorfologi = input.NmMorfologi;
