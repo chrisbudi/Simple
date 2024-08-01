@@ -1,5 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\SimpleCliniq.Common.Infrastructure\Simple.Common.Infrastructure.csproj" />
     <ProjectReference Include="..\SimpleCliniq.Common.Presentation\Simple.Common.Presentation.csproj" />
     <ProjectReference Include="..\SimpleCliniq.Module.Users.Application\SimpleCliniq.Module.Users.Application.csproj" />

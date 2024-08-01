@@ -53,11 +53,11 @@ public static class CoresModule
         //services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
         //services.AddScoped<ICategoryRepository, CategoryRepository>();
 
-        services.Configure<OutboxOptions>(configuration.GetSection("Events:Outbox"));
+        services.Configure<OutboxOptions>(configuration.GetSection("Cores:Outbox"));
 
         services.ConfigureOptions<ConfigureProcessOutboxJob>();
 
-        services.Configure<InboxOptions>(configuration.GetSection("Events:Inbox"));
+        services.Configure<InboxOptions>(configuration.GetSection("Cores:Inbox"));
 
         services.ConfigureOptions<ConfigureProcessInboxJob>();
     }
