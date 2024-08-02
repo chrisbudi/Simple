@@ -23,7 +23,7 @@ public class DTDEndpoints : IEndpoint
                 .OrderByDynamic(par.order ?? "IdDtd", par.orderAsc);
 
                 var list = await filtered
-                    .Skip((par.page * par.size))
+                    .Skip((par.page - 1) * par.size)
                     .Take(par.size)
                     .ToListAsync();
 
