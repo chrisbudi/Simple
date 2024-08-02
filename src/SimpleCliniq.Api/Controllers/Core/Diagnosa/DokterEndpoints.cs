@@ -24,7 +24,7 @@ public class DokterEndpoints : IEndpoint
                 .OrderByDynamic(par.order ?? "IdDokter", par.orderAsc);
 
                 var list = await filtered
-                .Skip((par.page * par.size))
+                .Skip((par.page - 1) * par.size)
                 .Take(par.size)
                 .ToListAsync();
 

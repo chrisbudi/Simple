@@ -24,7 +24,7 @@ public class MorfologiEndpoints : IEndpoint
                 .OrderByDynamic(par.order ?? "IdMorfologi", par.orderAsc);
 
                 var list = await filtered
-                .Skip((par.page * par.size))
+                .Skip((par.page - 1) * par.size)
                 .Take(par.size)
                 .ToListAsync();
 

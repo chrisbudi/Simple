@@ -24,7 +24,7 @@ public class DiagnosaEndpoints : IEndpoint
                 .OrderByDynamic(par.order ?? "IdDiagnosa", par.orderAsc);
 
                 var list = await filtered
-                .Skip((par.page * par.size))
+                .Skip((par.page - 1) * par.size)
                 .Take(par.size)
                 .ToListAsync();
 
