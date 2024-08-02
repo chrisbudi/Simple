@@ -75,9 +75,9 @@ public class DTDEndpoints : IEndpoint
         {
             try
             {
-                var dtd = db.MDtd.Add(model);
+                db.MDtd.Add(model);
                 await db.SaveChangesAsync();
-                return Result.Success(dtd);
+                return Result.Success(model);
             }
             catch (Exception ex)
             {
