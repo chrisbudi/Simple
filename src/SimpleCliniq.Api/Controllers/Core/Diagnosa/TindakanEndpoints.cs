@@ -76,9 +76,9 @@ public class TindakanEndpoints : IEndpoint
         {
             try
             {
-                var tindakan = db.MTindakan.Add(model);
+                db.MTindakan.Add(model);
                 await db.SaveChangesAsync();
-                return Result.Success(tindakan);
+                return Result.Success(model);
             }
             catch (Exception ex)
             {

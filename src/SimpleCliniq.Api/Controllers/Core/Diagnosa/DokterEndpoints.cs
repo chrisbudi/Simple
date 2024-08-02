@@ -72,9 +72,9 @@ public class DokterEndpoints : IEndpoint
         group.MapPost("/", async (SimpleClinicContext db, MDokter model) =>
         {
 
-            var dokter = db.MDokter.Add(model);
+            db.MDokter.Add(model);
             await db.SaveChangesAsync();
-            return Results.Ok(dokter);
+            return Results.Ok(model);
 
 
             //return Results.Created($"/api/MDtds/{model.ID}", model);

@@ -87,9 +87,9 @@ public class PasienEndpoints : IEndpoint
         group.MapPost("/", async (SimpleClinicContext db, MPasien model) =>
         {
 
-            var pas = db.MPasien.Add(model);
+            db.MPasien.Add(model);
             await db.SaveChangesAsync();
-            return Results.Ok(pas);
+            return Results.Ok(model);
 
 
             //return Results.Created($"/api/MDtds/{model.ID}", model);

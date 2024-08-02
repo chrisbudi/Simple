@@ -74,9 +74,9 @@ public class DiagnosaEndpoints : IEndpoint
         group.MapPost("/", async (SimpleClinicContext db, MDiagnosa model) =>
         {
 
-            var diag = db.MDiagnosa.Add(model);
+            db.MDiagnosa.Add(model);
             await db.SaveChangesAsync();
-            return Results.Ok(diag);
+            return Results.Ok(model);
 
 
             //return Results.Created($"/api/MDtds/{model.ID}", model);

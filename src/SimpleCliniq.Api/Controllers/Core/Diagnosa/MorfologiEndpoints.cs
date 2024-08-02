@@ -74,9 +74,9 @@ public class MorfologiEndpoints : IEndpoint
         group.MapPost("/", async (SimpleClinicContext db, MMorfologi model) =>
         {
 
-            var morf = db.MMorfologi.Add(model);
+            db.MMorfologi.Add(model);
             await db.SaveChangesAsync();
-            return Results.Ok(morf);
+            return Results.Ok(model);
 
 
             //return Results.Created($"/api/MDtds/{model.ID}", model);

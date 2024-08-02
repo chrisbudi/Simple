@@ -75,9 +75,9 @@ public class SmfEndpoints : IEndpoint
         {
             try
             {
-                var smf = db.MSmf.Add(model);
+                db.MSmf.Add(model);
                 await db.SaveChangesAsync();
-                return Result.Success(smf);
+                return Result.Success(model);
             }
             catch (Exception ex)
             {

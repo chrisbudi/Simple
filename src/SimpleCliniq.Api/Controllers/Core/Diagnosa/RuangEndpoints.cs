@@ -72,9 +72,9 @@ public class RuangEndpoints : IEndpoint
         group.MapPost("/", async (SimpleClinicContext db, MRuang model) =>
         {
 
-            var ruang = db.MRuang.Add(model);
+            db.MRuang.Add(model);
             await db.SaveChangesAsync();
-            return Results.Ok(ruang);
+            return Results.Ok(model);
 
 
             //return Results.Created($"/api/MDtds/{model.ID}", model);
