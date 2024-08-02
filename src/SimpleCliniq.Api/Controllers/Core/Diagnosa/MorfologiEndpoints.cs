@@ -20,7 +20,7 @@ public class MorfologiEndpoints : IEndpoint
             {
                 var filtered = db.MMorfologi
                 .Include(m => m.IdDiagnosaNavigation)
-                .Where(d => EF.Functions.ILike(d.NmMorfologi, "%" + par.search + "%") && d.IdDiagnosa != null)
+                .Where(d => EF.Functions.ILike(d.NmMorfologi, "%" + par.search + "%") && d.IdDiagnosa != null && d.IsAktif == true)
                 .OrderByDynamic(par.order ?? "IdMorfologi", par.orderAsc);
 
                 var list = await filtered
@@ -45,7 +45,7 @@ public class MorfologiEndpoints : IEndpoint
 
         group.MapGet("/{id}", async (int id, SimpleClinicContext db) =>
         {
-            return await db.MMorfologi.FirstOrDefaultAsync(m => m.IdMorfologi == id);
+            return await db.MMorfologi.FirstOrDefaultAsync(m => m.IdMorfologi == id && m.IsAktif == true);
         })
         .WithName("GetMorfologiById")
         .WithOpenApi()

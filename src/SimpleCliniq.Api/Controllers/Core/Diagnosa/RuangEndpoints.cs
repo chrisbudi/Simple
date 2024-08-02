@@ -20,7 +20,7 @@ public class RuangEndpoints : IEndpoint
            try
             {
                 var filtered = db.MRuang
-                .Where(d => EF.Functions.ILike(d.Nama, "%" + par.search + "%"))
+                .Where(d => EF.Functions.ILike(d.Nama, "%" + par.search + "%") && d.IsAktif == true)
                 .OrderByDynamic(par.order ?? "IdRuang", par.orderAsc);
 
                 var list = await filtered
@@ -45,7 +45,7 @@ public class RuangEndpoints : IEndpoint
 
         group.MapGet("/{id}", async (int id, SimpleClinicContext db) =>
         {
-            return await db.MRuang.FirstOrDefaultAsync(m => m.IdRuang == id);
+            return await db.MRuang.FirstOrDefaultAsync(m => m.IdRuang == id && m.IsAktif == true);
         })
         .WithName("GetRuang")
         .WithOpenApi()

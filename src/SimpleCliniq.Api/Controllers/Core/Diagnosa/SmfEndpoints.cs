@@ -19,7 +19,7 @@ public class SmfEndpoints : IEndpoint
             try
             {
                 var filtered = db.MSmf
-                .Where(d => EF.Functions.ILike(d.Nmsmf, "%" + par.search + "%"))
+                .Where(d => EF.Functions.ILike(d.Nmsmf, "%" + par.search + "%") && d.IsAktif == true)
                 .OrderByDynamic(par.order ?? "IdSmf", par.orderAsc);
 
                 var list = await filtered
@@ -46,7 +46,7 @@ public class SmfEndpoints : IEndpoint
 
         group.MapGet("/{id}", async (int id, SimpleClinicContext db) =>
         {
-            return await db.MSmf.FirstOrDefaultAsync(m => m.IdSmf == id);
+            return await db.MSmf.FirstOrDefaultAsync(m => m.IdSmf == id && m.IsAktif == true);
         })
         .WithName("GetSmfById")
         .WithOpenApi()

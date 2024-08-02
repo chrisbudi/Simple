@@ -20,7 +20,7 @@ public class DokterEndpoints : IEndpoint
            try
             {
                 var filtered = db.MDokter
-                .Where(d => EF.Functions.ILike(d.NmDokter, "%" + par.search + "%"))
+                .Where(d => EF.Functions.ILike(d.NmDokter, "%" + par.search + "%") && d.IsAktif == true)
                 .OrderByDynamic(par.order ?? "IdDokter", par.orderAsc);
 
                 var list = await filtered
@@ -45,7 +45,7 @@ public class DokterEndpoints : IEndpoint
 
         group.MapGet("/{id}", async (int id, SimpleClinicContext db) =>
         {
-            return await db.MDokter.FirstOrDefaultAsync(m => m.IdDokter == id);
+            return await db.MDokter.FirstOrDefaultAsync(m => m.IdDokter == id && m.IsAktif == true);
         })
         .WithName("GetDokter")
         .WithOpenApi()

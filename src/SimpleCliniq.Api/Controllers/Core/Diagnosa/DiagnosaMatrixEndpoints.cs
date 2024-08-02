@@ -20,7 +20,7 @@ public class DiagnosaMatrixEndpoints : IEndpoint
            try
             {
                 var filtered = db.MDiagnosaMatrix
-                .Where(d => d.IdRuangan == par.searchIdRuangan)
+                .Where(d => d.IdRuangan == par.searchIdRuangan && d.IsAktif == true)
                 .OrderByDynamic(par.order ?? "IdMatrixDiagnosa", par.orderAsc);
 
                 var list = await filtered
@@ -45,7 +45,7 @@ public class DiagnosaMatrixEndpoints : IEndpoint
 
         group.MapGet("/{id}", async (int id, SimpleClinicContext db) =>
         {
-            return await db.MDiagnosaMatrix.FirstOrDefaultAsync(m => m.IdMatrixDiagnosa == id);
+            return await db.MDiagnosaMatrix.FirstOrDefaultAsync(m => m.IdMatrixDiagnosa == id && m.IsAktif == true);
         })
         .WithName("GetDiagnosaMatrixById")
         .WithOpenApi()

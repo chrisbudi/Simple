@@ -19,7 +19,7 @@ public class TindakanEndpoints : IEndpoint
             try
             {
                 var filtered = db.MTindakan
-                .Where(d => EF.Functions.ILike(d.NmTindakan, "%" + par.search + "%"))
+                .Where(d => EF.Functions.ILike(d.NmTindakan, "%" + par.search + "%") && d.IsAktif == true)
                 .OrderByDynamic(par.order ?? "IdTindakan", par.orderAsc);
 
                 var list = await filtered
@@ -46,7 +46,7 @@ public class TindakanEndpoints : IEndpoint
 
         group.MapGet("/{id}", async (int id, SimpleClinicContext db) =>
         {
-            return await db.MTindakan.FirstOrDefaultAsync(m => m.IdTindakan == id);
+            return await db.MTindakan.FirstOrDefaultAsync(m => m.IdTindakan == id && m.IsAktif == true);
         })
         .WithName("GetTindakanById")
         .WithOpenApi()

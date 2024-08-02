@@ -19,7 +19,7 @@ public class DTDEndpoints : IEndpoint
             try
             {
                 var filtered = db.MDtd
-                .Where(d => EF.Functions.ILike(d.NmDtd, "%" + par.search + "%"))
+                .Where(d => EF.Functions.ILike(d.NmDtd, "%" + par.search + "%") && d.IsAktif == true)
                 .OrderByDynamic(par.order ?? "IdDtd", par.orderAsc);
 
                 var list = await filtered
@@ -46,7 +46,7 @@ public class DTDEndpoints : IEndpoint
 
         group.MapGet("/{id}", async (int id, SimpleClinicContext db) =>
         {
-            return await db.MDtd.FirstOrDefaultAsync(m => m.IdDtd == id);
+            return await db.MDtd.FirstOrDefaultAsync(m => m.IdDtd == id && m.IsAktif == true);
         })
         .WithName("GetDTDById")
         .WithOpenApi()
