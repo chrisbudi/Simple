@@ -1,9 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SimpleCliniq.Common.Domain\Simple.Common.Domain.csproj" />
     <ProjectReference Include="..\SimpleCliniq.Common.Presentation\Simple.Common.Presentation.csproj" />
     <ProjectReference Include="..\SimpleCliniq.Module.Core.Domain\SimpleCliniq.Module.Core.Domain.csproj" />

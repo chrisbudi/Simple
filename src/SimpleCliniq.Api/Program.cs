@@ -1,6 +1,5 @@
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Simple.Common.Application;
 using Simple.Common.Infrastructure;
@@ -9,7 +8,6 @@ using Simple.Common.Presentation.Endpoints;
 using SimpleCliniq.Extensions;
 using SimpleCliniq.Middleware;
 using SimpleCliniq.Module.Core.Infrastructure;
-using SimpleCliniq.Module.Core.Infrastructure.Database;
 using SimpleCliniq.Module.Users.Infrastructure;
 using SimpleCliniq.OpenTelemetry;
 using System.Reflection;
@@ -20,15 +18,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 var services = builder.Services;
 
-services.AddDbContext<CoreDbContext>(options =>
-{
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"), cfg =>
-    {
-        cfg.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
-
-    });
-});
-
 builder.Host.UseSerilog((context, loggerConfig) => loggerConfig.ReadFrom.Configuration(context.Configuration));
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
@@ -38,7 +27,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerDocumentation();
 
 Assembly[] moduleApplicationAssemblies = [
-    //SimpleCliniq.Module.Core.Application.AssemblyReference.Assembly,
     SimpleCliniq.Module.Users.Application.AssemblyReference.Assembly
     ];
 
@@ -63,19 +51,13 @@ builder.Services.AddHealthChecks()
     .AddKeyCloak(keyCloakHealthUrl);
 
 
-services.AddEndpoints(Assembly.GetExecutingAssembly());
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
 
 builder.Configuration.AddModuleConfiguration(["users", "cores",]);
 
-
 builder.Services.AddUsersModule(builder.Configuration);
 builder.Services.AddCoresModule(builder.Configuration);
+
+services.AddEndpoints(Assembly.GetExecutingAssembly());
 
 //// module for clinical
 
@@ -94,6 +76,10 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    app.ApplyMigrations();
+
+    //app.ApplyMigrations<CoreDbContext>();
 }
 
 app.MapHealthChecks("health", new HealthCheckOptions
@@ -115,3 +101,5 @@ app.MapEndpoints();
 
 app.Run();
 
+
+public partial class Program;

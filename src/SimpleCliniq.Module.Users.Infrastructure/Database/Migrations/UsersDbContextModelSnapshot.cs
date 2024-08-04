@@ -23,6 +23,186 @@ namespace SimpleCliniq.Module.Users.Infrastructure.Database.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("PermissionRole", b =>
+                {
+                    b.Property<string>("PermissionCode")
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("permission_code");
+
+                    b.Property<string>("RoleName")
+                        .HasColumnType("character varying(50)")
+                        .HasColumnName("role_name");
+
+                    b.HasKey("PermissionCode", "RoleName")
+                        .HasName("pk_role_permissions");
+
+                    b.HasIndex("RoleName")
+                        .HasDatabaseName("ix_role_permissions_role_name");
+
+                    b.ToTable("role_permissions", "users");
+
+                    b.HasData(
+                        new
+                        {
+                            PermissionCode = "users:read",
+                            RoleName = "Member"
+                        },
+                        new
+                        {
+                            PermissionCode = "users:update",
+                            RoleName = "Member"
+                        },
+                        new
+                        {
+                            PermissionCode = "events:search",
+                            RoleName = "Member"
+                        },
+                        new
+                        {
+                            PermissionCode = "ticket-types:read",
+                            RoleName = "Member"
+                        },
+                        new
+                        {
+                            PermissionCode = "carts:read",
+                            RoleName = "Member"
+                        },
+                        new
+                        {
+                            PermissionCode = "carts:add",
+                            RoleName = "Member"
+                        },
+                        new
+                        {
+                            PermissionCode = "carts:remove",
+                            RoleName = "Member"
+                        },
+                        new
+                        {
+                            PermissionCode = "orders:read",
+                            RoleName = "Member"
+                        },
+                        new
+                        {
+                            PermissionCode = "orders:create",
+                            RoleName = "Member"
+                        },
+                        new
+                        {
+                            PermissionCode = "tickets:read",
+                            RoleName = "Member"
+                        },
+                        new
+                        {
+                            PermissionCode = "tickets:check-in",
+                            RoleName = "Member"
+                        },
+                        new
+                        {
+                            PermissionCode = "users:read",
+                            RoleName = "Administrator"
+                        },
+                        new
+                        {
+                            PermissionCode = "users:update",
+                            RoleName = "Administrator"
+                        },
+                        new
+                        {
+                            PermissionCode = "events:read",
+                            RoleName = "Administrator"
+                        },
+                        new
+                        {
+                            PermissionCode = "events:search",
+                            RoleName = "Administrator"
+                        },
+                        new
+                        {
+                            PermissionCode = "events:update",
+                            RoleName = "Administrator"
+                        },
+                        new
+                        {
+                            PermissionCode = "ticket-types:read",
+                            RoleName = "Administrator"
+                        },
+                        new
+                        {
+                            PermissionCode = "ticket-types:update",
+                            RoleName = "Administrator"
+                        },
+                        new
+                        {
+                            PermissionCode = "categories:read",
+                            RoleName = "Administrator"
+                        },
+                        new
+                        {
+                            PermissionCode = "categories:update",
+                            RoleName = "Administrator"
+                        },
+                        new
+                        {
+                            PermissionCode = "carts:read",
+                            RoleName = "Administrator"
+                        },
+                        new
+                        {
+                            PermissionCode = "carts:add",
+                            RoleName = "Administrator"
+                        },
+                        new
+                        {
+                            PermissionCode = "carts:remove",
+                            RoleName = "Administrator"
+                        },
+                        new
+                        {
+                            PermissionCode = "orders:read",
+                            RoleName = "Administrator"
+                        },
+                        new
+                        {
+                            PermissionCode = "orders:create",
+                            RoleName = "Administrator"
+                        },
+                        new
+                        {
+                            PermissionCode = "tickets:read",
+                            RoleName = "Administrator"
+                        },
+                        new
+                        {
+                            PermissionCode = "tickets:check-in",
+                            RoleName = "Administrator"
+                        },
+                        new
+                        {
+                            PermissionCode = "event-statistics:read",
+                            RoleName = "Administrator"
+                        });
+                });
+
+            modelBuilder.Entity("RoleUser", b =>
+                {
+                    b.Property<string>("RolesName")
+                        .HasColumnType("character varying(50)")
+                        .HasColumnName("role_name");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("RolesName", "UserId")
+                        .HasName("pk_user_roles");
+
+                    b.HasIndex("UserId")
+                        .HasDatabaseName("ix_user_roles_user_id");
+
+                    b.ToTable("user_roles", "users");
+                });
+
             modelBuilder.Entity("Simple.Common.Infrastructure.Inbox.InboxMessage", b =>
                 {
                     b.Property<Guid>("Id")
@@ -277,186 +457,6 @@ namespace SimpleCliniq.Module.Users.Infrastructure.Database.Migrations
                         .HasDatabaseName("ix_users_identity_id");
 
                     b.ToTable("users", "users");
-                });
-
-            modelBuilder.Entity("PermissionRole", b =>
-                {
-                    b.Property<string>("PermissionCode")
-                        .HasColumnType("character varying(100)")
-                        .HasColumnName("permission_code");
-
-                    b.Property<string>("RoleName")
-                        .HasColumnType("character varying(50)")
-                        .HasColumnName("role_name");
-
-                    b.HasKey("PermissionCode", "RoleName")
-                        .HasName("pk_role_permissions");
-
-                    b.HasIndex("RoleName")
-                        .HasDatabaseName("ix_role_permissions_role_name");
-
-                    b.ToTable("role_permissions", "users");
-
-                    b.HasData(
-                        new
-                        {
-                            PermissionCode = "users:read",
-                            RoleName = "Member"
-                        },
-                        new
-                        {
-                            PermissionCode = "users:update",
-                            RoleName = "Member"
-                        },
-                        new
-                        {
-                            PermissionCode = "events:search",
-                            RoleName = "Member"
-                        },
-                        new
-                        {
-                            PermissionCode = "ticket-types:read",
-                            RoleName = "Member"
-                        },
-                        new
-                        {
-                            PermissionCode = "carts:read",
-                            RoleName = "Member"
-                        },
-                        new
-                        {
-                            PermissionCode = "carts:add",
-                            RoleName = "Member"
-                        },
-                        new
-                        {
-                            PermissionCode = "carts:remove",
-                            RoleName = "Member"
-                        },
-                        new
-                        {
-                            PermissionCode = "orders:read",
-                            RoleName = "Member"
-                        },
-                        new
-                        {
-                            PermissionCode = "orders:create",
-                            RoleName = "Member"
-                        },
-                        new
-                        {
-                            PermissionCode = "tickets:read",
-                            RoleName = "Member"
-                        },
-                        new
-                        {
-                            PermissionCode = "tickets:check-in",
-                            RoleName = "Member"
-                        },
-                        new
-                        {
-                            PermissionCode = "users:read",
-                            RoleName = "Administrator"
-                        },
-                        new
-                        {
-                            PermissionCode = "users:update",
-                            RoleName = "Administrator"
-                        },
-                        new
-                        {
-                            PermissionCode = "events:read",
-                            RoleName = "Administrator"
-                        },
-                        new
-                        {
-                            PermissionCode = "events:search",
-                            RoleName = "Administrator"
-                        },
-                        new
-                        {
-                            PermissionCode = "events:update",
-                            RoleName = "Administrator"
-                        },
-                        new
-                        {
-                            PermissionCode = "ticket-types:read",
-                            RoleName = "Administrator"
-                        },
-                        new
-                        {
-                            PermissionCode = "ticket-types:update",
-                            RoleName = "Administrator"
-                        },
-                        new
-                        {
-                            PermissionCode = "categories:read",
-                            RoleName = "Administrator"
-                        },
-                        new
-                        {
-                            PermissionCode = "categories:update",
-                            RoleName = "Administrator"
-                        },
-                        new
-                        {
-                            PermissionCode = "carts:read",
-                            RoleName = "Administrator"
-                        },
-                        new
-                        {
-                            PermissionCode = "carts:add",
-                            RoleName = "Administrator"
-                        },
-                        new
-                        {
-                            PermissionCode = "carts:remove",
-                            RoleName = "Administrator"
-                        },
-                        new
-                        {
-                            PermissionCode = "orders:read",
-                            RoleName = "Administrator"
-                        },
-                        new
-                        {
-                            PermissionCode = "orders:create",
-                            RoleName = "Administrator"
-                        },
-                        new
-                        {
-                            PermissionCode = "tickets:read",
-                            RoleName = "Administrator"
-                        },
-                        new
-                        {
-                            PermissionCode = "tickets:check-in",
-                            RoleName = "Administrator"
-                        },
-                        new
-                        {
-                            PermissionCode = "event-statistics:read",
-                            RoleName = "Administrator"
-                        });
-                });
-
-            modelBuilder.Entity("RoleUser", b =>
-                {
-                    b.Property<string>("RolesName")
-                        .HasColumnType("character varying(50)")
-                        .HasColumnName("role_name");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("user_id");
-
-                    b.HasKey("RolesName", "UserId")
-                        .HasName("pk_user_roles");
-
-                    b.HasIndex("UserId")
-                        .HasDatabaseName("ix_user_roles_user_id");
-
-                    b.ToTable("user_roles", "users");
                 });
 
             modelBuilder.Entity("PermissionRole", b =>

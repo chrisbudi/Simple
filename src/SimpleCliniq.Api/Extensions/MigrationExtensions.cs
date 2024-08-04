@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SimpleCliniq.Module.Users.Infrastructure.Database;
 
 namespace SimpleCliniq.Extensions;
 
@@ -8,10 +9,8 @@ public static class MigrationExtensions
     {
         using IServiceScope scope = app.ApplicationServices.CreateScope();
 
-        //ApplyMigration<UsersDbContext>(scope);
-        //ApplyMigration<EventsDbContext>(scope);
-        //ApplyMigration<TicketingDbContext>(scope);
-        //ApplyMigration<AttendanceDbContext>(scope);
+        ApplyMigration<UsersDbContext>(scope);
+        //ApplyMigration<dbcontext>(scope);
     }
 
     private static void ApplyMigration<TDbContext>(IServiceScope scope)
