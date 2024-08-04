@@ -1,11 +1,11 @@
 ﻿{
-  "Cores": {
+  "Chlinical.pharmacy": {
     "Outbox": {
-      "IntervalInSeconds": 5,
+      "IntervalInSeconds": 10,
       "BatchSize": 50
     },
     "Inbox": {
-      "IntervalInSeconds": 5,
+      "IntervalInSeconds": 10,
       "BatchSize": 50
     }
   }

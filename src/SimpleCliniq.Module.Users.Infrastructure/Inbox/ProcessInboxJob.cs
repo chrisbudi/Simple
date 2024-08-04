@@ -4,13 +4,13 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Quartz;
-using System.Data;
-using System.Data.Common;
 using Simple.Common.Application.Clock;
 using Simple.Common.Application.Data;
 using Simple.Common.Application.EventBus;
 using Simple.Common.Infrastructure.Inbox;
 using Simple.Common.Infrastructure.Serialization;
+using System.Data;
+using System.Data.Common;
 
 namespace SimpleCliniq.Module.Users.Infrastructure.Inbox;
 
@@ -22,7 +22,7 @@ internal sealed class ProcessInboxJob(
     IOptions<InboxOptions> inboxOptions,
     ILogger<ProcessInboxJob> logger) : IJob
 {
-    private const string ModuleName = "Attendance";
+    private const string ModuleName = "Users";
 
     public async Task Execute(IJobExecutionContext context)
     {
