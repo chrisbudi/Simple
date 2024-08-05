@@ -11,9 +11,9 @@
     "KeyCloak": {
       "AdminUrl": "http://simple.identity:8080/admin/realms/simple/",
       "TokenUrl": "http://simple.identity:8080/realms/simple/protocol/openid-connect/token",
-      "ConfidentialClientId": "simple-confidential-client",
-      "ConfidentialClientSecret": "PzotcrvZRF9BHCKcUxdKfHWlIPECG49k",
-      "PublicClientId": "simple-public-client"
+      "ConfidentialClientId": "simple-cliniq-confidential-client",
+      "ConfidentialClientSecret": "sjfs2OuZgwqx772RM8g30xuIlzR4Pmuo",
+      "PublicClientId": "simple-cliniq-public-client"
     }
   }
 }

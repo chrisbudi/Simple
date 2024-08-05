@@ -7,10 +7,10 @@ services:
       context: .
       dockerfile: src/SimpleCliniq.Api/Dockerfile
 
-  simple.identityServer:
+  simple.identity:
     image: quay.io/keycloak/keycloak:latest
-    container_name: SimpleIdentity
-    command: start-dev --import-realm
+    container_name: simple.identity
+    command: start-dev #--import-realm
     environment:
       - KC_HEALTH_ENABLED=true
       - KEYCLOAK_ADMIN=admin

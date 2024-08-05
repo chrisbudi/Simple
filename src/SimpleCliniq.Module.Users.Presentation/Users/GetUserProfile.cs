@@ -2,12 +2,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using SimpleCliniq.Module.Users.Application.Users.GetUser;
-using System.Security.Claims;
 using Simple.Common.Domain;
 using Simple.Common.Infrastructure.Authentication;
 using Simple.Common.Presentation.Endpoints;
 using Simple.Common.Presentation.Results;
+using SimpleCliniq.Module.Users.Application.Users.GetUser;
+using System.Security.Claims;
 
 namespace SimpleCliniq.Module.Users.Presentation.Users;
 internal sealed class GetUserProfile : IEndpoint
@@ -21,7 +21,8 @@ internal sealed class GetUserProfile : IEndpoint
 
             return result.Match(Results.Ok, ApiResults.Problem);
         })
-        .RequireAuthorization(Permissions.GetUser)
+        .RequireAuthorization()
+        //.RequireAuthorization(Permissions.GetUser)
         .WithTags(Tags.Users);
     }
 
