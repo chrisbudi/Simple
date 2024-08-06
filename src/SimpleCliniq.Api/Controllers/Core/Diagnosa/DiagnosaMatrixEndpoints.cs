@@ -20,6 +20,8 @@ public class DiagnosaMatrixEndpoints : IEndpoint
            try
             {
                 var filtered = db.MDiagnosaMatrix
+                .Include(d => d.MRuangNavigation)
+                .Include(d => d.MDiagnosaNavigation)
                 .Where(d => d.IdRuangan == par.searchIdRuangan && d.IsAktif == true)
                 .OrderByDynamic(par.order ?? "IdMatrixDiagnosa", par.orderAsc);
 

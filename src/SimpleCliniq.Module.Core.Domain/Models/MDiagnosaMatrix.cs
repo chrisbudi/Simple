@@ -18,4 +18,8 @@ public partial class MDiagnosaMatrix
     public string KdDiagnosa { get; set; }
 
     public bool? IsAktif { get; set; }
+
+    public virtual MRuang MRuangNavigation { get; set; }
+
+    public virtual MDiagnosa MDiagnosaNavigation { get; set; }
 }

@@ -749,6 +749,18 @@ public partial class SimpleClinicContext : DbContext
             entity.Property(e => e.KodeRuangan)
                 .IsRequired()
                 .HasMaxLength(8);
+
+            entity.HasIndex(e => e.IdDiagnosa, "IX_M_DiagnosaMatrix_IdDiagnosa");
+
+            entity.HasIndex(e => e.IdRuangan, "IX_M_DiagnosaMatrix_IdRuangan");
+
+            entity.HasOne(d => d.MDiagnosaNavigation).WithMany()
+                .HasForeignKey(d => d.IdDiagnosa)
+                .HasConstraintName("FK_M_DIAGNOSAMATRIX_M_DIAGNOSA");
+
+            entity.HasOne(d => d.MRuangNavigation).WithMany()
+                .HasForeignKey(d => d.IdRuangan)
+                .HasConstraintName("FK_M_DIAGNOSAMATRIX_M_RUANG");
         });
 
         modelBuilder.Entity<MDokter>(entity =>
