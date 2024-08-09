@@ -60,6 +60,19 @@ public class DokterEndpoints : IEndpoint
             {
                 dokter.NmDokter = input.NmDokter;
                 dokter.KdDokter = input.KdDokter;
+                dokter.SpesialisasiDokter = input.SpesialisasiDokter;
+                dokter.AlamatDokter = input.AlamatDokter;
+                dokter.TelpDokter = input.TelpDokter;
+                dokter.AlamatPraktek = input.AlamatPraktek;
+                dokter.Telppraktek = input.Telppraktek;
+                dokter.ImgFotodokter = input.ImgFotodokter;
+                dokter.KodeTarif = input.KodeTarif;
+                dokter.KdAkun = input.KdAkun;
+                dokter.IdCoa = input.IdCoa;
+                dokter.By = input.By;
+                dokter.IsTtd = input.IsTtd;
+                dokter.Pin = input.Pin;
+                dokter.NoSip = input.NoSip;
             }
 
             await db.SaveChangesAsync();
