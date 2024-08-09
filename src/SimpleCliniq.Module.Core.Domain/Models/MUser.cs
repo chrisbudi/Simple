@@ -23,7 +23,7 @@ public partial class MUser
 
     public string KdDokter { get; set; }
 
-    public decimal? IdDokter { get; set; }
+    public long? IdDokter { get; set; }
 
     public bool? IsUser { get; set; }
 

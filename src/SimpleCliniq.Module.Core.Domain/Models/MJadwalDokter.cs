@@ -11,7 +11,7 @@ public partial class MJadwalDokter
 
     public string KdDokter { get; set; }
 
-    public decimal? IdDokter { get; set; }
+    public long? IdDokter { get; set; }
 
     public string Hari { get; set; }
 

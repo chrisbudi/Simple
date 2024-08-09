@@ -783,7 +783,6 @@ public partial class SimpleClinicContext : DbContext
 
             entity.HasIndex(e => e.NmDokter, "IX_M_Dokter_NmDokter");
 
-            entity.Property(e => e.IdDokter).HasPrecision(18);
             entity.Property(e => e.AlamatDokter)
                 .IsRequired()
                 .HasMaxLength(200);
