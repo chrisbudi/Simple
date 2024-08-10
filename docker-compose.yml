@@ -8,8 +8,6 @@ services:
       dockerfile: src/SimpleCliniq.Api/Dockerfile
   simple.fe:
      image: chbudi9/simplecliniqfe:latest
-     command: >
-      sh -c "http-server dist -S -C certificate.pem -K key.pem"
      container_name: simplecliniq.fe
      restart: always
      ports:
