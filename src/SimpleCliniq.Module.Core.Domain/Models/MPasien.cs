@@ -75,7 +75,7 @@ public partial class MPasien
 
     public DateTime? Tgldaftar { get; set; }
 
-    public char Iscetakkartu { get; set; }
+    public bool Iscetakkartu { get; set; }
 
     public string Warganegara { get; set; }
 

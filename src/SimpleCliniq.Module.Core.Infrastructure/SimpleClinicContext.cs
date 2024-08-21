@@ -1766,7 +1766,7 @@ public partial class SimpleClinicContext : DbContext
             entity.Property(e => e.IbuPasien)
                 .IsRequired()
                 .HasMaxLength(100);
-            entity.Property(e => e.Iscetakkartu).HasMaxLength(1);
+            entity.Property(e => e.Iscetakkartu);
             entity.Property(e => e.JenisIdentitas)
                 .IsRequired()
                 .HasMaxLength(50);
