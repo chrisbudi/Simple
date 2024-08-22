@@ -55,17 +55,10 @@ public class SmfEndpoints : IEndpoint
         group.MapPut("/{id}", async (SimpleClinicContext db, int id, MSmf input) =>
         {
             // update db with input
-
-            var smf = await db.MSmf.FirstOrDefaultAsync(m => m.IdSmf == id);
-
-            if(smf != null)
-            {
-                smf.Kdsmf = input.Kdsmf;
-                smf.Nmsmf = input.Nmsmf;
-            }
-
+            if (input.IdSmf == 0) input.IdSmf = id;
+            var result = db.MSmf.Update(input);
             await db.SaveChangesAsync();
-            return Results.Ok(smf);
+            return Results.Ok(result.Entity);
         })
         .WithName("UpdateSmf")
         .WithOpenApi()

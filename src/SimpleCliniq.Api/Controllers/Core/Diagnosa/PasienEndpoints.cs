@@ -43,7 +43,7 @@ public class PasienEndpoints : IEndpoint
         .WithOpenApi()
         .Produces<MPasien[]>(StatusCodes.Status200OK);
 
-        group.MapGet("/{id}", async (string id, SimpleClinicContext db) =>
+        group.MapGet("/{id}", async (Ulid id, SimpleClinicContext db) =>
         {
             return await db.MPasien.FirstOrDefaultAsync(m => m.IdPasien == id && m.IsAktif == true);
         })
@@ -51,34 +51,13 @@ public class PasienEndpoints : IEndpoint
         .WithOpenApi()
         .Produces<MPasien>(StatusCodes.Status200OK);
 
-        group.MapPut("/{id}", async (SimpleClinicContext db, string id, MPasien input) =>
+        group.MapPut("/{id}", async (SimpleClinicContext db, Ulid id, MPasien input) =>
         {
             // update db with input
-
-            var pas = await db.MPasien.FirstOrDefaultAsync(m => m.IdPasien == id);
-            if(pas != null)
-            {
-                pas.PasienNo = input.PasienNo;
-                pas.NamaPasien = input.NamaPasien;
-                pas.NamaKelPasien = input.NamaKelPasien;
-                pas.Kelaminpasien = input.Kelaminpasien;
-                pas.Tmptlahirpasien = input.Tmptlahirpasien;
-                pas.Tgllahirpasien = input.Tgllahirpasien;
-                pas.AgamaPasien = input.AgamaPasien;
-                pas.StatusKwnpasien = input.StatusKwnpasien;
-                pas.PendidikanPasien = input.PendidikanPasien;
-                pas.PekerjaanPasien = input.PekerjaanPasien;
-                pas.AlamatPekerjaan = input.AlamatPekerjaan;
-                pas.TelpPekerjaan = input.TelpPekerjaan;
-                pas.Noktpsimpasien = input.Noktpsimpasien;
-                pas.JenisIdentitas = input.JenisIdentitas;
-                pas.NoPenjamin = input.NoPenjamin;
-                pas.AlamatPasien = input.AlamatPasien;
-
-            }
-
+            if (input.IdPasien == Ulid.Empty) input.IdPasien = id;
+            var result = db.MPasien.Update(input);
             await db.SaveChangesAsync();
-            return Results.Ok(pas);
+            return Results.Ok(result.Entity);
         })
         .WithName("UpdatePasien")
         .WithOpenApi()
@@ -86,7 +65,7 @@ public class PasienEndpoints : IEndpoint
 
         group.MapPost("/", async (SimpleClinicContext db, MPasien model) =>
         {
-
+            model.IdPasien = Ulid.NewUlid();
             db.MPasien.Add(model);
             await db.SaveChangesAsync();
             return Results.Ok(model);
@@ -98,7 +77,7 @@ public class PasienEndpoints : IEndpoint
         .WithOpenApi()
         .Produces<MPasien>(StatusCodes.Status201Created);
 
-        group.MapDelete("/{id}", async (SimpleClinicContext db, string id) =>
+        group.MapDelete("/{id}", async (SimpleClinicContext db, Ulid id) =>
         {
             var pas = await db.MPasien.FirstAsync(m => m.IdPasien == id);
             pas.IsAktif = false;

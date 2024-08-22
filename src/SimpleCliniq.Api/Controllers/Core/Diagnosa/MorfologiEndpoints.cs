@@ -54,18 +54,10 @@ public class MorfologiEndpoints : IEndpoint
         group.MapPut("/{id}", async (SimpleClinicContext db, int id, MMorfologi input) =>
         {
             // update db with input
-
-            var morf = await db.MMorfologi.FirstOrDefaultAsync(m => m.IdMorfologi == id);
-            if (morf != null)
-            {
-                morf.KdMorfologi = input.KdMorfologi;
-                morf.NmMorfologi = input.NmMorfologi;
-                morf.KdDiagnosa = input.KdDiagnosa;
-                morf.IdDiagnosa = input.IdDiagnosa;
-            }
-
+            if (input.IdMorfologi == 0) input.IdMorfologi = id;
+            var result = db.MMorfologi.Update(input);
             await db.SaveChangesAsync();
-            return Results.Ok(morf);
+            return Results.Ok(result.Entity);
         })
         .WithName("UpdateMorfologi")
         .WithOpenApi()

@@ -55,18 +55,10 @@ public class TindakanEndpoints : IEndpoint
         group.MapPut("/{id}", async (SimpleClinicContext db, int id, MTindakan input) =>
         {
             // update db with input
-
-            var tindakan = await db.MTindakan.FirstOrDefaultAsync(m => m.IdTindakan == id);
-
-            if(tindakan != null)
-            {
-                tindakan.KdTindakan = input.KdTindakan;
-                tindakan.NmTindakan = input.NmTindakan;
-                tindakan.NmPendek = input.NmPendek;
-            }
-
+            if (input.IdTindakan == 0) input.IdTindakan = id;
+            var result = db.MTindakan.Update(input);
             await db.SaveChangesAsync();
-            return Results.Ok(tindakan);
+            return Results.Ok(result.Entity);
         })
         .WithName("UpdateTindakan")
         .WithOpenApi()
