@@ -54,29 +54,10 @@ public class DokterEndpoints : IEndpoint
         group.MapPut("/{id}", async (SimpleClinicContext db, int id, MDokter input) =>
         {
             // update db with input
-
-            var dokter = await db.MDokter.FirstOrDefaultAsync(m => m.IdDokter == id);
-            if(dokter != null)
-            {
-                dokter.NmDokter = input.NmDokter;
-                dokter.KdDokter = input.KdDokter;
-                dokter.SpesialisasiDokter = input.SpesialisasiDokter;
-                dokter.AlamatDokter = input.AlamatDokter;
-                dokter.TelpDokter = input.TelpDokter;
-                dokter.AlamatPraktek = input.AlamatPraktek;
-                dokter.Telppraktek = input.Telppraktek;
-                dokter.ImgFotodokter = input.ImgFotodokter;
-                dokter.KodeTarif = input.KodeTarif;
-                dokter.KdAkun = input.KdAkun;
-                dokter.IdCoa = input.IdCoa;
-                dokter.By = input.By;
-                dokter.IsTtd = input.IsTtd;
-                dokter.Pin = input.Pin;
-                dokter.NoSip = input.NoSip;
-            }
-
+            if (input.IdDokter == 0) input.IdDokter = id;
+            var result = db.MDokter.Update(input);
             await db.SaveChangesAsync();
-            return Results.Ok(dokter);
+            return Results.Ok(result.Entity);
         })
         .WithName("UpdateDokter")
         .WithOpenApi()

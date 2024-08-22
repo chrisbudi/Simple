@@ -54,16 +54,10 @@ public class RuangEndpoints : IEndpoint
         group.MapPut("/{id}", async (SimpleClinicContext db, int id, MRuang input) =>
         {
             // update db with input
-
-            var ruang = await db.MRuang.FirstOrDefaultAsync(m => m.IdRuang == id);
-            if(ruang != null)
-            {
-                ruang.Nama = input.Nama;
-                ruang.KodeRuangan = input.KodeRuangan;
-            }
-
+            if (input.IdRuang == 0) input.IdRuang = id;
+            var result = db.MRuang.Update(input);
             await db.SaveChangesAsync();
-            return Results.Ok(ruang);
+            return Results.Ok(result.Entity);
         })
         .WithName("UpdateRuang")
         .WithOpenApi()

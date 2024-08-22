@@ -55,18 +55,10 @@ public class DiagnosaEndpoints : IEndpoint
         group.MapPut("/{id}", async (SimpleClinicContext db, int id, MDiagnosa input) =>
         {
             // update db with input
-
-            var diag = await db.MDiagnosa.FirstOrDefaultAsync(m => m.IdDiagnosa == id);
-            if(diag != null)
-            {
-                diag.KdDiagnosa = input.KdDiagnosa;
-                diag.NmDiagnosa = input.NmDiagnosa;
-                diag.Ispenyakit = input.Ispenyakit;
-                diag.KdDtd = input.KdDtd;
-            }
-
+            if (input.IdDiagnosa == 0) input.IdDiagnosa = id;
+            var result = db.MDiagnosa.Update(input);
             await db.SaveChangesAsync();
-            return Results.Ok(diag);
+            return Results.Ok(result.Entity);
         })
         .WithName("UpdateDiagnosa")
         .WithOpenApi()
