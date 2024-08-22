@@ -55,17 +55,10 @@ public class DTDEndpoints : IEndpoint
         group.MapPut("/{id}", async (SimpleClinicContext db, int id, MDtd input) =>
         {
             // update db with input
-
-            var dtd = await db.MDtd.FirstOrDefaultAsync(m => m.IdDtd == id);
-
-            if(dtd != null)
-            {
-                dtd.KdDtd = input.KdDtd;
-                dtd.NmDtd = input.NmDtd;
-            }
-
+            if (input.IdDtd == 0) input.IdDtd = id;
+            var result = db.MDtd.Update(input);
             await db.SaveChangesAsync();
-            return Results.Ok(dtd);
+            return Results.Ok(result.Entity);
         })
         .WithName("UpdateDTD")
         .WithOpenApi()
