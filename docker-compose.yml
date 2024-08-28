@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: src/SimpleCliniq.Api/Dockerfile
   simple.fe:
-     image: nielsenmai/simplecliniqfe:latest
+     image: nielsen88/simplecliniqfe:latest
      command: >
       sh -c "http-server dist -S -C certificate.pem -K key.pem"
      container_name: simplecliniq.fe
