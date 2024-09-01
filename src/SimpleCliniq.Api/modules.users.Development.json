@@ -1,18 +1,21 @@
 ﻿{
   "Users": {
     "Outbox": {
-      "IntervalInSeconds": 5,
+      "IntervalInSeconds": 100,
       "BatchSize": 20
     },
     "Inbox": {
-      "IntervalInSeconds": 5,
+      "IntervalInSeconds": 100,
       "BatchSize": 20
     },
     "KeyCloak": {
-      "AdminUrl": "http://simple.identity:8080/admin/realms/simple/",
-      "TokenUrl": "http://simple.identity:8080/realms/simple/protocol/openid-connect/token",
+      "AdminUrl": "http://localhost:18080/admin/realms/simple/",
+      "TokenUrl": "http://localhost:18080/realms/simple/protocol/openid-connect/token",
+
+      //"AdminUrl": "http://simple.identity:8080/admin/realms/simple/",
+      //"TokenUrl": "http://simple.identity:8080/realms/simple/protocol/openid-connect/token",
       "ConfidentialClientId": "simple-cliniq-confidential-client",
-      "ConfidentialClientSecret": "sjfs2OuZgwqx772RM8g30xuIlzR4Pmuo",
+      "ConfidentialClientSecret": "CPiTDNIS1KgbOMdHDDqGLZMrGn4dFmHA",
       "PublicClientId": "simple-cliniq-public-client"
     }
   }

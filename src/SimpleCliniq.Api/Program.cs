@@ -20,7 +20,7 @@ var services = builder.Services;
 
 builder.Host.UseSerilog((context, loggerConfig) => loggerConfig.ReadFrom.Configuration(context.Configuration));
 
-builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+//builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
 builder.Services.AddEndpointsApiExplorer();
@@ -38,17 +38,9 @@ string redisConnectionString = builder.Configuration.GetConnectionStringOrThrow(
 builder.Services.AddInfrastructure(
     DiagnosticsConfig.ServiceName,
     [
-        //AttendanceModule.ConfigureConsumers
     ],
     databaseConnectionString,
     redisConnectionString);
-
-Uri keyCloakHealthUrl = builder.Configuration.GetKeyCloakHealthUrl();
-
-builder.Services.AddHealthChecks()
-    .AddNpgSql(databaseConnectionString)
-    .AddRedis(redisConnectionString)
-    .AddKeyCloak(keyCloakHealthUrl);
 
 
 
@@ -58,6 +50,14 @@ builder.Services.AddUsersModule(builder.Configuration);
 builder.Services.AddCoresModule(builder.Configuration);
 
 services.AddEndpoints(Assembly.GetExecutingAssembly());
+
+Uri keyCloakHealthUrl = builder.Configuration.GetKeyCloakHealthUrl();
+
+builder.Services.AddHealthChecks()
+    .AddNpgSql(databaseConnectionString)
+    .AddRedis(redisConnectionString)
+    .AddKeyCloak(keyCloakHealthUrl);
+
 
 //// module for clinical
 
@@ -78,6 +78,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 
     app.ApplyMigrations();
+    //app.UseDeveloperExceptionPage();
 
     //app.ApplyMigrations<CoreDbContext>();
 }

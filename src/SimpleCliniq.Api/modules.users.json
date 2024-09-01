@@ -1,11 +1,11 @@
 ﻿{
   "Users": {
     "Outbox": {
-      "IntervalInSeconds": 5,
+      "IntervalInSeconds": 100,
       "BatchSize": 50
     },
     "Inbox": {
-      "IntervalInSeconds": 5,
+      "IntervalInSeconds": 100,
       "BatchSize": 50
     },
     "KeyCloak": {

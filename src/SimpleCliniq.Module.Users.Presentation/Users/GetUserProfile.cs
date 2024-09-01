@@ -24,6 +24,15 @@ internal sealed class GetUserProfile : IEndpoint
         .RequireAuthorization()
         //.RequireAuthorization(Permissions.GetUser)
         .WithTags(Tags.Users);
+
+
+        app.MapGet("users/test", () =>
+        {
+            return Results.Ok("Test");
+        })
+            .RequireAuthorization()
+            .WithTags(Tags.Users);
+
     }
 
 }

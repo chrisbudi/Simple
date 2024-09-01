@@ -6,13 +6,17 @@ services:
     build:
       context: .
       dockerfile: src/SimpleCliniq.Api/Dockerfile
+    networks:
+      - SimpleNetwork
 
   simple.identity:
     image: quay.io/keycloak/keycloak:latest
-    container_name: simple.identity
-    command: start-dev #--import-realm
+    container_name: Simple.identity
+    command: start-dev --import-realm
     environment:
       - KC_HEALTH_ENABLED=true
+      # - KC_LOG_LEVEL= info
+      # - KC_HOSTNAME_STRICT_BACKCHANNEL= true 
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
     volumes:
@@ -20,6 +24,9 @@ services:
       - ./.files:/opt/keycloak/data/import
     ports:
       - 18080:8080
+      - 9990:9990  # Add this line to expose the management console port
+    networks:
+      - SimpleNetwork
 
   simple.redis:
      image: redis:latest
@@ -27,6 +34,8 @@ services:
      restart: always
      ports:
        - 6379:6379
+     networks:
+      - SimpleNetwork
   
   simple.seq:
     image: datalust/seq:latest
@@ -36,6 +45,8 @@ services:
     ports:
       - 5341:5341
       - 8081:80
+    networks:
+      - SimpleNetwork
   
   simple.jaeger:
     image: jaegertracing/all-in-one:latest
@@ -44,6 +55,9 @@ services:
       - 4317:4317
       - 4318:4318
       - 16686:16686
+    networks:
+      - SimpleNetwork
 
-
- 
+networks:
+  SimpleNetwork:
+    driver: bridge  
