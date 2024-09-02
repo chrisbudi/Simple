@@ -42,7 +42,10 @@ public class JadwalDokter : IEndpoint
 
         group.MapGet("/{id}", async (int id, SimpleClinicContext db) =>
         {
-            return await db.MJadwalDokter.FirstOrDefaultAsync(m => m.IdJadwal == id && m.IsAktif == true);
+            return await db.MJadwalDokter
+                .Include(x => x.IdDokterNavigation)
+                .Include(x => x.IdRuanganNavigation)
+                .FirstOrDefaultAsync(m => m.IdJadwal == id && m.IsAktif == true);
         })
         .WithName("GetJadwalDokter")
         .WithOpenApi()
