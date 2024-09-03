@@ -35,16 +35,16 @@ services:
      networks:
       - SimpleNetwork
   
-  simple.seq:
-    image: datalust/seq:latest
-    container_name: Simple.Seq
-    environment:
-      - ACCEPT_EULA=Y
-    ports:
-      - 5341:5341
-      - 8888:80
-    networks:
-      - SimpleNetwork
+  # simple.seq:
+  #   image: datalust/seq:latest
+  #   container_name: Simple.Seq
+  #   environment:
+  #     - ACCEPT_EULA=Y
+  #   ports:
+  #     - 5341:5341
+  #     - 8888:80
+  #   networks:
+  #     - SimpleNetwork
   
   # simple.jaeger:
   #   image: jaegertracing/all-in-one:latest

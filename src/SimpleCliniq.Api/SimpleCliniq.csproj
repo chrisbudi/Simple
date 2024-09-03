@@ -15,6 +15,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\HealthController.cs" />
+    <Compile Remove="Controllers\SampleDBContext.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="8.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.4" />
     <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.8.0" />
@@ -38,6 +43,10 @@
   <ItemGroup>
     <ProjectReference Include="..\SimpleCliniq.Module.Core.Infrastructure\SimpleCliniq.Module.Core.Infrastructure.csproj" />
     <ProjectReference Include="..\SimpleCliniq.Module.Users.Infrastructure\SimpleCliniq.Module.Users.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 

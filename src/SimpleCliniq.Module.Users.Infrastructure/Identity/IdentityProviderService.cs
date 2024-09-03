@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
+using Simple.Common.Domain;
 using SimpleCliniq.Module.Users.Application.Abstractions.Identity;
 using System.Net;
-using Simple.Common.Domain;
 
 namespace SimpleCliniq.Module.Users.Infrastructure.Identity;
 

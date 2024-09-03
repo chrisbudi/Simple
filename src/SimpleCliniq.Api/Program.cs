@@ -45,18 +45,21 @@ builder.Services.AddInfrastructure(
 
 
 builder.Configuration.AddModuleConfiguration(["users", "cores",]);
+Uri keyCloakHealthUrl = builder.Configuration.GetKeyCloakHealthUrl();
+
+
+builder.Services.AddHealthChecks()
+    .AddNpgSql(databaseConnectionString)
+    .AddRedis(redisConnectionString)
+    .AddKeyCloak(keyCloakHealthUrl);
+
 
 builder.Services.AddUsersModule(builder.Configuration);
 builder.Services.AddCoresModule(builder.Configuration);
 
 services.AddEndpoints(Assembly.GetExecutingAssembly());
 
-Uri keyCloakHealthUrl = builder.Configuration.GetKeyCloakHealthUrl();
 
-builder.Services.AddHealthChecks()
-    .AddNpgSql(databaseConnectionString)
-    .AddRedis(redisConnectionString)
-    .AddKeyCloak(keyCloakHealthUrl);
 
 
 //// module for clinical
