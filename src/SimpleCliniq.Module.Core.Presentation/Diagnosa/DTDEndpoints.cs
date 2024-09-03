@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using SimpleCliniq.Module.Core.Domain.Models;
 using Simple.Common.Presentation.Endpoints;
+using SimpleCliniq.Module.Core.Domain.Models;
 //using Microsoft.EntityFrameworkCore;
 //using SimpleCliniq.Common.Presentation.Endpoints;
 //using SimpleCliniq.Module.Core.Domain.Models;
@@ -17,13 +17,13 @@ public class DTDEndpoints : IEndpoint
 
         var group = builder.MapGroup("/api/core/DTD").WithTags(nameof(MDtd));
 
-        //group.MapGet("/", async (SimpleCliniqCoreContext db) =>
-        //{
+        group.MapGet("/", async () =>
+        {
 
-        //    return await db.MDtd.Skip(0).Take(10).ToListAsync();
-        //})
-        //.WithName("GetAllDTD")
-        //.Produces<MDtd[]>(StatusCodes.Status200OK);
+            return Results.Ok("test");
+        })
+        .WithName("GetAllDTD")
+        .Produces<MDtd[]>(StatusCodes.Status200OK);
 
         //group.MapGet("/{id}", async (int id, SimpleCliniqCoreContext db) =>
         //{

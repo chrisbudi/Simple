@@ -9,8 +9,8 @@
       "BatchSize": 20
     },
     "KeyCloak": {
-      "AdminUrl": "http://localhost:18080/admin/realms/simple/",
-      "TokenUrl": "http://localhost:18080/realms/simple/protocol/openid-connect/token",
+      "AdminUrl": "http://simple.identity:8080/admin/realms/simple/",
+      "TokenUrl": "http://simple.identity:8080/realms/simple/protocol/openid-connect/token",
 
       //"AdminUrl": "http://simple.identity:8080/admin/realms/simple/",
       //"TokenUrl": "http://simple.identity:8080/realms/simple/protocol/openid-connect/token",
