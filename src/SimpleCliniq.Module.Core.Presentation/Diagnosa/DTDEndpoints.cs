@@ -17,9 +17,8 @@ public class DTDEndpoints : IEndpoint
 
         var group = builder.MapGroup("/api/core/DTD").WithTags(nameof(MDtd));
 
-        group.MapGet("/", async () =>
+        group.MapGet("/test", async () =>
         {
-
             return Results.Ok("test");
         })
         .WithName("GetAllDTD")
