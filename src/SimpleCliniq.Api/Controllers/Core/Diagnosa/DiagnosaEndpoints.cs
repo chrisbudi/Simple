@@ -21,7 +21,7 @@ public class DiagnosaEndpoints : IEndpoint
             {
                 var filtered = db.MDiagnosa
                 .Include(d => d.MDtdNavigation)
-                .Where(d => EF.Functions.ILike(d.NmDiagnosa, "%" + par.search + "%") && d.IsAktif == true)
+                .Where(d => EF.Functions.ILike(d.NmDiagnosa, "%" + par.search + "%"))
                 .OrderByDynamic(par.order ?? "IdDiagnosa", par.orderAsc);
 
                 var list = await filtered

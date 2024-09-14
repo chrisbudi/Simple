@@ -18,7 +18,7 @@ public class JadwalDokter : IEndpoint
             {
                 var filtered = db.MJadwalDokter
                 .Include(x => x.IdDokterNavigation)
-                .Where(d => EF.Functions.ILike(d.NamaKlinik, "%" + par.search + "%") && d.IsAktif == true)
+                .Where(d => EF.Functions.ILike(d.NamaKlinik, "%" + par.search + "%"))
                 .OrderByDynamic(par.order ?? "IdJadwal", par.orderAsc);
 
                 var list = await filtered

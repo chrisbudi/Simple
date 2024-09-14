@@ -16,7 +16,7 @@ public class LaboratoriumRekananEndPoint : IEndpoint
             return await db.MLaboratoriumRekanan
                 .Include(r => r.IdPemeriksaanLabNavigation)
                 .Include(r => r.Rekanan)
-                .FirstOrDefaultAsync(m => m.IdLabrekanan == id && m.IsAktif == true);
+                .FirstOrDefaultAsync(m => m.IdLabrekanan == id);
         })
         .WithName("GetLaboratoriumRekanan")
         .WithOpenApi()

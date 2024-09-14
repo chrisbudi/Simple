@@ -17,7 +17,7 @@ public class RadiologiHargaEndPoint : IEndpoint
                 .Include(r => r.IdHargakamarNavigation)
                 .Include(r => r.IdPemeriksaanRadNavigation)
                 .Include(r => r.Rekanan)
-                .FirstOrDefaultAsync(m => m.IdRadHarga == id && m.IsAktif == true);
+                .FirstOrDefaultAsync(m => m.IdRadHarga == id);
         })
         .WithName("GetRadiologiHarga")
         .WithOpenApi()

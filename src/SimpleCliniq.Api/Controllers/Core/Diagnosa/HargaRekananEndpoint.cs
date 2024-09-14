@@ -16,7 +16,7 @@ public class HargaRekananEndPoint : IEndpoint
             return await db.MHargaRekanan
                 .Include(r => r.Barang)
                 .Include(r => r.Rekanan)
-                .FirstOrDefaultAsync(m => m.IdHargaRekanan == id && m.IsAktif == true);
+                .FirstOrDefaultAsync(m => m.IdHargaRekanan == id);
         })
         .WithName("GetHargaRekanan")
         .WithOpenApi()

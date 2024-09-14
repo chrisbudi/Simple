@@ -20,7 +20,7 @@ public class RuangEndpoints : IEndpoint
            try
             {
                 var filtered = db.MRuang
-                .Where(d => EF.Functions.ILike(d.Nama, "%" + par.search + "%") && d.IsAktif == true)
+                .Where(d => EF.Functions.ILike(d.Nama, "%" + par.search + "%"))
                 .OrderByDynamic(par.order ?? "IdRuang", par.orderAsc);
 
                 var list = await filtered

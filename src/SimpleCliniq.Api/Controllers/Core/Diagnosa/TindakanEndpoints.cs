@@ -19,7 +19,7 @@ public class TindakanEndpoints : IEndpoint
             try
             {
                 var filtered = db.MTindakan
-                .Where(d => EF.Functions.ILike(d.NmTindakan, "%" + par.search + "%") && d.IsAktif == true)
+                .Where(d => EF.Functions.ILike(d.NmTindakan, "%" + par.search + "%"))
                 .OrderByDynamic(par.order ?? "IdTindakan", par.orderAsc);
 
                 var list = await filtered

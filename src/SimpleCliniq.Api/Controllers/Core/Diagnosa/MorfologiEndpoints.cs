@@ -45,7 +45,7 @@ public class MorfologiEndpoints : IEndpoint
 
         group.MapGet("/{id}", async (int id, SimpleClinicContext db) =>
         {
-            return await db.MMorfologi.FirstOrDefaultAsync(m => m.IdMorfologi == id && m.IsAktif == true);
+            return await db.MMorfologi.FirstOrDefaultAsync(m => m.IdMorfologi == id);
         })
         .WithName("GetMorfologiById")
         .WithOpenApi()

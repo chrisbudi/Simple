@@ -17,7 +17,7 @@ public class LaboratoriumHargaEndPoint : IEndpoint
                 .Include(r => r.IdHargakamarNavigation)
                 .Include(r => r.IdPemeriksaanLabNavigation)
                 .Include(r => r.Rekanan)
-                .FirstOrDefaultAsync(m => m.IdLabharga == id && m.IsAktif == true);
+                .FirstOrDefaultAsync(m => m.IdLabharga == id);
         })
         .WithName("GetLaboratoriumHarga")
         .WithOpenApi()

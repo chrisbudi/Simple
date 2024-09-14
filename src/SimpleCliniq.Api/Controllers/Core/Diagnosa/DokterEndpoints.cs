@@ -20,7 +20,7 @@ public class DokterEndpoints : IEndpoint
            try
             {
                 var filtered = db.MDokter
-                .Where(d => EF.Functions.ILike(d.NmDokter, "%" + par.search + "%") && d.IsAktif == true)
+                .Where(d => EF.Functions.ILike(d.NmDokter, "%" + par.search + "%"))
                 .OrderByDynamic(par.order ?? "IdDokter", par.orderAsc);
 
                 var list = await filtered

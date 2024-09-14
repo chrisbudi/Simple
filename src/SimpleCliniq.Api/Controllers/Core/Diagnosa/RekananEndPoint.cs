@@ -17,7 +17,7 @@ public class RekananEndPoint : IEndpoint
            try
             {
                 var filtered = db.MRekanan
-                .Where(d => EF.Functions.ILike(d.NmRekanan, "%" + par.search + "%") && d.IsAktif == true)
+                .Where(d => EF.Functions.ILike(d.NmRekanan, "%" + par.search + "%"))
                 .OrderByDynamic(par.order ?? "IdRekanan", par.orderAsc);
 
                 var list = await filtered

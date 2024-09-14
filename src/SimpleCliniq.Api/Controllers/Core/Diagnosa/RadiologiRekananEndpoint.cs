@@ -16,7 +16,7 @@ public class RadiologiRekananEndPoint : IEndpoint
             return await db.MRadiologiRekanan
                 .Include(r => r.IdPemeriksaanRadNavigation)
                 .Include(r => r.Rekanan)
-                .FirstOrDefaultAsync(m => m.IdRadrekanan == id && m.IsAktif == true);
+                .FirstOrDefaultAsync(m => m.IdRadrekanan == id);
         })
         .WithName("GetRadiologiRekanan")
         .WithOpenApi()
