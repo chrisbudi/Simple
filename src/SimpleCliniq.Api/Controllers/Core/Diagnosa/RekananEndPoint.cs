@@ -43,12 +43,6 @@ public class RekananEndPoint : IEndpoint
         group.MapGet("/{id}", async (int id, SimpleClinicContext db) =>
         {
             return await db.MRekanan
-                .Include(r => r.MHargaRekanan)
-                .Include(r => r.MLaboratoriumHarga)
-                .Include(r => r.MLaboratoriumRekanan)
-                .Include(r => r.MPasien)
-                .Include(r => r.MRadiologiHarga)
-                .Include(r => r.MRadiologiRekanan)
                 .FirstOrDefaultAsync(m => m.IdRekanan == id && m.IsAktif == true);
         })
         .WithName("GetRekanan")
