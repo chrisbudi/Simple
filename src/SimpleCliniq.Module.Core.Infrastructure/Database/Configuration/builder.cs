@@ -685,6 +685,7 @@ internal static class builder
                 .IsRequired()
                 .HasMaxLength(200)
                 .HasColumnName("NmDTD");
+            entity.Property(e => e.IsAktif).HasColumnName("IsAktif");
         });
 
         modelBuilder.Entity<MFarmakoterapi>(entity =>
@@ -2475,15 +2476,15 @@ internal static class builder
 
             entity.ToTable("M_Tindakan");
 
-            entity.Property(e => e.IdTindakan).HasPrecision(18);
+            entity.Property(e => e.IdTindakan).HasColumnName("IdTindakan").HasPrecision(18);
             entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.KdTindakan)
+            entity.Property(e => e.KdTindakan).HasColumnName("KdTindakan")
                 .IsRequired()
                 .HasMaxLength(8);
-            entity.Property(e => e.NmPendek)
+            entity.Property(e => e.NmPendek).HasColumnName("NmPendek")
                 .IsRequired()
                 .HasMaxLength(100);
-            entity.Property(e => e.NmTindakan)
+            entity.Property(e => e.NmTindakan).HasColumnName("NmTindakan")
                 .IsRequired()
                 .HasMaxLength(200);
         });

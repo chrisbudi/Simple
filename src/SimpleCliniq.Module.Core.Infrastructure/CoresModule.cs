@@ -4,9 +4,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Simple.Common.Infrastructure.Outbox;
 using Simple.Common.Presentation.Endpoints;
+using SimpleCliniq.Module.Core.Domain.Interfaces;
 using SimpleCliniq.Module.Core.Infrastructure.Database;
 using SimpleCliniq.Module.Core.Infrastructure.Inbox;
 using SimpleCliniq.Module.Core.Infrastructure.Outbox;
+using SimpleCliniq.Module.Core.Infrastructure.Repositories;
 
 namespace SimpleCliniq.Module.Core.Infrastructure;
 
@@ -22,7 +24,7 @@ public static class CoresModule
 
         services.AddInfrastructure(configuration);
 
-        services.AddEndpoints(Presentation.AssemblyReference.Assembly);
+        //services.AddEndpoints(Presentation.AssemblyReference.Assembly);
 
         return services;
     }
@@ -49,9 +51,22 @@ public static class CoresModule
 
 
         // add scope dbcontext
-        //services.AddScoped<IEventRepository, EventRepository>();
-        //services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
-        //services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IDiagnosaMatrixRepository, DiagnosaMatrixRepository>();
+        services.AddScoped<IDiagnosaRepository, DiagnosaRepository>();
+        services.AddScoped<IDokterRepository, DokterRepository>();
+        services.AddScoped<IDtdRepository, DtdRepository>();
+        services.AddScoped<IHargaRekananRepository, HargaRekananRepository>();
+        services.AddScoped<IJadwalDokterRepository, JadwalDokterRepository>();
+        services.AddScoped<ILaboratoriumHargaRepository, LaboratoriumHargaRepository>();
+        services.AddScoped<ILaboratoriumRekananRepository, LaboratoriumRekananRepository>();
+        services.AddScoped<IMorfologiRepository, MorfologiRepository>();
+        services.AddScoped<IPasienRepository, PasienRepository>();
+        services.AddScoped<IRadiologiHargaRepository, RadiologiHargaRepository>();
+        services.AddScoped<IRadiologiRekananRepository, RadiologiRekananRepository>();
+        services.AddScoped<IRekananRepository, RekananRepository>();
+        services.AddScoped<IRuangRepository, RuangRepository>();
+        services.AddScoped<ISmfRepository, SmfRepository>();
+        services.AddScoped<ITindakanRepository, TindakanRepository>();
 
         services.Configure<OutboxOptions>(configuration.GetSection("Cores:Outbox"));
 

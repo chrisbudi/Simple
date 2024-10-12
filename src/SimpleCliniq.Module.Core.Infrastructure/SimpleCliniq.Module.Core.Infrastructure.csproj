@@ -7,7 +7,6 @@
     <ProjectReference Include="..\SimpleCliniq.Common.Infrastructure\Simple.Common.Infrastructure.csproj" />
     <ProjectReference Include="..\SimpleCliniq.Common.Presentation\Simple.Common.Presentation.csproj" />
     <ProjectReference Include="..\SimpleCliniq.Module.Core.Domain\SimpleCliniq.Module.Core.Domain.csproj" />
-    <ProjectReference Include="..\SimpleCliniq.Module.Core.Presentation\SimpleCliniq.Module.Core.Presentation.csproj" />
   </ItemGroup>
 
   <ItemGroup>
