@@ -13,7 +13,7 @@ public partial class MUser
 
     public string KodeRuangan { get; set; }
 
-    public decimal? IdRuang { get; set; }
+    public int? IdRuang { get; set; }
 
     public string Namalengkap { get; set; }
 
@@ -23,7 +23,7 @@ public partial class MUser
 
     public string KdDokter { get; set; }
 
-    public decimal? IdDokter { get; set; }
+    public int? IdDokter { get; set; }
 
     public bool? IsUser { get; set; }
 

@@ -7,7 +7,7 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MTindakan
 {
-    public decimal IdTindakan { get; set; }
+    public int IdTindakan { get; set; }
 
     public string KdTindakan { get; set; }
 

@@ -81,7 +81,7 @@ public partial class MPasien
 
     public string Jenispasien { get; set; }
 
-    public decimal? RekananId { get; set; }
+    public int? RekananId { get; set; }
 
     public string By { get; set; }
 

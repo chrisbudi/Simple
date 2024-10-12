@@ -7,11 +7,11 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MJadwalDokter
 {
-    public decimal IdJadwal { get; set; }
+    public int IdJadwal { get; set; }
 
     public string KdDokter { get; set; }
 
-    public decimal? IdDokter { get; set; }
+    public int? IdDokter { get; set; }
 
     public string Hari { get; set; }
 
@@ -21,7 +21,7 @@ public partial class MJadwalDokter
 
     public string KodeRuangan { get; set; }
 
-    public decimal? IdRuangan { get; set; }
+    public int? IdRuangan { get; set; }
 
     public string NamaKlinik { get; set; }
 

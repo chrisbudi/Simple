@@ -15,7 +15,7 @@ public partial class MHargaRekanan
 
     public Guid? BarangId { get; set; }
 
-    public decimal? RekananId { get; set; }
+    public int? RekananId { get; set; }
 
     public decimal? Harga { get; set; }
 

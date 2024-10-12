@@ -13,7 +13,7 @@ public partial class MLaboratoriumHarga
 
     public decimal? IdPemeriksaanLab { get; set; }
 
-    public decimal RekananId { get; set; }
+    public int RekananId { get; set; }
 
     public string Kelas { get; set; }
 

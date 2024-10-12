@@ -13,7 +13,7 @@ public partial class MMap
 
     public string KodeRuangan { get; set; }
 
-    public decimal? IdRuang { get; set; }
+    public int? IdRuang { get; set; }
 
     public string Note { get; set; }
 
