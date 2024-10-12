@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Simple.Common.Application.Messaging;
 using Simple.Common.Domain;
 
 namespace Simple.Common.Application.Messaging;

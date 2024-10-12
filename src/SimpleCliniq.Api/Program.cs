@@ -8,6 +8,7 @@ using Simple.Common.Presentation.Endpoints;
 using SimpleCliniq.Extensions;
 using SimpleCliniq.Middleware;
 using SimpleCliniq.Module.Core.Infrastructure;
+using SimpleCliniq.Module.Core.Presentation;
 using SimpleCliniq.Module.Users.Infrastructure;
 using SimpleCliniq.OpenTelemetry;
 using System.Reflection;
@@ -27,7 +28,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerDocumentation();
 
 Assembly[] moduleApplicationAssemblies = [
-    SimpleCliniq.Module.Users.Application.AssemblyReference.Assembly
+    SimpleCliniq.Module.Users.Application.AssemblyReference.Assembly,
+    SimpleCliniq.Module.Core.Application.AssemblyReference.Assembly,
     ];
 
 builder.Services.AddApplication(moduleApplicationAssemblies);
@@ -57,7 +59,12 @@ builder.Services.AddHealthChecks()
 builder.Services.AddUsersModule(builder.Configuration);
 builder.Services.AddCoresModule(builder.Configuration);
 
+builder.Services.AddCorePresentationModule();
+
 services.AddEndpoints(Assembly.GetExecutingAssembly());
+
+
+
 
 
 

@@ -66,6 +66,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MedicalRecord", "MedicalRec
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Prescription", "Prescription", "{DDD0D05F-2BBA-4A17-89F6-242694B6FE78}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCliniq.Module.Core.Application", "src\Modules\Cores\SimpleCliniq.Modue.Core.Application\SimpleCliniq.Module.Core.Application.csproj", "{BF837CBC-BC1A-4BA6-B044-B0E9A8DC5983}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -128,6 +130,10 @@ Global
 		{288ECA6A-0EF6-4A52-98DC-238E2A0944AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{288ECA6A-0EF6-4A52-98DC-238E2A0944AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{288ECA6A-0EF6-4A52-98DC-238E2A0944AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF837CBC-BC1A-4BA6-B044-B0E9A8DC5983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF837CBC-BC1A-4BA6-B044-B0E9A8DC5983}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF837CBC-BC1A-4BA6-B044-B0E9A8DC5983}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF837CBC-BC1A-4BA6-B044-B0E9A8DC5983}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -160,6 +166,7 @@ Global
 		{2D74D70A-079B-470C-B237-0811DF08645C} = {BEE8B1CA-DBD8-4D3A-ABB5-D0A92509DB2D}
 		{68255381-7A3C-4860-A6EC-EA840848651F} = {47742DEF-96C8-4653-91AF-B826430A4C42}
 		{DDD0D05F-2BBA-4A17-89F6-242694B6FE78} = {BEE8B1CA-DBD8-4D3A-ABB5-D0A92509DB2D}
+		{BF837CBC-BC1A-4BA6-B044-B0E9A8DC5983} = {38867960-E0F5-45D2-AEA0-E83C169900E5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AAA566CB-CEB0-45AB-A9F0-5E3971830FF7}
