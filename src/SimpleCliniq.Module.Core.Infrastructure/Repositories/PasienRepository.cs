@@ -24,7 +24,7 @@ public class PasienRepository(CoreDbContext db) : IPasienRepository
         await db.SaveChangesAsync();
     }
 
-    public async Task<MPasien> Get(Guid id)
+    public async Task<MPasien> Get(Ulid id)
     {
         return await db.MPasien.FirstAsync(m => m.IdPasien == id);
     }
