@@ -1,4 +1,5 @@
-﻿namespace SimpleCliniq.Common.Domain;
+﻿using Simple.Common.Domain;
+namespace Simple.Common.Domain;
 
 public abstract class DomainEvent : IDomainEvent
 {

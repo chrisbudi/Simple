@@ -9,25 +9,29 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Directory.Build.props", "."]
-COPY ["src/SimpleCliniq.Api/SimpleCliniqApi.csproj", "src/SimpleCliniq.Api/"]
-COPY ["src/SimpleCliniq.Common.Application/SimpleCliniq.Common.Application.csproj", "src/SimpleCliniq.Common.Application/"]
-COPY ["src/SimpleCliniq.Common.Domain/SimpleCliniq.Common.Domain.csproj", "src/SimpleCliniq.Common.Domain/"]
-COPY ["src/SimpleCliniq.Common.Infrastructure/SimpleCliniq.Common.Infrastructure.csproj", "src/SimpleCliniq.Common.Infrastructure/"]
-COPY ["src/SimpleCliniq.Common.Presentation/SimpleCliniq.Common.Presentation.csproj", "src/SimpleCliniq.Common.Presentation/"]
-COPY ["src/SimpleCliniq.Module.Core.Domain/SimpleCliniq.Module.Core.Domain.csproj", "src/SimpleCliniq.Module.Core.Domain/"]
+COPY ["src/SimpleCliniq.Api/SimpleCliniq.csproj", "src/SimpleCliniq.Api/"]
 COPY ["src/SimpleCliniq.Module.Core.Infrastructure/SimpleCliniq.Module.Core.Infrastructure.csproj", "src/SimpleCliniq.Module.Core.Infrastructure/"]
+COPY ["src/SimpleCliniq.Common.Application/Simple.Common.Application.csproj", "src/SimpleCliniq.Common.Application/"]
+COPY ["src/SimpleCliniq.Common.Domain/Simple.Common.Domain.csproj", "src/SimpleCliniq.Common.Domain/"]
+COPY ["src/SimpleCliniq.Common.Infrastructure/Simple.Common.Infrastructure.csproj", "src/SimpleCliniq.Common.Infrastructure/"]
+COPY ["src/SimpleCliniq.Common.Presentation/Simple.Common.Presentation.csproj", "src/SimpleCliniq.Common.Presentation/"]
+COPY ["src/SimpleCliniq.Module.Core.Domain/SimpleCliniq.Module.Core.Domain.csproj", "src/SimpleCliniq.Module.Core.Domain/"]
 COPY ["src/SimpleCliniq.Module.Core.Presentation/SimpleCliniq.Module.Core.Presentation.csproj", "src/SimpleCliniq.Module.Core.Presentation/"]
-RUN dotnet restore "./src/SimpleCliniq.Api/SimpleCliniqApi.csproj"
+COPY ["src/SimpleCliniq.Module.Users.Infrastructure/SimpleCliniq.Module.Users.Infrastructure.csproj", "src/SimpleCliniq.Module.Users.Infrastructure/"]
+COPY ["src/SimpleCliniq.Module.Users.Application/SimpleCliniq.Module.Users.Application.csproj", "src/SimpleCliniq.Module.Users.Application/"]
+COPY ["src/SimpleCliniq.Module.Users.Domain/SimpleCliniq.Module.Users.Domain.csproj", "src/SimpleCliniq.Module.Users.Domain/"]
+COPY ["src/SimpleCliniq.Module.Users.IntegrationEvents/SimpleCliniq.Module.Users.IntegrationEvents.csproj", "src/SimpleCliniq.Module.Users.IntegrationEvents/"]
+COPY ["src/SimpleCliniq.Module.Users.Presentation/SimpleCliniq.Module.Users.Presentation.csproj", "src/SimpleCliniq.Module.Users.Presentation/"]
+RUN dotnet restore "./src/SimpleCliniq.Api/SimpleCliniq.csproj"
 COPY . .
 WORKDIR "/src/src/SimpleCliniq.Api"
-RUN dotnet build "./SimpleCliniqApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "./SimpleCliniq.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./SimpleCliniqApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./SimpleCliniq.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "SimpleCliniqApi.dll"]
+ENTRYPOINT ["dotnet", "SimpleCliniq.dll"]

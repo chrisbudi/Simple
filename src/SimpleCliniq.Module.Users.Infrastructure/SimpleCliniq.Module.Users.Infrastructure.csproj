@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleCliniq.Common.Infrastructure\Simple.Common.Infrastructure.csproj" />
+    <ProjectReference Include="..\SimpleCliniq.Common.Presentation\Simple.Common.Presentation.csproj" />
+    <ProjectReference Include="..\SimpleCliniq.Module.Users.Application\SimpleCliniq.Module.Users.Application.csproj" />
+    <ProjectReference Include="..\SimpleCliniq.Module.Users.Presentation\SimpleCliniq.Module.Users.Presentation.csproj" />
+  </ItemGroup>
+
+</Project>

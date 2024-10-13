@@ -1,0 +1,12 @@
+﻿{
+  "Cores": {
+    "Outbox": {
+      "IntervalInSeconds": 100,
+      "BatchSize": 50
+    },
+    "Inbox": {
+      "IntervalInSeconds": 100,
+      "BatchSize": 50
+    }
+  }
+}

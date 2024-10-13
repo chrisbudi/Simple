@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <Compile Remove="Users\LoginUser\**" />
+    <EmbeddedResource Remove="Users\LoginUser\**" />
+    <None Remove="Users\LoginUser\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleCliniq.Common.Application\Simple.Common.Application.csproj" />
+    <ProjectReference Include="..\SimpleCliniq.Module.Users.Domain\SimpleCliniq.Module.Users.Domain.csproj" />
+    <ProjectReference Include="..\SimpleCliniq.Module.Users.IntegrationEvents\SimpleCliniq.Module.Users.IntegrationEvents.csproj" />
+  </ItemGroup>
+
+</Project>

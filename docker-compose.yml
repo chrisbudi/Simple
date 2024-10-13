@@ -1,16 +1,61 @@
-version: '3.4'
+version: '3.7'
 
 services:
-  simplecliniqapi:
-    image: ${DOCKER_REGISTRY-}simplecliniqapi
+  simple.api:
+    image: ${DOCKER_REGISTRY-}simple.api
     build:
       context: .
       dockerfile: src/SimpleCliniq.Api/Dockerfile
-  simple.fe:
-     image: nielsen88/simplecliniqfe:latest
-     command: >
-      sh -c "http-server dist -S -C certificate.pem -K key.pem"
-     container_name: simplecliniq.fe
+    networks:
+      - SimpleNetwork
+
+  simple.identity:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: Simple.identity
+    command: start-dev --import-realm
+    environment:
+      - KC_HEALTH_ENABLED=true
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    volumes:
+      - ./.containers/identity:/opt/keycloak/data
+      - ./.files:/opt/keycloak/data/import
+    ports:
+      - 18080:8080
+      - 9990:9990 
+    networks:
+      - SimpleNetwork
+
+  simple.redis:
+     image: redis:latest
+     container_name: Simple.redis
      restart: always
      ports:
-       - 8090:8080
+       - 6379:6379
+     networks:
+      - SimpleNetwork
+  
+  # simple.seq:
+  #   image: datalust/seq:latest
+  #   container_name: Simple.Seq
+  #   environment:
+  #     - ACCEPT_EULA=Y
+  #   ports:
+  #     - 5341:5341
+  #     - 8888:80
+  #   networks:
+  #     - SimpleNetwork
+  
+  # simple.jaeger:
+  #   image: jaegertracing/all-in-one:latest
+  #   container_name: simple.Jaeger
+  #   ports:
+  #     - 4317:4317
+  #     - 4318:4318
+  #     - 16686:16686
+  #   networks:
+  #     - SimpleNetwork
+
+networks:
+  SimpleNetwork:
+    driver: bridge  

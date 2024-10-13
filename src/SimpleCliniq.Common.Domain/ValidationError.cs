@@ -1,4 +1,6 @@
-﻿namespace SimpleCliniq.Common.Domain;
+﻿using Simple.Common.Domain;
+
+namespace Simple.Common.Domain;
 
 public sealed record ValidationError : Error
 {

@@ -13,7 +13,7 @@ public partial class MKamarinapHarga
 
     public long? IdKamarInap { get; set; }
 
-    public decimal? RekananId { get; set; }
+    public int? RekananId { get; set; }
 
     public decimal? Harga { get; set; }
 

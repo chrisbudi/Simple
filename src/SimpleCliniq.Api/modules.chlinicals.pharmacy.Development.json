@@ -1,0 +1,12 @@
+﻿{
+  "Chlinical.pharmacy": {
+    "Outbox": {
+      "IntervalInSeconds": 10,
+      "BatchSize": 20
+    },
+    "Inbox": {
+      "IntervalInSeconds": 10,
+      "BatchSize": 20
+    }
+  }
+}

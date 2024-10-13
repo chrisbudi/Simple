@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Reflection;
+using Simple.Common.Presentation.Endpoints;
 
-namespace SimpleCliniq.Common.Presentation.Endpoints;
-
+namespace Simple.Common.Presentation.Endpoints;
 
 public static class EndpointExtensions
 {
@@ -33,7 +33,7 @@ public static class EndpointExtensions
 
         foreach (IEndpoint endpoint in endpoints)
         {
-            endpoint.MapEndPoint(builder);
+            endpoint.MapEndpoint(builder);
         }
 
         return app;
