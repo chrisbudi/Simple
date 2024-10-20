@@ -7,7 +7,7 @@ namespace SimpleCliniq.Module.Core.Domain.Models;
 
 public partial class MHargaRekanan
 {
-    public long IdHargaRekanan { get; set; }
+    public Ulid IdHargaRekanan { get; set; }
 
     public decimal OldIdHargaRekanan { get; set; }
 
