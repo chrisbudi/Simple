@@ -78,7 +78,7 @@ public partial class MPasien
 
     public string Jenispasien { get; set; }
 
-    public Ulid? RekananId { get; set; }
+    public long? RekananId { get; set; }
 
     public string By { get; set; }
 
