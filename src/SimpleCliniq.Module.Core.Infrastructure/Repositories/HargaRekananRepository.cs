@@ -15,7 +15,7 @@ public class HargaRekananRepository(CoreDbContext db) : IHargaRekananRepository
         return model;
     }
 
-    public async Task Delete(Guid id)
+    public async Task Delete(Ulid id)
     {
         var HargaRekanan = await Get(id);
         HargaRekanan.IsAktif = false;
@@ -23,7 +23,7 @@ public class HargaRekananRepository(CoreDbContext db) : IHargaRekananRepository
         await db.SaveChangesAsync();
     }
 
-    public async Task<MHargaRekanan> Get(Guid id)
+    public async Task<MHargaRekanan> Get(Ulid id)
     {
         return await db.MHargaRekanan.FirstAsync(m => m.IdHargaRekanan == id);
     }

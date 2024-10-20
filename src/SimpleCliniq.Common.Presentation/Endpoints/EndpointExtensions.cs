@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Reflection;
-using Simple.Common.Presentation.Endpoints;
 
 namespace Simple.Common.Presentation.Endpoints;
 

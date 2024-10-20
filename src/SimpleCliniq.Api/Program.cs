@@ -82,10 +82,10 @@ services.AddEndpoints(Assembly.GetExecutingAssembly());
 //builder.Services.AddAppointmentModule(builder.Configuration);
 //builder.Services.AddAppointmentModule(builder.Configuration);
 
-builder.Services.AddControllers().AddNewtonsoftJson(options =>
-{
-    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-});
+// builder.Services.AddControllers().AddNewtonsoftJson(options =>
+// {
+//     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+// });
 
 
 services.AddEndpoints(Assembly.GetExecutingAssembly()).ConfigureHttpJsonOptions(option =>

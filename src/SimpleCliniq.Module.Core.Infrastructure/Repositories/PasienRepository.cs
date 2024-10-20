@@ -10,13 +10,13 @@ public class PasienRepository(CoreDbContext db) : IPasienRepository
 {
     public async Task<MPasien> Create(MPasien model)
     {
-        model.IdPasien = Guid.NewGuid();
+        model.IdPasien = Ulid.NewUlid();
         db.MPasien.Add(model);
         await db.SaveChangesAsync();
         return model;
     }
 
-    public async Task Delete(Guid id)
+    public async Task Delete(Ulid id)
     {
         var Pasien = await Get(id);
         Pasien.IsAktif = false;

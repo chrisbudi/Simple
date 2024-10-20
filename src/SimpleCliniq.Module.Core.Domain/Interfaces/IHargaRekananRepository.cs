@@ -4,8 +4,8 @@ namespace SimpleCliniq.Module.Core.Domain.Interfaces;
 
 public interface IHargaRekananRepository
 {
-    public Task<MHargaRekanan> Get(Guid id);
+    public Task<MHargaRekanan> Get(Ulid id);
     public Task<MHargaRekanan> Create(MHargaRekanan model);
     public Task<MHargaRekanan> Update(MHargaRekanan model);    
-    public Task Delete(Guid id);    
+    public Task Delete(Ulid id);    
 }
