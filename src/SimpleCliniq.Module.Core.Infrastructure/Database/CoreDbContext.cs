@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SimpleCliniq.Module.Core.Domain.Models;
+using SimpleCliniq.Module.Core.Infrastructure.Configuration;
 using SimpleCliniq.Module.Core.Infrastructure.Database.Configuration;
 
 namespace SimpleCliniq.Module.Core.Infrastructure.Database;
@@ -189,6 +190,13 @@ public partial class CoreDbContext : DbContext
 
         builder.ModelConfiguration(modelBuilder);
         base.OnModelCreating(modelBuilder);
+    }
+
+
+    protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+    {
+        configurationBuilder.Properties<Ulid>()
+            .HaveConversion<UlidToStringConverter>();
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

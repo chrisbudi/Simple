@@ -2,7 +2,6 @@ namespace SimpleCliniq.Module.Core.Infrastructure.Database.Configuration;
 
 using Microsoft.EntityFrameworkCore;
 using SimpleCliniq.Module.Core.Domain.Models;
-using SimpleCliniq.Module.Core.Infrastructure.Configuration;
 
 /// <summary>
 /// Defines the <see cref="builder" />
@@ -13,6 +12,7 @@ internal static class builder
     /// The ModelConfiguration
     /// </summary>
     /// <param name="modelBuilder">The modelBuilder<see cref="ModelBuilder"/></param>
+
     public static void ModelConfiguration(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<MAntrianCounter>(entity =>
@@ -559,9 +559,9 @@ internal static class builder
             entity.Property(e => e.IdDtd)
                 .HasColumnName("IdDTD");
 
-             entity.HasOne(d => d.MDtdNavigation).WithMany()
-                .HasForeignKey(d => d.IdDtd)
-                .HasConstraintName("FK_M_DIAGNOSA_M_DTD");
+            entity.HasOne(d => d.MDtdNavigation).WithMany()
+               .HasForeignKey(d => d.IdDtd)
+               .HasConstraintName("FK_M_DIAGNOSA_M_DTD");
         });
 
         modelBuilder.Entity<MDiagnosaMatrix>(entity =>
