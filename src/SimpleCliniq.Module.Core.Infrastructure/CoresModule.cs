@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Simple.Common.Infrastructure.Outbox;
-using Simple.Common.Presentation.Endpoints;
 using SimpleCliniq.Module.Core.Domain.Interfaces;
 using SimpleCliniq.Module.Core.Infrastructure.Database;
 using SimpleCliniq.Module.Core.Infrastructure.Inbox;
@@ -44,7 +43,7 @@ public static class CoresModule
                     configuration.GetConnectionString("Database"),
                     npgsqlOptions => npgsqlOptions
                         .MigrationsHistoryTable(HistoryRepository.DefaultTableName, Schemas.Cores))
-                .UseSnakeCaseNamingConvention()
+                //.UseSnakeCaseNamingConvention()
                 .AddInterceptors(sp.GetRequiredService<InsertOutboxMessagesInterceptor>()));
 
         //services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<EventsDbContext>());

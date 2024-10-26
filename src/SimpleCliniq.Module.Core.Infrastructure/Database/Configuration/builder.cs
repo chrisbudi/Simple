@@ -300,7 +300,7 @@ internal static class builder
             entity.Property(e => e.Etiket)
                 .IsRequired()
                 .HasMaxLength(50);
-            entity.Property(e => e.ExpiredDate).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.ExpiredDate).HasColumnType("timestamp with time zone");
             entity.Property(e => e.Farmakoterapi)
                 .IsRequired()
                 .HasMaxLength(200);
@@ -416,7 +416,7 @@ internal static class builder
             entity.Property(e => e.OldSubklasifikasi).HasPrecision(18);
             entity.Property(e => e.SaldoAwal).HasPrecision(18);
             entity.Property(e => e.Subklasifikasi).HasMaxLength(26);
-            entity.Property(e => e.TglSaldoAwal).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.TglSaldoAwal).HasColumnType("timestamp with time zone");
 
             entity.HasOne(d => d.SubklasifikasiNavigation).WithMany(p => p.MCoa)
                 .HasForeignKey(d => d.Subklasifikasi)
@@ -519,7 +519,7 @@ internal static class builder
             entity.Property(e => e.SubMenu)
                 .IsRequired()
                 .HasMaxLength(50);
-            entity.Property(e => e.Tanggal).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.Tanggal).HasColumnType("timestamp with time zone");
         });
 
         modelBuilder.Entity<MDepartment>(entity =>
@@ -684,7 +684,7 @@ internal static class builder
             entity.Property(e => e.Keterangan)
                 .IsRequired()
                 .HasMaxLength(100);
-            entity.Property(e => e.TglInput).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.TglInput).HasColumnType("timestamp with time zone");
         });
 
         modelBuilder.Entity<MDtd>(entity =>
@@ -826,7 +826,7 @@ internal static class builder
             entity.Property(e => e.InputBy)
                 .IsRequired()
                 .HasMaxLength(50);
-            entity.Property(e => e.LastUpdate).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.LastUpdate).HasColumnType("timestamp with time zone");
             entity.Property(e => e.OldBarangId).HasPrecision(18);
             entity.Property(e => e.OldIdHargaBeli).HasPrecision(18);
             entity.Property(e => e.Ppn)
@@ -869,7 +869,7 @@ internal static class builder
             entity.Property(e => e.InpuBy)
                 .IsRequired()
                 .HasMaxLength(50);
-            entity.Property(e => e.LastUpdate).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.LastUpdate).HasColumnType("timestamp with time zone");
             entity.Property(e => e.Margin).HasPrecision(18);
             entity.Property(e => e.OldBarangId).HasPrecision(18);
             entity.Property(e => e.OldIdHargaRekanan).HasPrecision(18);
@@ -1030,8 +1030,8 @@ internal static class builder
                 .HasMaxLength(6);
             entity.Property(e => e.RekananId).HasPrecision(18);
             entity.Property(e => e.SecondTnd).HasPrecision(18);
-            entity.Property(e => e.Tglakhir).HasColumnType("timestamp without time zone");
-            entity.Property(e => e.Tglawal).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.Tglakhir).HasColumnType("timestamp with time zone");
+            entity.Property(e => e.Tglawal).HasColumnType("timestamp with time zone");
 
             entity.HasOne(d => d.IdKamarInapNavigation).WithMany(p => p.MKamarinapHarga)
                 .HasForeignKey(d => d.IdKamarInap)
@@ -1172,11 +1172,11 @@ internal static class builder
             entity.Property(e => e.Kelas)
                 .IsRequired()
                 .HasMaxLength(20);
-            entity.Property(e => e.LastUpdate).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.LastUpdate).HasColumnType("timestamp with time zone");
             entity.Property(e => e.Penyulit).HasPrecision(18);
             entity.Property(e => e.SecondTnd).HasPrecision(18);
-            entity.Property(e => e.Tglakhir).HasColumnType("timestamp without time zone");
-            entity.Property(e => e.Tglawal).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.Tglakhir).HasColumnType("timestamp with time zone");
+            entity.Property(e => e.Tglawal).HasColumnType("timestamp with time zone");
 
             entity.HasOne(d => d.IdHargakamarNavigation).WithMany(p => p.MLaboratoriumHarga)
                 .HasForeignKey(d => d.IdHargakamar)
@@ -1363,7 +1363,7 @@ internal static class builder
             entity.Property(e => e.By)
                 .IsRequired()
                 .HasMaxLength(50);
-            entity.Property(e => e.ExpiredDate).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.ExpiredDate).HasColumnType("timestamp with time zone");
             entity.Property(e => e.KdObat)
                 .IsRequired()
                 .HasMaxLength(10);
@@ -1434,7 +1434,7 @@ internal static class builder
             entity.Property(e => e.Kelas)
                 .IsRequired()
                 .HasMaxLength(50);
-            entity.Property(e => e.LastUpdate).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.LastUpdate).HasColumnType("timestamp with time zone");
             entity.Property(e => e.OldIdMasterPemeriksaanPenunjang).HasPrecision(18);
             entity.Property(e => e.OldIdPaketkelas).HasPrecision(18);
             entity.Property(e => e.OldIdPenunjangDetail).HasPrecision(18);
@@ -1442,8 +1442,8 @@ internal static class builder
             entity.Property(e => e.Penyulit).HasPrecision(18);
             entity.Property(e => e.SecondTnd).HasPrecision(18);
             entity.Property(e => e.Subtotal).HasPrecision(18);
-            entity.Property(e => e.TglAkhir).HasColumnType("timestamp without time zone");
-            entity.Property(e => e.TglAwal).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.TglAkhir).HasColumnType("timestamp with time zone");
+            entity.Property(e => e.TglAwal).HasColumnType("timestamp with time zone");
         });
 
         modelBuilder.Entity<MPaketHargaBaru>(entity =>
@@ -1474,15 +1474,15 @@ internal static class builder
             entity.Property(e => e.Kelas)
                 .IsRequired()
                 .HasMaxLength(50);
-            entity.Property(e => e.Lastupdate).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.Lastupdate).HasColumnType("timestamp with time zone");
             entity.Property(e => e.OldIdMasterPemeriksaanPenunjang).HasPrecision(18);
             entity.Property(e => e.OldIdPenunjangDetail).HasPrecision(18);
             entity.Property(e => e.OldRekananId).HasPrecision(18);
             entity.Property(e => e.Penyulit).HasPrecision(18);
             entity.Property(e => e.SecondTnd).HasPrecision(18);
             entity.Property(e => e.Subtotal).HasPrecision(18);
-            entity.Property(e => e.Tglakhir).HasColumnType("timestamp without time zone");
-            entity.Property(e => e.Tglawal).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.Tglakhir).HasColumnType("timestamp with time zone");
+            entity.Property(e => e.Tglawal).HasColumnType("timestamp with time zone");
         });
 
         modelBuilder.Entity<MPaketMatrix>(entity =>
@@ -1658,8 +1658,8 @@ internal static class builder
             entity.Property(e => e.TelpPenanggung)
                 .IsRequired()
                 .HasMaxLength(100);
-            entity.Property(e => e.Tgldaftar).HasColumnType("timestamp without time zone");
-            entity.Property(e => e.Tgllahirpasien).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.Tgldaftar).HasColumnType("timestamp with time zone");
+            entity.Property(e => e.Tgllahirpasien).HasColumnType("timestamp with time zone");
             entity.Property(e => e.Tmptlahirpasien)
                 .IsRequired()
                 .HasMaxLength(50);
@@ -1802,11 +1802,11 @@ internal static class builder
             entity.Property(e => e.Kelas)
                 .IsRequired()
                 .HasMaxLength(20);
-            entity.Property(e => e.Lastupdate).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.Lastupdate).HasColumnType("timestamp with time zone");
             entity.Property(e => e.Penyulit).HasPrecision(18);
             entity.Property(e => e.SecondTnd).HasPrecision(18);
-            entity.Property(e => e.Tglakhir).HasColumnType("timestamp without time zone");
-            entity.Property(e => e.Tglawal).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.Tglakhir).HasColumnType("timestamp with time zone");
+            entity.Property(e => e.Tglawal).HasColumnType("timestamp with time zone");
 
             entity.HasOne(d => d.IdHargakamarNavigation).WithMany(p => p.MRadiologiHarga)
                 .HasForeignKey(d => d.IdHargakamar)
@@ -2030,7 +2030,7 @@ internal static class builder
             entity.Property(e => e.NmKomputer)
                 .IsRequired()
                 .HasMaxLength(50);
-            entity.Property(e => e.Tanggal).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.Tanggal).HasColumnType("timestamp with time zone");
         });
 
         modelBuilder.Entity<MSettingPemeriksaan>(entity =>
@@ -2095,7 +2095,7 @@ internal static class builder
 
             entity.Property(e => e.IdFieldgroup).HasPrecision(18);
             entity.Property(e => e.Dtanggal)
-                .HasColumnType("timestamp without time zone")
+                .HasColumnType("timestamp with time zone")
                 .HasColumnName("DTanggal");
             entity.Property(e => e.Nmfieldgroup)
                 .IsRequired()
@@ -2242,14 +2242,14 @@ internal static class builder
             entity.Property(e => e.Kelas)
                 .IsRequired()
                 .HasMaxLength(50);
-            entity.Property(e => e.Lastupdate).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.Lastupdate).HasColumnType("timestamp with time zone");
             entity.Property(e => e.OldIdTarifkelas).HasPrecision(18);
             entity.Property(e => e.OldRekananId).HasPrecision(18);
             entity.Property(e => e.Penyulit).HasPrecision(18);
             entity.Property(e => e.RekananId).HasMaxLength(26);
             entity.Property(e => e.SecondTnd).HasPrecision(18);
-            entity.Property(e => e.Tglakhir).HasColumnType("timestamp without time zone");
-            entity.Property(e => e.Tglawal).HasColumnType("timestamp without time zone");
+            entity.Property(e => e.Tglakhir).HasColumnType("timestamp with time zone");
+            entity.Property(e => e.Tglawal).HasColumnType("timestamp with time zone");
         });
 
         modelBuilder.Entity<MTarifMatrix>(entity =>

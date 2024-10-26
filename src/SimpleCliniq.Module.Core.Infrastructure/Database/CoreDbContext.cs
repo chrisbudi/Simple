@@ -188,6 +188,15 @@ public partial class CoreDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
 
+
+        modelBuilder
+        .Model
+        .GetEntityTypes()
+        .SelectMany(t => t.GetProperties())
+        .Where(p => p.ClrType == typeof(Ulid))
+        .ToList()
+        .ForEach(p => p.SetValueConverter(new UlidToStringConverter()));
+
         builder.ModelConfiguration(modelBuilder);
         base.OnModelCreating(modelBuilder);
     }
@@ -195,6 +204,11 @@ public partial class CoreDbContext : DbContext
 
     protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
     {
+        configurationBuilder.Properties<DateTime>()
+        .HaveConversion<DateTimeUtcConverter>()
+        .HaveColumnType("timestamp with time zone");
+
+
         configurationBuilder.Properties<Ulid>()
             .HaveConversion<UlidToStringConverter>();
     }
