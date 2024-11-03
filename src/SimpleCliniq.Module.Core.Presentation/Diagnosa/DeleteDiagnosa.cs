@@ -13,7 +13,7 @@ public class DeleteDiagnosa : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapDelete(EndpointUrls.Diagnosa, async (ISender sender, [AsParameters]DeleteDiagnosaCommand query) =>
+        app.MapDelete(EndpointUrls.Diagnosa+ "/{Id}", async (ISender sender, [AsParameters]DeleteDiagnosaCommand query) =>
         {
             Result<DeleteDiagnosaResponse> result = await sender.Send(query);
             return result.Match(Results.Ok, ApiResults.Problem);

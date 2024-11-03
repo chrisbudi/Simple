@@ -13,7 +13,7 @@ public class DeleteSmf : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapDelete(EndpointUrls.SMF, async (ISender sender, [AsParameters]DeleteSmfCommand query) =>
+        app.MapDelete(EndpointUrls.SMF + "/{Id}", async (ISender sender, [AsParameters]DeleteSmfCommand query) =>
         {
             Result<DeleteSmfResponse> result = await sender.Send(query);
             return result.Match(Results.Ok, ApiResults.Problem);

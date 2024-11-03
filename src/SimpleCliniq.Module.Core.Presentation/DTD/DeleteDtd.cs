@@ -13,7 +13,7 @@ public class DeleteDtd : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapDelete(EndpointUrls.DTD, async (ISender sender, [AsParameters]DeleteDtdCommand query) =>
+        app.MapDelete(EndpointUrls.DTD+ "/{Id}", async (ISender sender, [AsParameters]DeleteDtdCommand query) =>
         {
             Result<DeleteDtdResponse> result = await sender.Send(query);
             return result.Match(Results.Ok, ApiResults.Problem);

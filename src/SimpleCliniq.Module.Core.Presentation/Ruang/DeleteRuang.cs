@@ -13,7 +13,7 @@ public class DeleteRuang : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapDelete(EndpointUrls.Ruang, async (ISender sender, [AsParameters]DeleteRuangCommand query) =>
+        app.MapDelete(EndpointUrls.Ruang + "/{Id}", async (ISender sender, [AsParameters]DeleteRuangCommand query) =>
         {
             Result<DeleteRuangResponse> result = await sender.Send(query);
             return result.Match(Results.Ok, ApiResults.Problem);

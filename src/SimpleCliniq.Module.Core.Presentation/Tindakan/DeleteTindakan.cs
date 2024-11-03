@@ -13,7 +13,7 @@ public class DeleteTindakan : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapDelete(EndpointUrls.Tindakan, async (ISender sender, [AsParameters]DeleteTindakanCommand query) =>
+        app.MapDelete(EndpointUrls.Tindakan + "/{Id}", async (ISender sender, [AsParameters]DeleteTindakanCommand query) =>
         {
             Result<DeleteTindakanResponse> result = await sender.Send(query);
             return result.Match(Results.Ok, ApiResults.Problem);

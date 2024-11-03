@@ -13,7 +13,7 @@ public class DeleteJadwalDokter : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapDelete(EndpointUrls.JadwalDokter, async (ISender sender, [AsParameters]DeleteJadwalDokterCommand query) =>
+        app.MapDelete(EndpointUrls.JadwalDokter+ "/{Id}", async (ISender sender, [AsParameters]DeleteJadwalDokterCommand query) =>
         {
             Result<DeleteJadwalDokterResponse> result = await sender.Send(query);
             return result.Match(Results.Ok, ApiResults.Problem);

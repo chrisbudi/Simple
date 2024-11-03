@@ -13,7 +13,7 @@ public class DeleteRekanan : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapDelete(EndpointUrls.Rekanan, async (ISender sender, [AsParameters]DeleteRekananCommand query) =>
+        app.MapDelete(EndpointUrls.Rekanan + "/{Id}", async (ISender sender, [AsParameters]DeleteRekananCommand query) =>
         {
             Result<DeleteRekananResponse> result = await sender.Send(query);
             return result.Match(Results.Ok, ApiResults.Problem);

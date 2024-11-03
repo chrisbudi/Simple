@@ -13,7 +13,7 @@ public class DeleteMorfologi : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapDelete(EndpointUrls.Morfologi, async (ISender sender, [AsParameters]DeleteMorfologiCommand query) =>
+        app.MapDelete(EndpointUrls.Morfologi + "/{Id}", async (ISender sender, [AsParameters]DeleteMorfologiCommand query) =>
         {
             Result<DeleteMorfologiResponse> result = await sender.Send(query);
             return result.Match(Results.Ok, ApiResults.Problem);

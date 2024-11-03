@@ -13,7 +13,7 @@ public class DeleteRadiologiHarga : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapDelete(EndpointUrls.RadiologiHarga, async (ISender sender, [AsParameters]DeleteRadiologiHargaCommand query) =>
+        app.MapDelete(EndpointUrls.RadiologiHarga + "/{Id}", async (ISender sender, [AsParameters]DeleteRadiologiHargaCommand query) =>
         {
             Result<DeleteRadiologiHargaResponse> result = await sender.Send(query);
             return result.Match(Results.Ok, ApiResults.Problem);

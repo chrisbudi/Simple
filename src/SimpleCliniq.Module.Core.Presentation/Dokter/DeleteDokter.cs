@@ -13,7 +13,7 @@ public class DeleteDokter : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapDelete(EndpointUrls.Dokter, async (ISender sender, [AsParameters]DeleteDokterCommand query) =>
+        app.MapDelete(EndpointUrls.Dokter+ "/{Id}", async (ISender sender, [AsParameters]DeleteDokterCommand query) =>
         {
             Result<DeleteDokterResponse> result = await sender.Send(query);
             return result.Match(Results.Ok, ApiResults.Problem);
