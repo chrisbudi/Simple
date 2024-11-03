@@ -12,7 +12,7 @@ services:
   simple.identity:
     image: quay.io/keycloak/keycloak:latest
     container_name: Simple.identity
-    command: start-dev --import-realm
+    command: start-dev #--import-realm
     environment:
       - KC_HEALTH_ENABLED=true
       - KEYCLOAK_ADMIN=admin

@@ -2,10 +2,37 @@
 
 # This stage is used when running from VS in fast mode (Default for Debug configuration)
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS base
+
+
+USER root
+
+# Install openssl to generate the self-signed certificate
+RUN apk add --no-cache openssl
+
+
+
 USER app
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
+
+
+
+# Generate a self-signed certificate
+RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+    -keyout /app/private.key \
+    -out /app/certificate.crt \
+    -subj "/CN=localhost"
+
+# Convert the certificate and key to a PFX file
+RUN openssl pkcs12 -export -out /app/certificate.pfx \
+    -inkey /app/private.key \
+    -in /app/certificate.crt \
+    -passout pass:yourPFXPassword
+
+# Set up environment variables for ASP.NET Core to use the certificate
+ENV ASPNETCORE_Kestrel__Certificates__Default__Path=/app/certificate.pfx
+ENV ASPNETCORE_Kestrel__Certificates__Default__Password="yourPFXPassword"
 
 
 # This stage is used to build the service project
@@ -47,4 +74,9 @@ RUN dotnet publish "./SimpleCliniq.csproj" -c $BUILD_CONFIGURATION -o /app/publi
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+
+# Copy PFX to final stage
+COPY --from=base /app/certificate.pfx /app/certificate.pfx
+
 ENTRYPOINT ["dotnet", "SimpleCliniq.dll"]
