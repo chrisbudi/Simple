@@ -12,7 +12,8 @@ services:
   simple.identity:
     image: quay.io/keycloak/keycloak:latest
     container_name: Simple.identity
-    command: start-dev --spi-login-protocol-openid-connect-require-ssl=none #--import-realm
+    command: > 
+        /opt/keycloak/bin/kc.sh start-dev && /opt/keycloak/update_ssl_setting.sh
     environment:
       - KC_HEALTH_ENABLED=true
       - KEYCLOAK_ADMIN=admin
@@ -22,6 +23,7 @@ services:
     volumes:
       - ./.containers/identity:/opt/keycloak/data
       - ./.files:/opt/keycloak/data/import
+      - ./update_ssl_setting.sh:/opt/keycloak/update_ssl_setting.sh
     ports:
       - 18080:8080
       - 9990:9990 
