@@ -35,6 +35,15 @@ services:
      networks:
       - SimpleNetwork
   
+  simple.fe:
+     image: nielsen88/simplecliniqfe:latest
+     command: >
+      sh -c "http-server dist -S -C certificate.pem -K key.pem"
+     container_name: simplecliniq.fe
+     restart: always
+     ports:
+       - 8090:8080
+  
   # simple.seq:
   #   image: datalust/seq:latest
   #   container_name: Simple.Seq
