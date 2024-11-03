@@ -12,23 +12,22 @@ services:
   simple.identity:
     image: quay.io/keycloak/keycloak:latest
     container_name: Simple.identity
-    command: > 
-        /opt/keycloak/bin/kc.sh start-dev && /opt/keycloak/update_ssl_setting.sh
+    entrypoint: ["/opt/keycloak/entrypoint.sh"]
     environment:
-      - KC_HEALTH_ENABLED=true
-      - KEYCLOAK_ADMIN=admin
-      - KEYCLOAK_ADMIN_PASSWORD=admin
-      - KC_PROXY=edge
-      - KC_HOSTNAME_STRICT_HTTPS=false
+        - KC_HEALTH_ENABLED=true
+        - KEYCLOAK_ADMIN=admin
+        - KEYCLOAK_ADMIN_PASSWORD=admin
+        - KC_PROXY=edge
+        - KC_HOSTNAME_STRICT_HTTPS=false
     volumes:
-      - ./.containers/identity:/opt/keycloak/data
-      - ./.files:/opt/keycloak/data/import
-      - ./update_ssl_setting.sh:/opt/keycloak/update_ssl_setting.sh
+        - ./.containers/identity:/opt/keycloak/data
+        - ./.files:/opt/keycloak/data/import
+        - ./entrypoint.sh:/opt/keycloak/entrypoint.sh
     ports:
-      - 18080:8080
-      - 9990:9990 
+        - 18080:8080
+        - 9990:9990 
     networks:
-      - SimpleNetwork
+        - SimpleNetwork
 
   simple.redis:
      image: redis:latest
