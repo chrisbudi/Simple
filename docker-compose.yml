@@ -17,6 +17,7 @@ services:
       - KC_HEALTH_ENABLED=true
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_PROXY=edge
     volumes:
       - ./.containers/identity:/opt/keycloak/data
       - ./.files:/opt/keycloak/data/import
