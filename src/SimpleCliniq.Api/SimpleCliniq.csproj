@@ -10,6 +10,13 @@
     <EnableNETAnalyzers>False</EnableNETAnalyzers>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <Optimize>False</Optimize>
   </PropertyGroup>
@@ -42,8 +49,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SimpleCliniq.Module.Core.Infrastructure\SimpleCliniq.Module.Core.Infrastructure.csproj" />
-    <ProjectReference Include="..\SimpleCliniq.Module.Users.Infrastructure\SimpleCliniq.Module.Users.Infrastructure.csproj" />
     <ProjectReference Include="..\SimpleCliniq.Module.Core.Presentation\SimpleCliniq.Module.Core.Presentation.csproj" />
+    <ProjectReference Include="..\SimpleCliniq.Module.Users.Infrastructure\SimpleCliniq.Module.Users.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

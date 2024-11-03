@@ -3,9 +3,14 @@
     "Docker Compose": {
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "simple.api",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}/swagger",
       "serviceActions": {
-        "simplecliniq.api": "StartDebugging",
-        "simplecliniqapi": "StartDebugging"
+        "simple.fe": "StartWithoutDebugging",
+        "simple.api": "StartDebugging",
+        "simple.identity": "StartWithoutDebugging",
+        "simple.redis": "StartWithoutDebugging"
       }
     }
   }

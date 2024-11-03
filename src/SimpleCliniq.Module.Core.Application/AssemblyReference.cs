@@ -1,9 +1,8 @@
-﻿using System.Reflection;
+using System.Reflection;
 
-namespace SimpleCliniq.Module.Core.Application
+namespace SimpleCliniq.Module.Core.Application;
+
+public static class AssemblyReference
 {
-    public static class AssemblyReference
-    {
-        public static readonly Assembly Assembly = typeof(AssemblyReference).Assembly;
-    }
+    public static readonly Assembly Assembly = typeof(AssemblyReference).Assembly;
 }

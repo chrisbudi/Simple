@@ -3,7 +3,7 @@
     <ProjectReference Include="..\SimpleCliniq.Common.Domain\Simple.Common.Domain.csproj" />
     <ProjectReference Include="..\SimpleCliniq.Common.Presentation\Simple.Common.Presentation.csproj" />
     <ProjectReference Include="..\SimpleCliniq.Module.Core.Domain\SimpleCliniq.Module.Core.Domain.csproj" />
-    <ProjectReference Include="..\Modules\Cores\SimpleCliniq.Modue.Core.Application\SimpleCliniq.Module.Core.Application.csproj" />
+    <ProjectReference Include="..\SimpleCliniq.Module.Core.Application\SimpleCliniq.Module.Core.Application.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MediatR" Version="12.4.1" />
