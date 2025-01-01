@@ -14,11 +14,7 @@ using SimpleCliniq.OpenTelemetry;
 using System.Reflection;
 
 
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-
 var builder = WebApplication.CreateBuilder(args);
-
-
 
 // Add services to the container.
 var services = builder.Services;
@@ -68,19 +64,19 @@ builder.Services.AddCorePresentationModule();
 services.AddEndpoints(Assembly.GetExecutingAssembly());
 
 
+// add cors all origins
+const string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        });
+});
 
-
-
-
-
-//// module for clinical
-
-//builder.Services.AddPharmacyModule(builder.Configuration);
-
-//// module for patient
-
-//builder.Services.AddAppointmentModule(builder.Configuration);
-//builder.Services.AddAppointmentModule(builder.Configuration);
 
 // builder.Services.AddControllers().AddNewtonsoftJson(options =>
 // {
@@ -97,6 +93,9 @@ services.AddEndpoints(Assembly.GetExecutingAssembly()).ConfigureHttpJsonOptions(
 
 var app = builder.Build();
 
+// app add cors
+app.UseCors(MyAllowSpecificOrigins);
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -104,9 +103,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 
     app.ApplyMigrations();
-    //app.UseDeveloperExceptionPage();
-
-    //app.ApplyMigrations<CoreDbContext>();
 }
 
 app.MapHealthChecks("health", new HealthCheckOptions
